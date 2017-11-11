@@ -12,6 +12,10 @@
 #include <fstream>
 #include <string>
 
+#include "/home/emanuel/Documents/glm/glm/glm/glm.hpp"
+#define GLM_ENABLE_EXPERIMENTAL
+#include "/home/emanuel/Documents/glm/glm/glm/gtx/transform.hpp"
+
 // Default name of the mesh file to load
 #define DEFAULT_MESH_NAME MAIN_DIR "volcano_mesh.raw"
 
@@ -188,24 +192,44 @@ bool createMesh(Model *model)
 	tria.reserve(10);
 	
 	// ------------ do cube
-	// xy0
-	Vertex x0 = {{0,0,0},{1,0,0,1},{0,0,0}};
-	Vertex x1 = {{1,1,0},{1,1,0,1},{0,0,0}};
-	Vertex x2 = {{0,1,0},{0,1,0,1},{0,0,0}};
-	Vertex x3 = {{1,0,0},{0,0,1,1},{0,0,0}};
+	{	
+		// xy0	
+		Vertex x0 = {{0,0,0},{1,0,0,1},{0,0,0}};
+		Vertex x1 = {{1,1,0},{1,1,0,1},{0,0,0}};
+		Vertex x2 = {{0,1,0},{0,1,0,1},{0,0,0}};
+		Vertex x3 = {{1,0,0},{0,0,1,1},{0,0,0}};
 	
-	int index = vert.size();
-	vert.push_back(x0);
-	vert.push_back(x1);
-	vert.push_back(x2);
-	vert.push_back(x3);
+		int index = vert.size();
+		vert.push_back(x0);
+		vert.push_back(x1);
+		vert.push_back(x2);
+		vert.push_back(x3);
 	
-	Triangle t1 = {index+0, index+1, index+2, {0,0,0}};
-	Triangle t2 = {index+0, index+3, index+1, {0,0,0}};
+		Triangle t1 = {index+0, index+1, index+2, {0,0,0}};
+		Triangle t2 = {index+0, index+3, index+1, {0,0,0}};
 	
-	tria.push_back(t1);
-	tria.push_back(t2);
+		tria.push_back(t1);
+		tria.push_back(t2);
+	}
+	{	
+		// xy1	
+		Vertex x0 = {{0,0,1},{1,0,0,1},{0,0,0}};
+		Vertex x1 = {{1,1,1},{1,1,0,1},{0,0,0}};
+		Vertex x2 = {{0,1,1},{0,1,0,1},{0,0,0}};
+		Vertex x3 = {{1,0,1},{0,0,1,1},{0,0,0}};
 	
+		int index = vert.size();
+		vert.push_back(x0);
+		vert.push_back(x1);
+		vert.push_back(x2);
+		vert.push_back(x3);
+		
+		Triangle t1 = {index+0, index+2, index+1, {0,0,0}};
+		Triangle t2 = {index+0, index+1, index+2, {0,0,0}};
+	
+		tria.push_back(t1);
+		tria.push_back(t2);
+	}
 	
 	// ------------- convert vector to array
 	int numVertices = vert.size();
@@ -424,28 +448,38 @@ bool initGraphics(){
 	glUseProgram(g_shaderProgram);
 
 	// Set model matrix
+	glm::mat4 model_mat = glm::mat4(1.0f);
+	
+	/*
 	GLfloat model_mat[16] = {
-		0.008000f,  0.000000f,  0.000000f, 0.000000f,
-		0.000000f,  0.008000f,  0.000000f, 0.000000f,
-		0.000000f,  0.000000f,  0.008000f, 0.000000f,
-	   -1.300000f, -1.500000f, -1.000000f, 1.0000000f
-   };
-
+		1.0f,  0.0f,  0.0f, 0.0f,
+		0.0f,  1.0f,  0.0f, 0.0f,
+		0.0f,  0.0f,  1.0f, 0.0f,
+	   	0.0f,  0.0f,  0.0f, 1.0f
+  	};
+	*/
+	
    GLint location = glGetUniformLocation(g_shaderProgram, "Model_mat");
-   assert(location != -1);      
-   glUniformMatrix4fv(location, 1, false, model_mat);
+   assert(location != -1);
+   glUniformMatrix4fv(location, 1, false, &model_mat[0][0]);
 
    // Set projection*view Matrix
+	/*
    GLfloat projview_mat[16] = {
 	   2.747478f, 0.000000f,  0.000000f,  0.000000f,
 	   0.000000f, 2.457419f,  0.546594f,  0.447214f,
 	   0.000000f, 1.228709f, -1.093189f, -0.894427f,
 	   0.000000f, 0.000000f,  1.877236f,  3.354102f
    };
+	*/
+	glm::mat4 projview_mat = glm::lookAt(
+					glm::vec3(-3,-3,-3),
+					glm::vec3(0,0,0),
+					glm::vec3(0,1,0));
 
    location = glGetUniformLocation(g_shaderProgram, "ProjectView_mat");
    assert(location != -1);   
-   glUniformMatrix4fv(location, 1, false, projview_mat);
+   glUniformMatrix4fv(location, 1, false, &projview_mat[0][0]);
 
    // Set position of light
    GLfloat lightpos[4] = {500.0f, 200.0f, 300.0f, 1.0f};
@@ -515,6 +549,8 @@ int main() {
 	Model model;
 	createMesh(&model);
 	cout << "Model IBOSize: " << model.IBOSize << endl;
+	
+	glClearColor(0.2f, 0.1f, 0.1f, 1.0f);	
 	
 	while(!glfwWindowShouldClose(window))
 	{
