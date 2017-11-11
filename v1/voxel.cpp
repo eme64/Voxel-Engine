@@ -78,6 +78,26 @@ struct Model
 	GLuint IBO;
 };
 
+struct Camera
+{
+	// position
+	glm::vec3 position = glm::vec3( 5, 5, 5 );
+	// horizontal angle : toward -Z
+	float horizontalAngle = 3.14f;
+	// vertical angle : 0, look at the horizon
+	float verticalAngle = 0.0f;
+	// Initial Field of View
+	float FoV = 90.0f;
+
+	float speed = 3.0f; // 3 units / second
+	float mouseSpeed = 0.1f;
+	
+	double lastFrameTime;
+};
+
+int g_Screen_x = 800;
+int g_Screen_y = 600;
+
 // Constants for coordinate axes
 #define COR_X 0
 #define COR_Y 1
@@ -87,7 +107,89 @@ struct Model
 // Handle of shader program which defines the material of our object
 GLuint g_shaderProgram = 0;
 
+void initCamera(Camera *cam, GLFWwindow* window){
+	glfwSetCursorPos(window, g_Screen_x/2, g_Screen_y/2);
+	cam->lastFrameTime = glfwGetTime();
+}
 
+void updateCamera(Camera *cam, GLFWwindow* window){
+	
+	double currentTime = glfwGetTime();
+	float deltaTime = float(currentTime - cam->lastFrameTime);
+	cam->lastFrameTime = currentTime;
+	
+	// reed mouse speeds
+	double xpos, ypos;
+	glfwGetCursorPos(window, &xpos, &ypos);
+	glfwSetCursorPos(window, g_Screen_x/2, g_Screen_y/2);
+	
+	// cam angles
+	cam->horizontalAngle += cam->mouseSpeed * deltaTime * float(g_Screen_x/2 - xpos );
+	cam->verticalAngle   += cam->mouseSpeed * deltaTime * float(g_Screen_y/2 - ypos );
+	
+	// calc direction
+	glm::vec3 direction(
+		cos(cam->verticalAngle) * sin(cam->horizontalAngle),
+		sin(cam->verticalAngle),
+		cos(cam->verticalAngle) * cos(cam->horizontalAngle));
+	
+	// Right vector
+	glm::vec3 right = glm::vec3(
+		sin(cam->horizontalAngle - 3.14f/2.0f),
+		0,
+		cos(cam->horizontalAngle - 3.14f/2.0f));
+	
+	// Up vector : perpendicular to both direction and right
+	glm::vec3 up = glm::cross( right, direction );
+	
+	glm::vec3 globalup = glm::vec3(0,1,0);
+	glm::vec3 walkdirection = -glm::cross( right, globalup);
+	
+	// Move forward
+	if (glfwGetKey(window, GLFW_KEY_W ) == GLFW_PRESS){
+	    cam->position += walkdirection * deltaTime * cam->speed;
+	}
+	// Move backward
+	if (glfwGetKey(window, GLFW_KEY_S ) == GLFW_PRESS){
+	    cam->position -= walkdirection * deltaTime * cam->speed;
+	}
+	// Strafe right
+	if (glfwGetKey(window, GLFW_KEY_D ) == GLFW_PRESS){
+	    cam->position += right * deltaTime * cam->speed;
+	}
+	// Strafe left
+	if (glfwGetKey(window, GLFW_KEY_A ) == GLFW_PRESS){
+	    cam->position -= right * deltaTime * cam->speed;
+	}
+	
+	// Strafe right
+	if (glfwGetKey(window, GLFW_KEY_Q ) == GLFW_PRESS){
+	    cam->position += globalup * deltaTime * cam->speed;
+	}
+	// Strafe left
+	if (glfwGetKey(window, GLFW_KEY_E ) == GLFW_PRESS){
+	    cam->position -= globalup * deltaTime * cam->speed;
+	}
+	
+	if (glfwGetKey(window, GLFW_KEY_SPACE ) == GLFW_PRESS){
+	    cout << cam->horizontalAngle << ", " << cam->verticalAngle << endl;
+	}
+	
+	//cam->FoV -= 5 * glfwGetMouseWheel(window);
+	
+	// Projection matrix : 45&deg; Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
+	glm::mat4 ProjectionMatrix = glm::perspective(glm::radians(cam->FoV), 4.0f / 3.0f, 0.1f, 100.0f);
+	// Camera matrix
+	glm::mat4 ViewMatrix = glm::lookAt(
+	    cam->position,           // Camera is here
+	    cam->position+direction, // and looks here : at the same position, plus "direction"
+	    up                  // Head is up (set to 0,-1,0 to look upside-down)
+	);
+	glm::mat4 projview_mat = ProjectionMatrix * ViewMatrix;
+	GLuint location = glGetUniformLocation(g_shaderProgram, "ProjectView_mat");
+	assert(location != -1);
+	glUniformMatrix4fv(location, 1, false, &projview_mat[0][0]);
+}
 //=======================================================================
 // Converts hsv to rgb
 //=======================================================================
@@ -176,6 +278,7 @@ void calcVertexNormals(const Triangle *pTriangleArray, int numTriangles, Vertex 
 		pVertices[vtxIndex].normal[0] /= norm;
 		pVertices[vtxIndex].normal[1] /= norm;
 		pVertices[vtxIndex].normal[2] /= norm;
+		cout << vtxIndex << ":" << pVertices[vtxIndex].normal[0] << ","<< pVertices[vtxIndex].normal[1] << ","<< pVertices[vtxIndex].normal[2] << endl;
 	}
 }
 
@@ -183,9 +286,7 @@ void calcVertexNormals(const Triangle *pTriangleArray, int numTriangles, Vertex 
 
 // ----------------------- Create some Mesh for testing
 bool createMesh(Model *model)
-{
-	cout << "loading mesh" << endl;
-	
+{	
 	std::vector<Vertex> vert;
 	vert.reserve(20);
 	std::vector<Triangle> tria;
@@ -193,12 +294,91 @@ bool createMesh(Model *model)
 	
 	// ------------ do cube
 	{	
-		// xy0	
-		Vertex x0 = {{0,0,0},{1,0,0,1},{0,0,0}};
-		Vertex x1 = {{1,1,0},{1,1,0,1},{0,0,0}};
-		Vertex x2 = {{0,1,0},{0,1,0,1},{0,0,0}};
-		Vertex x3 = {{1,0,0},{0,0,1,1},{0,0,0}};
+		// xy0
+		Vertex x0 = {{0,0,0,1},{1,0,0,1},{0,0,0}};
+		Vertex x1 = {{1,1,0,1},{1,1,0,1},{0,0,0}};
+		Vertex x2 = {{0,1,0,1},{0,1,0,1},{0,0,0}};
+		Vertex x3 = {{1,0,0,1},{0,0,1,1},{0,0,0}};
 	
+		int index = vert.size();
+		vert.push_back(x0);
+		vert.push_back(x1);
+		vert.push_back(x2);
+		vert.push_back(x3);
+	
+		Triangle t1 = {index+0, index+2, index+1, {0,0,0}};
+		Triangle t2 = {index+0, index+1, index+3, {0,0,0}};
+	
+		tria.push_back(t1);
+		tria.push_back(t2);
+	}
+	{	
+		// xy1	
+		Vertex x0 = {{0,0,1,1},{1,0,0,1},{0,0,0}};
+		Vertex x1 = {{1,1,1,1},{1,1,0,1},{0,0,0}};
+		Vertex x2 = {{0,1,1,1},{0,1,0,1},{0,0,0}};
+		Vertex x3 = {{1,0,1,1},{0,0,1,1},{0,0,0}};
+	
+		int index = vert.size();
+		vert.push_back(x0);
+		vert.push_back(x1);
+		vert.push_back(x2);
+		vert.push_back(x3);
+		
+		Triangle t1 = {index+0, index+1, index+2, {0,0,0}};
+		Triangle t2 = {index+0, index+3, index+1, {0,0,0}};
+	
+		tria.push_back(t1);
+		tria.push_back(t2);
+	}
+	
+
+	{	
+		// 0yz	
+		Vertex x0 = {{0,0,0,1},{1,0,0,1},{0,0,0}};
+		Vertex x1 = {{0,1,1,1},{1,1,0,1},{0,0,0}};
+		Vertex x2 = {{0,0,1,1},{0,1,0,1},{0,0,0}};
+		Vertex x3 = {{0,1,0,1},{0,0,1,1},{0,0,0}};
+		
+		int index = vert.size();
+		vert.push_back(x0);
+		vert.push_back(x1);
+		vert.push_back(x2);
+		vert.push_back(x3);
+	
+		Triangle t1 = {index+0, index+2, index+1, {0,0,0}};
+		Triangle t2 = {index+0, index+1, index+3, {0,0,0}};
+	
+		tria.push_back(t1);
+		tria.push_back(t2);
+	}
+	{	
+		// 0yz	
+		Vertex x0 = {{1,0,0,1},{1,0,0,1},{0,0,0}};
+		Vertex x1 = {{1,1,1,1},{1,1,0,1},{0,0,0}};
+		Vertex x2 = {{1,0,1,1},{0,1,0,1},{0,0,0}};
+		Vertex x3 = {{1,1,0,1},{0,0,1,1},{0,0,0}};
+		
+		int index = vert.size();
+		vert.push_back(x0);
+		vert.push_back(x1);
+		vert.push_back(x2);
+		vert.push_back(x3);
+	
+		Triangle t1 = {index+0, index+1, index+2, {0,0,0}};
+		Triangle t2 = {index+0, index+3, index+1, {0,0,0}};
+	
+		tria.push_back(t1);
+		tria.push_back(t2);
+	}
+
+	{	
+		// x0z	
+		Vertex x0 = {{0,0,0,1},{1,0,0,1},{0,0,0}};
+		Vertex x1 = {{1,0,1,1},{1,1,0,1},{0,0,0}};
+		Vertex x2 = {{0,0,1,1},{0,1,0,1},{0,0,0}};
+		Vertex x3 = {{1,0,0,1},{0,0,1,1},{0,0,0}};
+		
 		int index = vert.size();
 		vert.push_back(x0);
 		vert.push_back(x1);
@@ -212,31 +392,30 @@ bool createMesh(Model *model)
 		tria.push_back(t2);
 	}
 	{	
-		// xy1	
-		Vertex x0 = {{0,0,1},{1,0,0,1},{0,0,0}};
-		Vertex x1 = {{1,1,1},{1,1,0,1},{0,0,0}};
-		Vertex x2 = {{0,1,1},{0,1,0,1},{0,0,0}};
-		Vertex x3 = {{1,0,1},{0,0,1,1},{0,0,0}};
-	
+		// x1z	
+		Vertex x0 = {{0,1,0,1},{1,0,0,1},{0,0,0}};
+		Vertex x1 = {{1,1,1,1},{1,1,0,1},{0,0,0}};
+		Vertex x2 = {{0,1,1,1},{0,1,0,1},{0,0,0}};
+		Vertex x3 = {{1,1,0,1},{0,0,1,1},{0,0,0}};
+		
 		int index = vert.size();
 		vert.push_back(x0);
 		vert.push_back(x1);
 		vert.push_back(x2);
 		vert.push_back(x3);
-		
+	
 		Triangle t1 = {index+0, index+2, index+1, {0,0,0}};
-		Triangle t2 = {index+0, index+1, index+2, {0,0,0}};
+		Triangle t2 = {index+0, index+1, index+3, {0,0,0}};
 	
 		tria.push_back(t1);
 		tria.push_back(t2);
 	}
-	
 	// ------------- convert vector to array
 	int numVertices = vert.size();
 	Vertex *pVertexArray = &vert[0];
 	
 	int numTriangles = tria.size();
-	Triangle *pTriangleArray = &tria[0];
+	Triangle *pTriangleArray = &tria[0];	
 	
 	// ------------- calculate normals
 	for(int triIndex = 0; triIndex < numTriangles; triIndex++)
@@ -250,6 +429,8 @@ bool createMesh(Model *model)
 		int A = pTriangleArray[triIndex].vtxIndexA;
 		int B = pTriangleArray[triIndex].vtxIndexB;
 		int C = pTriangleArray[triIndex].vtxIndexC;
+		
+		cout << A << "," << B << "," << C << endl;
 		
 		GLfloat Ax = pVertexArray[A].pos[COR_X];
 		GLfloat Ay = pVertexArray[A].pos[COR_Y];
@@ -304,7 +485,6 @@ bool createMesh(Model *model)
 		pIndices[3*triIndex + 2] = pTriangleArray[triIndex].vtxIndexC;
 	}
 	
-	cout << "mesh to gl" << endl;
 	
 	// ------------- send to GL
 	GLuint vao;
@@ -324,7 +504,7 @@ bool createMesh(Model *model)
 	glVertexAttribPointer(location, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, pos));
 	glEnableVertexAttribArray(location);
 	
-	// load color	
+	// load color
 	location = glGetAttribLocation(g_shaderProgram, "color_in");
 	glVertexAttribPointer(location, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, color));
 	glEnableVertexAttribArray(location);
@@ -339,8 +519,6 @@ bool createMesh(Model *model)
 	glGenBuffers(1, &(model->IBO));
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, model->IBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLshort)*model->IBOSize, pIndices, GL_STATIC_DRAW);
-	
-	cout << "mesh done" << endl;
 	
 	delete[] pIndices;
 	// not free because from vector !
@@ -446,7 +624,7 @@ bool initGraphics(){
 
 	// To actually start using the shaders in the program
 	glUseProgram(g_shaderProgram);
-
+	
 	// Set model matrix
 	glm::mat4 model_mat = glm::mat4(1.0f);
 	
@@ -529,7 +707,7 @@ int main() {
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 	
-	GLFWwindow* window = glfwCreateWindow(800, 600, "OpenGL", nullptr, nullptr); // Windowed
+	GLFWwindow* window = glfwCreateWindow(g_Screen_x, g_Screen_y, "OpenGL", nullptr, nullptr); // Windowed
 	glfwMakeContextCurrent(window);
 
 	// set callback function for key-inputs
@@ -544,16 +722,31 @@ int main() {
 		cout << "initializing the graphic libs failed!" << endl;		
 		return 1;		
 	}
-
+	
+	// --- init camera:
+	Camera cam;
+	initCamera(&cam, window); // after window opened!
+	
 	// load my stuff:
 	Model model;
 	createMesh(&model);
 	cout << "Model IBOSize: " << model.IBOSize << endl;
 	
+	// ------ background-buffer -> triangles rightly ordered/drawn.
+	// Enable depth test
+	glEnable(GL_DEPTH_TEST);
+	// Accept fragment if it closer to the camera than the former one
+	glDepthFunc(GL_LESS);
+	
+	// ------ make triangles onesided
+	glEnable(GL_CULL_FACE);
+	
+	// ------ background color
 	glClearColor(0.2f, 0.1f, 0.1f, 1.0f);	
 	
 	while(!glfwWindowShouldClose(window))
 	{
+		updateCamera(&cam, window);
 		displayFunc(&model);
 		glfwSwapBuffers(window);
 		glfwPollEvents();
