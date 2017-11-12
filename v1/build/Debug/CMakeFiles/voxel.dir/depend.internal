@@ -102,4 +102,11 @@ CMakeFiles/voxel.dir/voxel.cpp.o
  /home/emanuel/Documents/glm/glm/glm/vec3.hpp
  /home/emanuel/Documents/glm/glm/glm/vec4.hpp
  /home/emanuel/Documents/glm/glm/glm/vector_relational.hpp
+ /home/emanuel/Documents/voxel_engine/v1/src/camera.hpp
+ /home/emanuel/Documents/voxel_engine/v1/src/chunk.hpp
+ /home/emanuel/Documents/voxel_engine/v1/src/createShaderObject.hpp
+ /home/emanuel/Documents/voxel_engine/v1/src/model.hpp
+ /home/emanuel/Documents/voxel_engine/v1/src/triangle.hpp
+ /home/emanuel/Documents/voxel_engine/v1/src/vertex.hpp
+ /home/emanuel/Documents/voxel_engine/v1/src/voxelmap.hpp
  /home/emanuel/Documents/voxel_engine/v1/voxel.cpp

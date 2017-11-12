@@ -101,5 +101,12 @@ CMakeFiles/voxel.dir/voxel.cpp.o: /home/emanuel/Documents/glm/glm/glm/vec2.hpp
 CMakeFiles/voxel.dir/voxel.cpp.o: /home/emanuel/Documents/glm/glm/glm/vec3.hpp
 CMakeFiles/voxel.dir/voxel.cpp.o: /home/emanuel/Documents/glm/glm/glm/vec4.hpp
 CMakeFiles/voxel.dir/voxel.cpp.o: /home/emanuel/Documents/glm/glm/glm/vector_relational.hpp
+CMakeFiles/voxel.dir/voxel.cpp.o: ../../src/camera.hpp
+CMakeFiles/voxel.dir/voxel.cpp.o: ../../src/chunk.hpp
+CMakeFiles/voxel.dir/voxel.cpp.o: ../../src/createShaderObject.hpp
+CMakeFiles/voxel.dir/voxel.cpp.o: ../../src/model.hpp
+CMakeFiles/voxel.dir/voxel.cpp.o: ../../src/triangle.hpp
+CMakeFiles/voxel.dir/voxel.cpp.o: ../../src/vertex.hpp
+CMakeFiles/voxel.dir/voxel.cpp.o: ../../src/voxelmap.hpp
 CMakeFiles/voxel.dir/voxel.cpp.o: ../../voxel.cpp
 
