@@ -3,6 +3,7 @@
 
 struct Model
 {
+	GLuint vao;
 	GLuint IBOSize;
 	GLuint VBO;
 	GLuint IBO;

@@ -76,6 +76,7 @@ void Chunk::render()
 void displayFunc(const Model& model){
 	// Draw all triangles defined in the index buffer object
 	// with the vertex data from vertex array in the vertex buffer object
+	glBindVertexArray(model.vao);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, model.IBO);		
 	glDrawElements(GL_TRIANGLES, model.IBOSize, GL_UNSIGNED_SHORT, 0);
 }
@@ -335,9 +336,9 @@ bool Chunk::createModel()
 	
 	
 	// ------------- send to GL
-	GLuint vao;
-	glGenVertexArrays(1, &vao);
-	glBindVertexArray(vao);
+	//GLuint vao;
+	glGenVertexArrays(1, &(model->vao));
+	glBindVertexArray(model->vao);
 	
 	// Create vertex buffer object and download vertex array
 	model->VBO = 0;

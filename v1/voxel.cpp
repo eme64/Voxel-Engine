@@ -120,11 +120,13 @@ int main() {
 	VoxelMap vmap;
 	
 	for(int i=0;i<5;i++){
-		// generate some chunk
-		Chunk* chunk = new Chunk;
-		chunk->SetData(ChunkPosition{i,0,0});
-		chunk->createModel();
-		vmap.addChunk(chunk);// add to map
+		for(int j=0;j<5;j++){
+			// generate some chunk
+			Chunk* chunk = new Chunk;
+			chunk->SetData(ChunkPosition{i,j,0});
+			chunk->createModel();
+			vmap.addChunk(chunk);// add to map
+		}
 	}
 	
 	// ------ background-buffer -> triangles rightly ordered/drawn.
