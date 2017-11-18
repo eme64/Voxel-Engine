@@ -12,9 +12,12 @@
 #include <fstream>
 #include <string>
 
-#include "/home/emanuel/Documents/glm/glm/glm/glm.hpp"
+#include "/home/emanuel/Documents/glm/glm/glm.hpp"
+//#include "/home/emanuel/Document/glm/glm/glm/glm.hpp"
 #define GLM_ENABLE_EXPERIMENTAL
-#include "/home/emanuel/Documents/glm/glm/glm/gtx/transform.hpp"
+#include "/home/emanuel/Documents/glm/glm/gtx/transform.hpp"
+//#include "/home/emanuel/Documents/glm/glm/glm/gtx/transform.hpp"
+
 
 // my includes
 #include "src/chunk.hpp"
@@ -26,8 +29,8 @@
 #include "src/voxelmap.hpp"
 
 // ------------------------------ GLOBAL VARIABLES
-int g_Screen_x = 800;
-int g_Screen_y = 600;
+int g_Screen_x = 1024;
+int g_Screen_y = 800;
 
 // Handle of shader program which defines the material of our object
 GLuint g_shaderProgram = 0;
