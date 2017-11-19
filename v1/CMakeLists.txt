@@ -17,7 +17,9 @@ include_directories(${CMAKE_CURRENT_LIST_DIR}/thirdparty/glfw-3.2.1/include)
 include_directories(GLEW_INCLUDE_DIRS ${CMAKE_CURRENT_LIST_DIR}/thirdparty/glew-2.1.0/include)
 set(GLEW_LIBRARIES ${CMAKE_CURRENT_LIST_DIR}/thirdparty/glew-2.1.0/src/glew.c)
 
-add_executable(voxel voxel.cpp ${GLEW_LIBRARIES})
+set(NOISE_LIB ${CMAKE_CURRENT_LIST_DIR}/src/FastNoise/FastNoise.cpp)
+
+add_executable(voxel voxel.cpp ${GLEW_LIBRARIES} ${NOISE_LIB})
 
 target_link_libraries(voxel glfw ${GLFW_LIBRARIES} ${OPENGL_LIBRARIES})
 

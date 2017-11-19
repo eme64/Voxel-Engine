@@ -27,6 +27,11 @@
 #include "src/triangle.hpp"
 #include "src/createShaderObject.hpp"
 #include "src/voxelmap.hpp"
+#include "src/block.hpp"
+#include "src/input.hpp"
+
+#define STB_IMAGE_IMPLEMENTATION
+#include "src/stb_image.c"
 
 // ------------------------------ GLOBAL VARIABLES
 int g_Screen_x = 1024;
@@ -59,7 +64,7 @@ bool initGraphics(){
 	glUniformMatrix4fv(location, 1, false, &projview_mat[0][0]);
 	
 	// Set position of light
-	GLfloat lightpos[4] = {500.0f, 200.0f, 300.0f, 1.0f};
+	GLfloat lightpos[4] = {-200.0f, -100.0f, 1000.0f, 1.0f};
 	location = glGetUniformLocation(g_shaderProgram, "lightPos");
 	glUniform4fv(location, 1, lightpos);
 
@@ -71,20 +76,48 @@ bool initGraphics(){
 	location = glGetAttribLocation(g_shaderProgram, "color_in");
 	assert(location != -1);
 	glVertexAttrib4f(location, 1.0f, 1.0f, 1.0f, 1.0f);
-
-	return true;
-}
-
-static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
-{
-	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS){
-		glfwSetWindowShouldClose(window, GLFW_TRUE);
+	
+	
+	// --------------------------  load Textures:
+	int im_x,im_y,im_n;
+	unsigned char *data = stbi_load("../../gfx/block.png", &im_x, &im_y, &im_n, 0);
+	
+	if(data == NULL){
+		std::cout << "texture not loaded!" << std::endl;
 	}
-}
-
-void error_callback(int, const char* err_str)
-{
-	std::cout << "GLFW Error: " << err_str << std::endl;
+	
+	std::cout << "img_load: " <<  im_x << ", " << im_y << ": " << im_n << std::endl;
+	
+	
+	// Create one OpenGL texture
+	GLuint textureID;
+	glGenTextures(1, &textureID);
+	
+	// "Bind" the newly created texture :
+	//all future texture functions will modify this texture
+	glBindTexture(GL_TEXTURE_2D, textureID);
+	
+	// Give the image to OpenGL
+	glTexImage2D(GL_TEXTURE_2D, 0,GL_RGB, im_y, im_x, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+	
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	
+	stbi_image_free(data);
+	
+	// init block types -> texture mappings
+	init_block_types(6);
+	
+	//set_block_type_harmonious(int id, bool solid, int tex_x, int tex_y, int tex_n);
+	set_block_type_harmonious(0, false, 0, 0, 4);
+	
+	set_block_type_harmonious(1, true, 0, 0, 4);
+	set_block_type_harmonious(2, true, 1, 0, 4);
+	set_block_type_harmonious(3, true, 2, 0, 4);
+	set_block_type_harmonious(4, true, 3, 0, 4);
+	set_block_type_harmonious(5, true, 0, 1, 4);
+	
+	return true;
 }
 
 
@@ -101,8 +134,7 @@ int main() {
 	glfwMakeContextCurrent(window);
 
 	// set callback function for key-inputs
-	glfwSetKeyCallback(window, key_callback);
-	glfwSetErrorCallback(error_callback);
+	EInput::init(window);
 	
 	// init Glew
 	glewExperimental = GL_TRUE;
@@ -117,20 +149,9 @@ int main() {
 	Camera cam;
 	initCamera(cam, window); // after window opened!
 	
-
-
 	// genererate map
-	VoxelMap vmap;
+	VoxelMap *vmap = new VoxelMap(10,10,5);
 	
-	for(int i=0;i<5;i++){
-		for(int j=0;j<5;j++){
-			// generate some chunk
-			Chunk* chunk = new Chunk;
-			chunk->SetData(ChunkPosition{i,j,0});
-			chunk->createModel();
-			vmap.addChunk(chunk);// add to map
-		}
-	}
 	
 	// ------ background-buffer -> triangles rightly ordered/drawn.
 	// Enable depth test
@@ -146,12 +167,28 @@ int main() {
 	
 	while(!glfwWindowShouldClose(window))
 	{
-		updateCamera(cam, window);
+		
+		int kill_pos[3] = {0,0,0};
+		int set_pos[3] = {0,0,0};
+		bool looking_active = false;
+		
+		updateCamera(cam, window, looking_active, kill_pos, set_pos);
+		
+		
+		if(EInput::MouseHit(0) && looking_active){
+			vmap->blockKill(kill_pos);
+		}
+		
+		if(EInput::MouseHit(1) && looking_active){
+			vmap->blockSet(set_pos, 1);
+		}
+		
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
-		vmap.render(); // render all models
+		vmap->render(); // render all models
 		glfwSwapBuffers(window);
 		glfwPollEvents();
+		EInput::poll();
 	}
 	
 	glfwTerminate();

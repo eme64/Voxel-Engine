@@ -7,7 +7,13 @@
 #include "model.hpp"
 #include "vertex.hpp"
 #include "triangle.hpp"
+#include "block.hpp"
+
+#include "FastNoise/FastNoise.h"
+//https://github.com/Auburns/FastNoise/wiki
+
 extern GLuint g_shaderProgram;
+extern Block* Block_type;
 
 // done in this file:
 struct ChunkPosition;
@@ -29,8 +35,8 @@ void displayFunc(const Model& model);
 #define COR_Z 2
 #define COR_W 3
 
-#define CHUNK_SIZE 16
-#define int_chunk_t uint8_t
+//#define CHUNK_SIZE 16
+#define block_t uint8_t
 struct ChunkPosition
 {
 	int x;
@@ -57,16 +63,18 @@ struct cmpByChunkPosition {
 
 struct Chunk
 {
+	static const block_t SIZE = 16;
 	ChunkPosition pos;
 	
-	int_chunk_t block[CHUNK_SIZE][CHUNK_SIZE][CHUNK_SIZE];
+	block_t block[Chunk::SIZE][Chunk::SIZE][Chunk::SIZE];
 	
-	bool SetData(ChunkPosition newpos);
+	bool SetData(ChunkPosition newpos, FastNoise &noiseObj1, FastNoise &noiseObj2);
 	
 	Model* model = NULL;
-	bool createModel();
+	bool createModel(Chunk* c_xp, Chunk* c_xm, Chunk* c_yp, Chunk* c_ym, Chunk* c_zp, Chunk* c_zm);
 	void render();
 };
+//block_t Chunk::SIZE;
 
 void Chunk::render()
 {
@@ -81,68 +89,126 @@ void displayFunc(const Model& model){
 	glDrawElements(GL_TRIANGLES, model.IBOSize, GL_UNSIGNED_SHORT, 0);
 }
 
-bool Chunk::SetData(ChunkPosition newpos)
+bool Chunk::SetData(ChunkPosition newpos, FastNoise &noiseObj1, FastNoise &noiseObj2)
 {
 	pos = newpos;
 	
-	for(int x=0;x<CHUNK_SIZE;x++)
-		for(int y=0;y<CHUNK_SIZE;y++)
-			for(int z=0;z<CHUNK_SIZE;z++)
+	for(int x=0;x<Chunk::SIZE;x++)
+		for(int y=0;y<Chunk::SIZE;y++)
+			for(int z=0;z<Chunk::SIZE;z++)
 			{
-				if(x==0 || y==0 || z==0 || x==CHUNK_SIZE-1 || y==CHUNK_SIZE-1 || z==CHUNK_SIZE-1)
+				float locval1 = (noiseObj1.GetNoise(x + pos.x*Chunk::SIZE,y + pos.y*Chunk::SIZE,z + pos.z*Chunk::SIZE)+1.0);
+				
+				float locval2 = (noiseObj2.GetNoise(x + pos.x*Chunk::SIZE,y + pos.y*Chunk::SIZE,z + pos.z*Chunk::SIZE)+0.5)*3;
+				
+				if(locval1 > 1){
+					block[x][y][z] = locval2;
+				}else{
+					block[x][y][z] = 0;
+				}
+				
+				//std::cout << locval << std::endl;
+				
+				/*
+				if(x==0 || y==0 || z==0 || x==Chunk::SIZE-1 || y==Chunk::SIZE-1 || z==Chunk::SIZE-1)
 				{
 					block[x][y][z] = 0;
 				}else{
 					if(((x+y+z) % 6)<3)
 					{
-						block[x][y][z] = 1;
+						block[x][y][z] = 1 + ((x+y+z) % 6);
 					}else{
 						block[x][y][z] = 0;
 					}
 				}
+				*/
 			}
 }
 
-bool Chunk::createModel()
+bool Chunk::createModel(Chunk* c_xp, Chunk* c_xm, Chunk* c_yp, Chunk* c_ym, Chunk* c_zp, Chunk* c_zm)
 {
 	if(model != NULL){
-		std::cout << "you want to recreate the model -> fail!" << std::endl;
-		return false;
+		model->clear();
+		std::cout << "kill old mesh" << std::endl;
+		
+		delete model;
+		model = NULL;
+		//std::cout << "you want to recreate the model -> fail!" << std::endl;
+		//return false;
 	}
 	
 	model = new Model; // only allocate if needed
 	
-	std::cout << "create new model for (" << pos.x << ", "<< pos.y <<", "<< pos.z << ")"<< std::endl;
+	//std::cout << "create new model for (" << pos.x << ", "<< pos.y <<", "<< pos.z << ")"<< std::endl;
 	
 	std::vector<Vertex> vert;
 	vert.reserve(20);
 	std::vector<Triangle> tria;
 	tria.reserve(10);
 	
-	for(int x=1;x<CHUNK_SIZE-1;x++)
-		for(int y=1;y<CHUNK_SIZE-1;y++)
-			for(int z=1;z<CHUNK_SIZE-1;z++)
+	for(int x=0;x<Chunk::SIZE;x++)
+		for(int y=0;y<Chunk::SIZE;y++)
+			for(int z=0;z<Chunk::SIZE;z++)
 			{
-				int_chunk_t me = block[x][y][z];
+				block_t me = block[x][y][z];
 				
-				if(me>0){
-					int_chunk_t yp = block[x][y+1][z];
-					int_chunk_t ym = block[x][y-1][z];
-					int_chunk_t xm = block[x-1][y][z];
-					int_chunk_t xp = block[x+1][y][z];
-					int_chunk_t zm = block[x][y][z-1];
-					int_chunk_t zp = block[x][y][z+1];
-
-					GLfloat offx = x + 	CHUNK_SIZE*pos.x;
-					GLfloat offy = y + 	CHUNK_SIZE*pos.y;
-					GLfloat offz = z + 	CHUNK_SIZE*pos.z;
+				Block blk_type = Block_type[me];
+				
+				if(blk_type.solid){
+					block_t xm;
+					block_t xp;
+					block_t ym;
+					block_t yp;
+					block_t zm;
+					block_t zp;
+					
+					if(x==0){
+						xm = c_xm->block[Chunk::SIZE-1][y][z];
+					}else{
+						xm = block[x-1][y][z];
+					}
+					
+					if(x==Chunk::SIZE-1){
+						xp = c_xp->block[0][y][z];
+					}else{
+						xp = block[x+1][y][z];
+					}
+					
+					if(y==0){
+						ym = c_ym->block[x][Chunk::SIZE-1][z];
+					}else{
+						ym = block[x][y-1][z];
+					}
+					
+					if(y==Chunk::SIZE-1){
+						yp = c_yp->block[x][0][z];
+					}else{
+						yp = block[x][y+1][z];
+					}
+					
+					if(z==0){
+						zm = c_zm->block[x][y][Chunk::SIZE-1];
+					}else{
+						zm = block[x][y][z-1];
+					}
+					
+					if(z==Chunk::SIZE-1){
+						zp = c_zp->block[x][y][0];
+					}else{
+						zp = block[x][y][z+1];
+					}
+					
+					
+					GLfloat offx = x + 	Chunk::SIZE*pos.x;
+					GLfloat offy = y + 	Chunk::SIZE*pos.y;
+					GLfloat offz = z + 	Chunk::SIZE*pos.z;
 					
 					if(yp==0){
 						// x1z
-						Vertex x0 = {{offx+0,offy+1,offz+0,1},{1,0,0,1},{0,0,0}};
-						Vertex x1 = {{offx+1,offy+1,offz+1,1},{1,1,0,1},{0,0,0}};
-						Vertex x2 = {{offx+0,offy+1,offz+1,1},{0,1,0,1},{0,0,0}};
-						Vertex x3 = {{offx+1,offy+1,offz+0,1},{0,0,1,1},{0,0,0}};
+						Vertex x0 = {{offx+0,offy+1,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
+						Vertex x1 = {{offx+1,offy+1,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
+						Vertex x2 = {{offx+0,offy+1,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
+						Vertex x3 = {{offx+1,offy+1,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
 						
 						int index = vert.size();
 						vert.push_back(x0);
@@ -158,10 +224,10 @@ bool Chunk::createModel()
 					}
 					if(ym==0){
 						// x0z	
-						Vertex x0 = {{offx+0,offy+0,offz+0,1},{1,0,0,1},{0,0,0}};
-						Vertex x1 = {{offx+1,offy+0,offz+1,1},{1,1,0,1},{0,0,0}};
-						Vertex x2 = {{offx+0,offy+0,offz+1,1},{0,1,0,1},{0,0,0}};
-						Vertex x3 = {{offx+1,offy+0,offz+0,1},{0,0,1,1},{0,0,0}};
+						Vertex x0 = {{offx+0,offy+0,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
+						Vertex x1 = {{offx+1,offy+0,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
+						Vertex x2 = {{offx+0,offy+0,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
+						Vertex x3 = {{offx+1,offy+0,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
 		
 						int index = vert.size();
 						vert.push_back(x0);
@@ -178,10 +244,10 @@ bool Chunk::createModel()
 					
 					if(xm==0){
 						// 0yz	
-						Vertex x0 = {{offx+0,offy+0,offz+0,1},{1,0,0,1},{0,0,0}};
-						Vertex x1 = {{offx+0,offy+1,offz+1,1},{1,1,0,1},{0,0,0}};
-						Vertex x2 = {{offx+0,offy+0,offz+1,1},{0,1,0,1},{0,0,0}};
-						Vertex x3 = {{offx+0,offy+1,offz+0,1},{0,0,1,1},{0,0,0}};
+						Vertex x0 = {{offx+0,offy+0,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
+						Vertex x1 = {{offx+0,offy+1,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
+						Vertex x2 = {{offx+0,offy+0,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
+						Vertex x3 = {{offx+0,offy+1,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
 		
 						int index = vert.size();
 						vert.push_back(x0);
@@ -198,10 +264,10 @@ bool Chunk::createModel()
 					
 					if(xp==0){
 						// 0yz	
-						Vertex x0 = {{offx+1,offy+0,offz+0,1},{1,0,0,1},{0,0,0}};
-						Vertex x1 = {{offx+1,offy+1,offz+1,1},{1,1,0,1},{0,0,0}};
-						Vertex x2 = {{offx+1,offy+0,offz+1,1},{0,1,0,1},{0,0,0}};
-						Vertex x3 = {{offx+1,offy+1,offz+0,1},{0,0,1,1},{0,0,0}};
+						Vertex x0 = {{offx+1,offy+0,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
+						Vertex x1 = {{offx+1,offy+1,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
+						Vertex x2 = {{offx+1,offy+0,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
+						Vertex x3 = {{offx+1,offy+1,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
 		
 						int index = vert.size();
 						vert.push_back(x0);
@@ -218,10 +284,10 @@ bool Chunk::createModel()
 					
 					if(zm==0){
 						// xy0
-						Vertex x0 = {{offx+0,offy+0,offz+0,1},{1,0,0,1},{0,0,0}};
-						Vertex x1 = {{offx+1,offy+1,offz+0,1},{1,1,0,1},{0,0,0}};
-						Vertex x2 = {{offx+0,offy+1,offz+0,1},{0,1,0,1},{0,0,0}};
-						Vertex x3 = {{offx+1,offy+0,offz+0,1},{0,0,1,1},{0,0,0}};
+						Vertex x0 = {{offx+0,offy+0,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
+						Vertex x1 = {{offx+1,offy+1,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
+						Vertex x2 = {{offx+0,offy+1,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
+						Vertex x3 = {{offx+1,offy+0,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
 	
 						int index = vert.size();
 						vert.push_back(x0);
@@ -238,10 +304,10 @@ bool Chunk::createModel()
 					
 					if(zp==0){
 						// xy1	
-						Vertex x0 = {{offx+0,offy+0,offz+1,1},{1,0,0,1},{0,0,0}};
-						Vertex x1 = {{offx+1,offy+1,offz+1,1},{1,1,0,1},{0,0,0}};
-						Vertex x2 = {{offx+0,offy+1,offz+1,1},{0,1,0,1},{0,0,0}};
-						Vertex x3 = {{offx+1,offy+0,offz+1,1},{0,0,1,1},{0,0,0}};
+						Vertex x0 = {{offx+0,offy+0,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
+						Vertex x1 = {{offx+1,offy+1,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
+						Vertex x2 = {{offx+0,offy+1,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
+						Vertex x3 = {{offx+1,offy+0,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
 	
 						int index = vert.size();
 						vert.push_back(x0);
@@ -361,13 +427,19 @@ bool Chunk::createModel()
 	// load normal	
 	location = glGetAttribLocation(g_shaderProgram, "normal");
 	glVertexAttribPointer(location, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, normal));
-	glEnableVertexAttribArray(location);	
+	glEnableVertexAttribArray(location);
+	
+	// load uv
+	location = glGetAttribLocation(g_shaderProgram, "vertexUV");
+	glVertexAttribPointer(location, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, uv));
+	glEnableVertexAttribArray(location);
 	
 	// Create index buffer and download index data
 	model->IBO = 0;
 	glGenBuffers(1, &(model->IBO));
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, model->IBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLshort)*model->IBOSize, pIndices, GL_STATIC_DRAW);
+	
 	
 	delete[] pIndices;
 	// not free because from vector !

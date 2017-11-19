@@ -3,10 +3,21 @@
 
 struct Model
 {
-	GLuint vao;
+	GLuint vao; // array
 	GLuint IBOSize;
-	GLuint VBO;
-	GLuint IBO;
+	GLuint VBO; // buffer
+	GLuint IBO; // buffer
+	
+	void clear(){
+		// ---------------------------------------- things to undo:
+		// glGenVertexArrays(1, &(model->vao));
+		// glGenBuffers(1, &(model->VBO));
+		// glGenBuffers(1, &(model->IBO));
+		
+		glDeleteVertexArrays(1, &vao);
+		glDeleteBuffers(1, &VBO);
+		glDeleteBuffers(1, &IBO);
+	}
 };
 
 #endif

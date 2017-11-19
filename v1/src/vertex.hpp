@@ -8,8 +8,11 @@ struct Vertex
 
 	// R/G/B/Alpha color of the vertex
 	GLfloat color[4];
-
+	
 	// Normal vector of the vertex
 	GLfloat normal[3];
+	
+	// uv of texture
+	GLfloat uv[2];
 };
 #endif

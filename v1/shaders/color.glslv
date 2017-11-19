@@ -15,13 +15,14 @@ in vec4 position;			// Vertex coordinates in model space
 in vec4 color_in;			// Vertex color
 in vec3 normal;				// Vertex normal
 
+in vec2 vertexUV;
 
 //=======================================================================
 // Varying: Vertex shader output, input to rasterizer
 //=======================================================================
 out vec4 color_out;				// shaded color for this vertex
 
-
+out vec2 UV;
 //=======================================================================
 // Computes the intensity of the reflected diffuse light for a point
 // at position 'position' with normal vector 'normal', if the light
@@ -54,4 +55,6 @@ void main(void)
 	
 	// Project vertex coordinates to screen
 	gl_Position = ProjectView_mat * Model_mat * position;
+	
+	UV = vertexUV;
 }
