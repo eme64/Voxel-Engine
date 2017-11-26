@@ -110,17 +110,17 @@ GL/glext.h
 GL/glu.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/getopt.c
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/getopt.c
 getopt.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/getopt.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/getopt.h
 stddef.h
 -
 string.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/getopt.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/getopt.h
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/glad.c
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/glad.c
 stdio.h
 -
 stdlib.h
@@ -130,7 +130,7 @@ string.h
 glad/glad.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/tests/clipboard.c
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/tests/clipboard.c
 glad/glad.h
 -
 GLFW/glfw3.h
@@ -140,5 +140,5 @@ stdio.h
 stdlib.h
 -
 getopt.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/tests/getopt.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/tests/getopt.h
 

@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/emanuel/Documents/voxel_engine/v1
+CMAKE_SOURCE_DIR = /home/emanuel/Documents/Voxel-Engine/v1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/emanuel/Documents/voxel_engine/v1/build/Debug
+CMAKE_BINARY_DIR = /home/emanuel/Documents/Voxel-Engine/v1/build/Debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -124,9 +124,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -518,6 +518,33 @@ timeout/fast:
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/timeout.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/timeout.dir/build
 .PHONY : timeout/fast
 
+src/FastNoise/FastNoise.o: src/FastNoise/FastNoise.cpp.o
+
+.PHONY : src/FastNoise/FastNoise.o
+
+# target to build an object file
+src/FastNoise/FastNoise.cpp.o:
+	$(MAKE) -f CMakeFiles/voxel.dir/build.make CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.o
+.PHONY : src/FastNoise/FastNoise.cpp.o
+
+src/FastNoise/FastNoise.i: src/FastNoise/FastNoise.cpp.i
+
+.PHONY : src/FastNoise/FastNoise.i
+
+# target to preprocess a source file
+src/FastNoise/FastNoise.cpp.i:
+	$(MAKE) -f CMakeFiles/voxel.dir/build.make CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.i
+.PHONY : src/FastNoise/FastNoise.cpp.i
+
+src/FastNoise/FastNoise.s: src/FastNoise/FastNoise.cpp.s
+
+.PHONY : src/FastNoise/FastNoise.s
+
+# target to generate assembly for a file
+src/FastNoise/FastNoise.cpp.s:
+	$(MAKE) -f CMakeFiles/voxel.dir/build.make CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.s
+.PHONY : src/FastNoise/FastNoise.cpp.s
+
 thirdparty/glew-2.1.0/src/glew.o: thirdparty/glew-2.1.0/src/glew.c.o
 
 .PHONY : thirdparty/glew-2.1.0/src/glew.o
@@ -612,6 +639,9 @@ help:
 	@echo "... events"
 	@echo "... msaa"
 	@echo "... timeout"
+	@echo "... src/FastNoise/FastNoise.o"
+	@echo "... src/FastNoise/FastNoise.i"
+	@echo "... src/FastNoise/FastNoise.s"
 	@echo "... thirdparty/glew-2.1.0/src/glew.o"
 	@echo "... thirdparty/glew-2.1.0/src/glew.i"
 	@echo "... thirdparty/glew-2.1.0/src/glew.s"

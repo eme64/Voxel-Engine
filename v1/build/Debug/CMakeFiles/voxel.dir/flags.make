@@ -5,13 +5,13 @@
 # compile CXX with /usr/bin/c++
 C_FLAGS = -g  
 
-C_DEFINES = -DMAIN_DIR=\"/home/emanuel/Documents/voxel_engine/v1/\"
+C_DEFINES = -DMAIN_DIR=\"/home/emanuel/Documents/Voxel-Engine/v1/\"
 
-C_INCLUDES = -I/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/include -I/home/emanuel/Documents/voxel_engine/v1/GLEW_INCLUDE_DIRS -I/home/emanuel/Documents/voxel_engine/v1/thirdparty/glew-2.1.0/include 
+C_INCLUDES = -I/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/include -I/home/emanuel/Documents/Voxel-Engine/v1/GLEW_INCLUDE_DIRS -I/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glew-2.1.0/include 
 
 CXX_FLAGS = -g   -std=gnu++11
 
-CXX_DEFINES = -DMAIN_DIR=\"/home/emanuel/Documents/voxel_engine/v1/\"
+CXX_DEFINES = -DMAIN_DIR=\"/home/emanuel/Documents/Voxel-Engine/v1/\"
 
-CXX_INCLUDES = -I/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/include -I/home/emanuel/Documents/voxel_engine/v1/GLEW_INCLUDE_DIRS -I/home/emanuel/Documents/voxel_engine/v1/thirdparty/glew-2.1.0/include 
+CXX_INCLUDES = -I/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/include -I/home/emanuel/Documents/Voxel-Engine/v1/GLEW_INCLUDE_DIRS -I/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glew-2.1.0/include 
 

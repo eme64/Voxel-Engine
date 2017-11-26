@@ -112,7 +112,7 @@ GL/glext.h
 GL/glu.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/glad.c
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/glad.c
 stdio.h
 -
 stdlib.h
@@ -122,13 +122,13 @@ string.h
 glad/glad.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/examples/simple.c
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/examples/simple.c
 glad/glad.h
 -
 GLFW/glfw3.h
 -
 linmath.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/examples/linmath.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/examples/linmath.h
 stdlib.h
 -
 stdio.h

@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/include/GLFW/glfw3.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/include/GLFW/glfw3.h
 stddef.h
 -
 stdint.h
@@ -46,7 +46,7 @@ GL/glext.h
 GL/glu.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/cocoa_joystick.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/cocoa_joystick.h
 IOKit/IOKitLib.h
 -
 IOKit/IOCFPlugIn.h
@@ -56,7 +56,7 @@ IOKit/hid/IOHIDLib.h
 IOKit/hid/IOHIDKeys.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/cocoa_platform.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/cocoa_platform.h
 stdint.h
 -
 dlfcn.h
@@ -70,15 +70,15 @@ Carbon/Carbon.h
 ApplicationServices/ApplicationServices.h
 -
 posix_tls.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/posix_tls.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/posix_tls.h
 cocoa_joystick.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/cocoa_joystick.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/cocoa_joystick.h
 nsgl_context.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/nsgl_context.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/nsgl_context.h
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/context.c
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/context.c
 internal.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/internal.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/internal.h
 assert.h
 -
 stdio.h
@@ -90,9 +90,9 @@ limits.h
 stdio.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/egl_context.c
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/egl_context.c
 internal.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/internal.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/internal.h
 stdio.h
 -
 string.h
@@ -102,15 +102,15 @@ stdlib.h
 assert.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/egl_context.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/egl_context.h
 EGL/eglplatform.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/glfw_config.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/glfw_config.h
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/glx_context.c
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/glx_context.c
 internal.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/internal.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/internal.h
 string.h
 -
 stdlib.h
@@ -118,11 +118,11 @@ stdlib.h
 assert.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/glx_context.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/glx_context.h
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/init.c
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/init.c
 internal.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/internal.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/internal.h
 string.h
 -
 stdlib.h
@@ -132,9 +132,9 @@ stdio.h
 stdarg.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/input.c
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/input.c
 internal.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/internal.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/internal.h
 assert.h
 -
 float.h
@@ -142,25 +142,25 @@ float.h
 stdlib.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/internal.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/internal.h
 glfw_config.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/glfw_config.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/glfw_config.h
 ../include/GLFW/glfw3.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/include/GLFW/glfw3.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/include/GLFW/glfw3.h
 cocoa_platform.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/cocoa_platform.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/cocoa_platform.h
 win32_platform.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/win32_platform.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/win32_platform.h
 x11_platform.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/x11_platform.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/x11_platform.h
 wl_platform.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/wl_platform.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/wl_platform.h
 mir_platform.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/mir_platform.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/mir_platform.h
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/linux_joystick.c
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/linux_joystick.c
 internal.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/internal.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/internal.h
 linux/joystick.h
 -
 sys/types.h
@@ -184,11 +184,11 @@ string.h
 unistd.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/linux_joystick.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/linux_joystick.h
 regex.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/mir_platform.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/mir_platform.h
 sys/queue.h
 -
 pthread.h
@@ -198,19 +198,19 @@ dlfcn.h
 mir_toolkit/mir_client_library.h
 -
 posix_tls.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/posix_tls.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/posix_tls.h
 posix_time.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/posix_time.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/posix_time.h
 linux_joystick.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/linux_joystick.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/linux_joystick.h
 xkb_unicode.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/xkb_unicode.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/xkb_unicode.h
 egl_context.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/egl_context.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/egl_context.h
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/monitor.c
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/monitor.c
 internal.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/internal.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/internal.h
 assert.h
 -
 math.h
@@ -224,31 +224,31 @@ stdlib.h
 limits.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/nsgl_context.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/nsgl_context.h
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/posix_time.c
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/posix_time.c
 internal.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/internal.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/internal.h
 sys/time.h
 -
 time.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/posix_time.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/posix_time.h
 stdint.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/posix_tls.c
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/posix_tls.c
 internal.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/internal.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/internal.h
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/posix_tls.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/posix_tls.h
 pthread.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/vulkan.c
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/vulkan.c
 internal.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/internal.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/internal.h
 assert.h
 -
 string.h
@@ -256,11 +256,11 @@ string.h
 stdlib.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/wgl_context.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/wgl_context.h
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/win32_joystick.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/win32_joystick.h
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/win32_platform.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/win32_platform.h
 wctype.h
 -
 windows.h
@@ -276,15 +276,15 @@ dbt.h
 malloc.h
 -
 win32_joystick.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/win32_joystick.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/win32_joystick.h
 wgl_context.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/wgl_context.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/wgl_context.h
 egl_context.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/egl_context.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/egl_context.h
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/window.c
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/window.c
 internal.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/internal.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/internal.h
 assert.h
 -
 string.h
@@ -294,7 +294,7 @@ stdlib.h
 float.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/wl_platform.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/wl_platform.h
 wayland-client.h
 -
 xkbcommon/xkbcommon.h
@@ -302,23 +302,23 @@ xkbcommon/xkbcommon.h
 dlfcn.h
 -
 posix_tls.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/posix_tls.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/posix_tls.h
 posix_time.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/posix_time.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/posix_time.h
 linux_joystick.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/linux_joystick.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/linux_joystick.h
 xkb_unicode.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/xkb_unicode.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/xkb_unicode.h
 egl_context.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/egl_context.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/egl_context.h
 wayland-relative-pointer-unstable-v1-client-protocol.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/wayland-relative-pointer-unstable-v1-client-protocol.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/wayland-relative-pointer-unstable-v1-client-protocol.h
 wayland-pointer-constraints-unstable-v1-client-protocol.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/wayland-pointer-constraints-unstable-v1-client-protocol.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/wayland-pointer-constraints-unstable-v1-client-protocol.h
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/x11_init.c
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/x11_init.c
 internal.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/internal.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/internal.h
 X11/Xresource.h
 -
 stdlib.h
@@ -332,9 +332,9 @@ stdio.h
 locale.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/x11_monitor.c
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/x11_monitor.c
 internal.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/internal.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/internal.h
 limits.h
 -
 stdlib.h
@@ -342,7 +342,7 @@ stdlib.h
 string.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/x11_platform.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/x11_platform.h
 unistd.h
 -
 signal.h
@@ -368,21 +368,21 @@ X11/extensions/Xinerama.h
 X11/extensions/xf86vmode.h
 -
 posix_tls.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/posix_tls.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/posix_tls.h
 posix_time.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/posix_time.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/posix_time.h
 linux_joystick.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/linux_joystick.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/linux_joystick.h
 xkb_unicode.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/xkb_unicode.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/xkb_unicode.h
 glx_context.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/glx_context.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/glx_context.h
 egl_context.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/egl_context.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/egl_context.h
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/x11_window.c
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/x11_window.c
 internal.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/internal.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/internal.h
 X11/cursorfont.h
 -
 X11/Xmd.h
@@ -402,9 +402,9 @@ errno.h
 assert.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/xkb_unicode.c
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/xkb_unicode.c
 internal.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/internal.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/internal.h
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/xkb_unicode.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/xkb_unicode.h
 

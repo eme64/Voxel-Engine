@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/emanuel/Documents/voxel_engine/v1
+CMAKE_SOURCE_DIR = /home/emanuel/Documents/Voxel-Engine/v1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/emanuel/Documents/voxel_engine/v1/build/Release
+CMAKE_BINARY_DIR = /home/emanuel/Documents/Voxel-Engine/v1/build/Release
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -124,14 +124,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release && $(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Release/CMakeFiles /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/CMakeFiles/progress.marks
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Release/CMakeFiles 0
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release && $(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Release/CMakeFiles /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/CMakeFiles/progress.marks
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Release/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/clean
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/clean
 .PHONY : clean
 
 # The main clean target
@@ -141,22 +141,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/preinstall
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/preinstall
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/rule:
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/rule
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release && $(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/rule
 .PHONY : thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/rule
 
 # Convenience name for target.
@@ -166,7 +166,7 @@ uninstall: thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/rule
 
 # fast build rule for target.
 uninstall/fast:
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release && $(MAKE) -f thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/build.make thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/build
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release && $(MAKE) -f thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/build.make thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/build
 .PHONY : uninstall/fast
 
 # Help Target
@@ -193,6 +193,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

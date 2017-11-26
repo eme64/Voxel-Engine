@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/emanuel/Documents/voxel_engine/v1
+CMAKE_SOURCE_DIR = /home/emanuel/Documents/Voxel-Engine/v1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/emanuel/Documents/voxel_engine/v1/build/Debug
+CMAKE_BINARY_DIR = /home/emanuel/Documents/Voxel-Engine/v1/build/Debug
 
 # Include any dependencies generated for this target.
 include thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/depend.make
@@ -59,16 +59,16 @@ include thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/flags.make
 
 thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/threads.c.o: thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/flags.make
 thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/threads.c.o: ../../thirdparty/glfw-3.2.1/tests/threads.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/threads.c.o"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/threads.dir/threads.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/tests/threads.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/threads.c.o"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/threads.dir/threads.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/tests/threads.c
 
 thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/threads.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/threads.dir/threads.c.i"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/tests/threads.c > CMakeFiles/threads.dir/threads.c.i
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/tests/threads.c > CMakeFiles/threads.dir/threads.c.i
 
 thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/threads.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/threads.dir/threads.c.s"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/tests/threads.c -o CMakeFiles/threads.dir/threads.c.s
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/tests/threads.c -o CMakeFiles/threads.dir/threads.c.s
 
 thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/threads.c.o.requires:
 
@@ -83,16 +83,16 @@ thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/threads.c.o.provides.build: t
 
 thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/__/deps/tinycthread.c.o: thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/flags.make
 thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/__/deps/tinycthread.c.o: ../../thirdparty/glfw-3.2.1/deps/tinycthread.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/__/deps/tinycthread.c.o"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/threads.dir/__/deps/tinycthread.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/tinycthread.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/__/deps/tinycthread.c.o"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/threads.dir/__/deps/tinycthread.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/tinycthread.c
 
 thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/__/deps/tinycthread.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/threads.dir/__/deps/tinycthread.c.i"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/tinycthread.c > CMakeFiles/threads.dir/__/deps/tinycthread.c.i
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/tinycthread.c > CMakeFiles/threads.dir/__/deps/tinycthread.c.i
 
 thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/__/deps/tinycthread.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/threads.dir/__/deps/tinycthread.c.s"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/tinycthread.c -o CMakeFiles/threads.dir/__/deps/tinycthread.c.s
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/tinycthread.c -o CMakeFiles/threads.dir/__/deps/tinycthread.c.s
 
 thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/__/deps/tinycthread.c.o.requires:
 
@@ -107,16 +107,16 @@ thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/__/deps/tinycthread.c.o.provi
 
 thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/__/deps/glad.c.o: thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/flags.make
 thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/__/deps/glad.c.o: ../../thirdparty/glfw-3.2.1/deps/glad.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/__/deps/glad.c.o"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/threads.dir/__/deps/glad.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/glad.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/__/deps/glad.c.o"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/threads.dir/__/deps/glad.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/glad.c
 
 thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/__/deps/glad.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/threads.dir/__/deps/glad.c.i"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/glad.c > CMakeFiles/threads.dir/__/deps/glad.c.i
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/glad.c > CMakeFiles/threads.dir/__/deps/glad.c.i
 
 thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/__/deps/glad.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/threads.dir/__/deps/glad.c.s"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/glad.c -o CMakeFiles/threads.dir/__/deps/glad.c.s
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/glad.c -o CMakeFiles/threads.dir/__/deps/glad.c.s
 
 thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/__/deps/glad.c.o.requires:
 
@@ -151,8 +151,8 @@ thirdparty/glfw-3.2.1/tests/threads: /usr/lib/x86_64-linux-gnu/libXinerama.so
 thirdparty/glfw-3.2.1/tests/threads: /usr/lib/x86_64-linux-gnu/libXxf86vm.so
 thirdparty/glfw-3.2.1/tests/threads: /usr/lib/x86_64-linux-gnu/libXcursor.so
 thirdparty/glfw-3.2.1/tests/threads: thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable threads"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/threads.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable threads"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/threads.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/build: thirdparty/glfw-3.2.1/tests/threads
@@ -166,10 +166,10 @@ thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/requires: thirdparty/glfw-3.2
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/requires
 
 thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/clean:
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests && $(CMAKE_COMMAND) -P CMakeFiles/threads.dir/cmake_clean.cmake
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests && $(CMAKE_COMMAND) -P CMakeFiles/threads.dir/cmake_clean.cmake
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/clean
 
 thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/depend:
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/emanuel/Documents/voxel_engine/v1 /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/tests /home/emanuel/Documents/voxel_engine/v1/build/Debug /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/emanuel/Documents/Voxel-Engine/v1 /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/tests /home/emanuel/Documents/Voxel-Engine/v1/build/Debug /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/depend
 

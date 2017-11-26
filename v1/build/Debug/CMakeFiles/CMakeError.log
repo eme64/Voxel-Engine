@@ -1,24 +1,24 @@
 Determining if the pthread_create exist failed with the following output:
-Change Dir: /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles/CMakeTmp
+Change Dir: /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_9fbdb/fast"
-/usr/bin/make -f CMakeFiles/cmTC_9fbdb.dir/build.make CMakeFiles/cmTC_9fbdb.dir/build
-make[1]: Entering directory '/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_9fbdb.dir/CheckSymbolExists.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_9fbdb.dir/CheckSymbolExists.c.o   -c /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_9fbdb
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9fbdb.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_9fbdb.dir/CheckSymbolExists.c.o  -o cmTC_9fbdb -rdynamic 
-CMakeFiles/cmTC_9fbdb.dir/CheckSymbolExists.c.o: In function `main':
+Run Build Command:"/usr/bin/make" "cmTC_e1a98/fast"
+/usr/bin/make -f CMakeFiles/cmTC_e1a98.dir/build.make CMakeFiles/cmTC_e1a98.dir/build
+make[1]: Entering directory '/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e1a98.dir/CheckSymbolExists.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_e1a98.dir/CheckSymbolExists.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_e1a98
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e1a98.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_e1a98.dir/CheckSymbolExists.c.o  -o cmTC_e1a98 -rdynamic 
+CMakeFiles/cmTC_e1a98.dir/CheckSymbolExists.c.o: In function `main':
 CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_9fbdb.dir/build.make:97: recipe for target 'cmTC_9fbdb' failed
-make[1]: *** [cmTC_9fbdb] Error 1
-make[1]: Leaving directory '/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_9fbdb/fast' failed
-make: *** [cmTC_9fbdb/fast] Error 2
+CMakeFiles/cmTC_e1a98.dir/build.make:97: recipe for target 'cmTC_e1a98' failed
+make[1]: *** [cmTC_e1a98] Error 1
+make[1]: Leaving directory '/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_e1a98/fast' failed
+make: *** [cmTC_e1a98/fast] Error 2
 
-File /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+File /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
 #include <pthread.h>
 
@@ -34,22 +34,22 @@ int main(int argc, char** argv)
 }
 
 Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles/CMakeTmp
+Change Dir: /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_ebff8/fast"
-/usr/bin/make -f CMakeFiles/cmTC_ebff8.dir/build.make CMakeFiles/cmTC_ebff8.dir/build
-make[1]: Entering directory '/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_ebff8.dir/CheckFunctionExists.c.o
-/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_ebff8.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
-Linking C executable cmTC_ebff8
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ebff8.dir/link.txt --verbose=1
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_ebff8.dir/CheckFunctionExists.c.o  -o cmTC_ebff8 -rdynamic -lpthreads 
+Run Build Command:"/usr/bin/make" "cmTC_b8427/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b8427.dir/build.make CMakeFiles/cmTC_b8427.dir/build
+make[1]: Entering directory '/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b8427.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_b8427.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_b8427
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b8427.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_b8427.dir/CheckFunctionExists.c.o  -o cmTC_b8427 -rdynamic -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_ebff8.dir/build.make:97: recipe for target 'cmTC_ebff8' failed
-make[1]: *** [cmTC_ebff8] Error 1
-make[1]: Leaving directory '/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_ebff8/fast' failed
-make: *** [cmTC_ebff8/fast] Error 2
+CMakeFiles/cmTC_b8427.dir/build.make:97: recipe for target 'cmTC_b8427' failed
+make[1]: *** [cmTC_b8427] Error 1
+make[1]: Leaving directory '/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_b8427/fast' failed
+make: *** [cmTC_b8427/fast] Error 2
 
 

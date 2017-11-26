@@ -11,6 +11,9 @@ struct Block
 	
 	GLfloat uv[6][4][2]; // face, vertex, uv
 	
+	GLfloat low_res_col[3];
+	// used if LOD coarser -> should match texture!
+	
 	/*
 	----- face:
 	
@@ -28,11 +31,17 @@ void init_block_types(int n){
 	Block_type = new Block[n];
 }
 
-void set_block_type_harmonious(int id, bool solid, int tex_x, int tex_y, int tex_n){
+void set_block_type_harmonious(int id, bool solid,
+				int tex_x, int tex_y, int tex_n,
+				GLfloat lrc_r, GLfloat lrc_g, GLfloat lrc_b){
 	// all blockfaces have same texture
 	
 	Block_type[id].id = id;
 	Block_type[id].solid = solid;
+	
+	Block_type[id].low_res_col[0] = lrc_r;
+	Block_type[id].low_res_col[1] = lrc_g;
+	Block_type[id].low_res_col[2] = lrc_b;
 	
 	GLfloat dx = 1.0/tex_n;
 	GLfloat x0 = dx*tex_x;

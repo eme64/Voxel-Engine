@@ -71,7 +71,9 @@ struct Chunk
 	bool SetData(ChunkPosition newpos, FastNoise &noiseObj1, FastNoise &noiseObj2);
 	
 	Model* model = NULL;
+	int model_LOD; // how many blocks rendered together, min 1
 	bool createModel(Chunk* c_xp, Chunk* c_xm, Chunk* c_yp, Chunk* c_ym, Chunk* c_zp, Chunk* c_zm);
+	bool createModel_LOD(Chunk* c_xp, Chunk* c_xm, Chunk* c_yp, Chunk* c_ym, Chunk* c_zp, Chunk* c_zm, int lod);
 	void render();
 };
 //block_t Chunk::SIZE;
@@ -138,6 +140,7 @@ bool Chunk::createModel(Chunk* c_xp, Chunk* c_xm, Chunk* c_yp, Chunk* c_ym, Chun
 	}
 	
 	model = new Model; // only allocate if needed
+	model_LOD = 1;
 	
 	//std::cout << "create new model for (" << pos.x << ", "<< pos.y <<", "<< pos.z << ")"<< std::endl;
 	
@@ -203,7 +206,7 @@ bool Chunk::createModel(Chunk* c_xp, Chunk* c_xm, Chunk* c_yp, Chunk* c_ym, Chun
 					GLfloat offy = y + 	Chunk::SIZE*pos.y;
 					GLfloat offz = z + 	Chunk::SIZE*pos.z;
 					
-					if(yp==0){
+					if(!Block_type[yp].solid){
 						// x1z
 						Vertex x0 = {{offx+0,offy+1,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
 						Vertex x1 = {{offx+1,offy+1,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
@@ -222,7 +225,7 @@ bool Chunk::createModel(Chunk* c_xp, Chunk* c_xm, Chunk* c_yp, Chunk* c_ym, Chun
 						tria.push_back(t1);
 						tria.push_back(t2);
 					}
-					if(ym==0){
+					if(!Block_type[ym].solid){
 						// x0z	
 						Vertex x0 = {{offx+0,offy+0,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
 						Vertex x1 = {{offx+1,offy+0,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
@@ -242,7 +245,7 @@ bool Chunk::createModel(Chunk* c_xp, Chunk* c_xm, Chunk* c_yp, Chunk* c_ym, Chun
 						tria.push_back(t2);
 					}
 					
-					if(xm==0){
+					if(!Block_type[xm].solid){
 						// 0yz	
 						Vertex x0 = {{offx+0,offy+0,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
 						Vertex x1 = {{offx+0,offy+1,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
@@ -262,7 +265,7 @@ bool Chunk::createModel(Chunk* c_xp, Chunk* c_xm, Chunk* c_yp, Chunk* c_ym, Chun
 						tria.push_back(t2);
 					}
 					
-					if(xp==0){
+					if(!Block_type[xp].solid){
 						// 0yz	
 						Vertex x0 = {{offx+1,offy+0,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
 						Vertex x1 = {{offx+1,offy+1,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
@@ -282,7 +285,7 @@ bool Chunk::createModel(Chunk* c_xp, Chunk* c_xm, Chunk* c_yp, Chunk* c_ym, Chun
 						tria.push_back(t2);
 					}
 					
-					if(zm==0){
+					if(!Block_type[zm].solid){
 						// xy0
 						Vertex x0 = {{offx+0,offy+0,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
 						Vertex x1 = {{offx+1,offy+1,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
@@ -302,7 +305,7 @@ bool Chunk::createModel(Chunk* c_xp, Chunk* c_xm, Chunk* c_yp, Chunk* c_ym, Chun
 						tria.push_back(t2);
 					}
 					
-					if(zp==0){
+					if(!Block_type[zp].solid){
 						// xy1	
 						Vertex x0 = {{offx+0,offy+0,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
 						Vertex x1 = {{offx+1,offy+1,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
@@ -452,6 +455,337 @@ bool Chunk::createModel(Chunk* c_xp, Chunk* c_xm, Chunk* c_yp, Chunk* c_ym, Chun
 }
 
 
+bool Chunk::createModel_LOD(Chunk* c_xp, Chunk* c_xm, Chunk* c_yp, Chunk* c_ym, Chunk* c_zp, Chunk* c_zm, int lod)
+{
+	if(model != NULL){
+		model->clear();
+		std::cout << "kill old mesh" << std::endl;
+		
+		delete model;
+		model = NULL;
+		//std::cout << "you want to recreate the model -> fail!" << std::endl;
+		//return false;
+	}
+	
+	model = new Model; // only allocate if needed
+	model_LOD = lod;
+	
+	//std::cout << "create new model for (" << pos.x << ", "<< pos.y <<", "<< pos.z << ")"<< std::endl;
+	
+	std::vector<Vertex> vert;
+	vert.reserve(20);
+	std::vector<Triangle> tria;
+	tria.reserve(10);
+	
+	for(int x=0;x<Chunk::SIZE;x=x+lod)
+		for(int y=0;y<Chunk::SIZE;y=y+lod)
+			for(int z=0;z<Chunk::SIZE;z=z+lod)
+			{
+				block_t me = block[x][y][z];
+				
+				Block blk_type = Block_type[me];
+				
+				if(blk_type.solid){
+					
+					GLfloat cr = blk_type.low_res_col[0];
+					GLfloat cg = blk_type.low_res_col[1];
+					GLfloat cb = blk_type.low_res_col[2];
+					
+					block_t xm;
+					block_t xp;
+					block_t ym;
+					block_t yp;
+					block_t zm;
+					block_t zp;
+					
+					if(x==0){
+						xm = c_xm->block[Chunk::SIZE-lod][y][z];
+					}else{
+						xm = block[x-lod][y][z];
+					}
+					
+					if(x==Chunk::SIZE-lod){
+						xp = c_xp->block[0][y][z];
+					}else{
+						xp = block[x+lod][y][z];
+					}
+					
+					if(y==0){
+						ym = c_ym->block[x][Chunk::SIZE-lod][z];
+					}else{
+						ym = block[x][y-lod][z];
+					}
+					
+					if(y==Chunk::SIZE-lod){
+						yp = c_yp->block[x][0][z];
+					}else{
+						yp = block[x][y+lod][z];
+					}
+					
+					if(z==0){
+						zm = c_zm->block[x][y][Chunk::SIZE-lod];
+					}else{
+						zm = block[x][y][z-lod];
+					}
+					
+					if(z==Chunk::SIZE-lod){
+						zp = c_zp->block[x][y][0];
+					}else{
+						zp = block[x][y][z+lod];
+					}
+					
+					
+					GLfloat offx = x + 	Chunk::SIZE*pos.x;
+					GLfloat offy = y + 	Chunk::SIZE*pos.y;
+					GLfloat offz = z + 	Chunk::SIZE*pos.z;
+					
+					if(yp==0){
+						// x1z
+						Vertex x0 = {{offx+0  ,offy+lod,offz+0  ,1},{cr,cg,cb,1},{0,0,0},  {Block_type[0].uv[0][0][0],Block_type[0].uv[0][0][1]}};
+						Vertex x1 = {{offx+lod,offy+lod,offz+lod,1},{cr,cg,cb,1},{0,0,0},  {Block_type[0].uv[0][1][0],Block_type[0].uv[0][1][1]}};
+						Vertex x2 = {{offx+0  ,offy+lod,offz+lod,1},{cr,cg,cb,1},{0,0,0},  {Block_type[0].uv[0][2][0],Block_type[0].uv[0][2][1]}};
+						Vertex x3 = {{offx+lod,offy+lod,offz+0  ,1},{cr,cg,cb,1},{0,0,0},  {Block_type[0].uv[0][3][0],Block_type[0].uv[0][3][1]}};
+						
+						int index = vert.size();
+						vert.push_back(x0);
+						vert.push_back(x1);
+						vert.push_back(x2);
+						vert.push_back(x3);
+	
+						Triangle t1 = {index+0, index+2, index+1, {0,0,0}};
+						Triangle t2 = {index+0, index+1, index+3, {0,0,0}};
+	
+						tria.push_back(t1);
+						tria.push_back(t2);
+					}
+					if(ym==0){
+						// x0z	
+						Vertex x0 = {{offx+0  ,offy+0  ,offz+0  ,1},{cr,cg,cb,1},{0,0,0},  {Block_type[0].uv[0][0][0],Block_type[0].uv[0][0][1]}};
+						Vertex x1 = {{offx+lod,offy+0  ,offz+lod,1},{cr,cg,cb,1},{0,0,0},  {Block_type[0].uv[0][1][0],Block_type[0].uv[0][1][1]}};
+						Vertex x2 = {{offx+0  ,offy+0  ,offz+lod,1},{cr,cg,cb,1},{0,0,0},  {Block_type[0].uv[0][2][0],Block_type[0].uv[0][2][1]}};
+						Vertex x3 = {{offx+lod,offy+0  ,offz+0  ,1},{cr,cg,cb,1},{0,0,0},  {Block_type[0].uv[0][3][0],Block_type[0].uv[0][3][1]}};
+		
+						int index = vert.size();
+						vert.push_back(x0);
+						vert.push_back(x1);
+						vert.push_back(x2);
+						vert.push_back(x3);
+	
+						Triangle t1 = {index+0, index+1, index+2, {0,0,0}};
+						Triangle t2 = {index+0, index+3, index+1, {0,0,0}};
+	
+						tria.push_back(t1);
+						tria.push_back(t2);
+					}
+					
+					if(xm==0){
+						// 0yz	
+						Vertex x0 = {{offx+0  ,offy+0  ,offz+0  ,1},{cr,cg,cb,1},{0,0,0},  {Block_type[0].uv[0][0][0],Block_type[0].uv[0][0][1]}};
+						Vertex x1 = {{offx+0  ,offy+lod,offz+lod,1},{cr,cg,cb,1},{0,0,0},  {Block_type[0].uv[0][1][0],Block_type[0].uv[0][1][1]}};
+						Vertex x2 = {{offx+0  ,offy+0  ,offz+lod,1},{cr,cg,cb,1},{0,0,0},  {Block_type[0].uv[0][2][0],Block_type[0].uv[0][2][1]}};
+						Vertex x3 = {{offx+0  ,offy+lod,offz+0  ,1},{cr,cg,cb,1},{0,0,0},  {Block_type[0].uv[0][3][0],Block_type[0].uv[0][3][1]}};
+		
+						int index = vert.size();
+						vert.push_back(x0);
+						vert.push_back(x1);
+						vert.push_back(x2);
+						vert.push_back(x3);
+	
+						Triangle t1 = {index+0, index+2, index+1, {0,0,0}};
+						Triangle t2 = {index+0, index+1, index+3, {0,0,0}};
+	
+						tria.push_back(t1);
+						tria.push_back(t2);
+					}
+					
+					if(xp==0){
+						// 0yz	
+						Vertex x0 = {{offx+lod,offy+0  ,offz+0  ,1},{cr,cg,cb,1},{0,0,0},  {Block_type[0].uv[0][0][0],Block_type[0].uv[0][0][1]}};
+						Vertex x1 = {{offx+lod,offy+lod,offz+lod,1},{cr,cg,cb,1},{0,0,0},  {Block_type[0].uv[0][1][0],Block_type[0].uv[0][1][1]}};
+						Vertex x2 = {{offx+lod,offy+0  ,offz+lod,1},{cr,cg,cb,1},{0,0,0},  {Block_type[0].uv[0][2][0],Block_type[0].uv[0][2][1]}};
+						Vertex x3 = {{offx+lod,offy+lod,offz+0  ,1},{cr,cg,cb,1},{0,0,0},  {Block_type[0].uv[0][3][0],Block_type[0].uv[0][3][1]}};
+		
+						int index = vert.size();
+						vert.push_back(x0);
+						vert.push_back(x1);
+						vert.push_back(x2);
+						vert.push_back(x3);
+	
+						Triangle t1 = {index+0, index+1, index+2, {0,0,0}};
+						Triangle t2 = {index+0, index+3, index+1, {0,0,0}};
+	
+						tria.push_back(t1);
+						tria.push_back(t2);
+					}
+					
+					if(zm==0){
+						// xy0
+						Vertex x0 = {{offx+0  ,offy+0  ,offz+0  ,1},{cr,cg,cb,1},{0,0,0},  {Block_type[0].uv[0][0][0],Block_type[0].uv[0][0][1]}};
+						Vertex x1 = {{offx+lod,offy+lod,offz+0  ,1},{cr,cg,cb,1},{0,0,0},  {Block_type[0].uv[0][1][0],Block_type[0].uv[0][1][1]}};
+						Vertex x2 = {{offx+0  ,offy+lod,offz+0  ,1},{cr,cg,cb,1},{0,0,0},  {Block_type[0].uv[0][2][0],Block_type[0].uv[0][2][1]}};
+						Vertex x3 = {{offx+lod,offy+0  ,offz+0  ,1},{cr,cg,cb,1},{0,0,0},  {Block_type[0].uv[0][3][0],Block_type[0].uv[0][3][1]}};
+	
+						int index = vert.size();
+						vert.push_back(x0);
+						vert.push_back(x1);
+						vert.push_back(x2);
+						vert.push_back(x3);
+	
+						Triangle t1 = {index+0, index+2, index+1, {0,0,0}};
+						Triangle t2 = {index+0, index+1, index+3, {0,0,0}};
+	
+						tria.push_back(t1);
+						tria.push_back(t2);
+					}
+					
+					if(zp==0){
+						// xy1	
+						Vertex x0 = {{offx+0  ,offy+0  ,offz+lod,1},{cr,cg,cb,1},{0,0,0},  {Block_type[0].uv[0][0][0],Block_type[0].uv[0][0][1]}};
+						Vertex x1 = {{offx+lod,offy+lod,offz+lod,1},{cr,cg,cb,1},{0,0,0},  {Block_type[0].uv[0][1][0],Block_type[0].uv[0][1][1]}};
+						Vertex x2 = {{offx+0  ,offy+lod,offz+lod,1},{cr,cg,cb,1},{0,0,0},  {Block_type[0].uv[0][2][0],Block_type[0].uv[0][2][1]}};
+						Vertex x3 = {{offx+lod,offy+0  ,offz+lod,1},{cr,cg,cb,1},{0,0,0},  {Block_type[0].uv[0][3][0],Block_type[0].uv[0][3][1]}};
+	
+						int index = vert.size();
+						vert.push_back(x0);
+						vert.push_back(x1);
+						vert.push_back(x2);
+						vert.push_back(x3);
+		
+						Triangle t1 = {index+0, index+1, index+2, {0,0,0}};
+						Triangle t2 = {index+0, index+3, index+1, {0,0,0}};
+	
+						tria.push_back(t1);
+						tria.push_back(t2);
+					}
+
+				}
+				
+			}
+	
+	
+	// ------------- convert vector to array
+	int numVertices = vert.size();
+	Vertex *pVertexArray = &vert[0];
+	
+	int numTriangles = tria.size();
+	Triangle *pTriangleArray = &tria[0];	
+	
+	// ------------- calculate normals
+	for(int triIndex = 0; triIndex < numTriangles; triIndex++)
+	{
+		// Positions of the triangles nodes
+		GLfloat positionA[3];
+		GLfloat positionB[3];
+		GLfloat positionC[3];
+
+		// Get the positions of the triangles nodes
+		int A = pTriangleArray[triIndex].vtxIndexA;
+		int B = pTriangleArray[triIndex].vtxIndexB;
+		int C = pTriangleArray[triIndex].vtxIndexC;
+		
+		GLfloat Ax = pVertexArray[A].pos[COR_X];
+		GLfloat Ay = pVertexArray[A].pos[COR_Y];
+		GLfloat Az = pVertexArray[A].pos[COR_Z];
+		
+		GLfloat Bx = pVertexArray[B].pos[COR_X];
+		GLfloat By = pVertexArray[B].pos[COR_Y];
+		GLfloat Bz = pVertexArray[B].pos[COR_Z];
+
+		GLfloat Cx = pVertexArray[C].pos[COR_X];
+		GLfloat Cy = pVertexArray[C].pos[COR_Y];
+		GLfloat Cz = pVertexArray[C].pos[COR_Z];
+		
+		// Vectors for the calculation of the normal
+		GLfloat vec1[3];
+		GLfloat vec2[3];
+
+		// Calculate two difference vectors of the triangle
+		vec1[COR_X] = Ax - Bx;
+		vec1[COR_Y] = Ay - By;
+		vec1[COR_Z] = Az - Bz;
+
+		vec2[COR_X] = Ax - Cx;
+		vec2[COR_Y] = Ay - Cy;
+		vec2[COR_Z] = Az - Cz;
+
+		// Calculate the normal vector: cross product between x and y
+		pTriangleArray[triIndex].normal[0] = vec1[1]*vec2[2] - vec1[2]*vec2[1];
+		pTriangleArray[triIndex].normal[1] = vec1[2]*vec2[0] - vec1[0]*vec2[2];
+		pTriangleArray[triIndex].normal[2] = vec1[0]*vec2[1] - vec1[1]*vec2[0];
+
+		// Normalize the normal vector:
+		GLfloat norm = pTriangleArray[triIndex].normal[0]*pTriangleArray[triIndex].normal[0]
+				+ pTriangleArray[triIndex].normal[1]*pTriangleArray[triIndex].normal[1]
+				+ pTriangleArray[triIndex].normal[2]*pTriangleArray[triIndex].normal[2];
+		norm = sqrt(norm);
+		
+		pTriangleArray[triIndex].normal[0] /= norm;
+		pTriangleArray[triIndex].normal[1] /= norm;
+		pTriangleArray[triIndex].normal[2] /= norm;
+	}
+
+	// Calculate vertex normals
+	calcVertexNormals(pTriangleArray, numTriangles, pVertexArray, numVertices);
+	
+	model->IBOSize = numTriangles * 3;
+	GLshort *pIndices = new GLshort[model->IBOSize];
+	for(int triIndex = 0; triIndex < numTriangles; triIndex++)
+	{
+		pIndices[3*triIndex + 0] = pTriangleArray[triIndex].vtxIndexA;
+		pIndices[3*triIndex + 1] = pTriangleArray[triIndex].vtxIndexB;
+		pIndices[3*triIndex + 2] = pTriangleArray[triIndex].vtxIndexC;
+	}
+	
+	
+	// ------------- send to GL
+	//GLuint vao;
+	glGenVertexArrays(1, &(model->vao));
+	glBindVertexArray(model->vao);
+	
+	// Create vertex buffer object and download vertex array
+	model->VBO = 0;
+	glGenBuffers(1, &(model->VBO));
+	glBindBuffer(GL_ARRAY_BUFFER, model->VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex)*numVertices, pVertexArray, GL_STATIC_DRAW);
+
+	GLint location;
+	// bind Vertex shader per-vertex attributes
+	// load positions	
+	location = glGetAttribLocation(g_shaderProgram, "position");
+	glVertexAttribPointer(location, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, pos));
+	glEnableVertexAttribArray(location);
+	
+	// load color
+	location = glGetAttribLocation(g_shaderProgram, "color_in");
+	glVertexAttribPointer(location, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, color));
+	glEnableVertexAttribArray(location);
+
+	// load normal	
+	location = glGetAttribLocation(g_shaderProgram, "normal");
+	glVertexAttribPointer(location, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, normal));
+	glEnableVertexAttribArray(location);
+	
+	// load uv
+	location = glGetAttribLocation(g_shaderProgram, "vertexUV");
+	glVertexAttribPointer(location, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, uv));
+	glEnableVertexAttribArray(location);
+	
+	// Create index buffer and download index data
+	model->IBO = 0;
+	glGenBuffers(1, &(model->IBO));
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, model->IBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLshort)*model->IBOSize, pIndices, GL_STATIC_DRAW);
+	
+	
+	delete[] pIndices;
+	// not free because from vector !
+	//delete[] pVertexArray;
+	//delete[] pTriangleArray;
+	
+	check_gl_error();
+
+	return true;
+}
 
 //=======================================================================
 // Calculates and defines the surface normals for all vertices by

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/emanuel/Documents/voxel_engine/v1
+CMAKE_SOURCE_DIR = /home/emanuel/Documents/Voxel-Engine/v1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/emanuel/Documents/voxel_engine/v1/build/Release
+CMAKE_BINARY_DIR = /home/emanuel/Documents/Voxel-Engine/v1/build/Release
 
 # Utility rule file for uninstall.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/emanuel/Documents/voxel_engine/v1/build/Release
 include thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/progress.make
 
 thirdparty/glfw-3.2.1/CMakeFiles/uninstall:
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1 && /usr/bin/cmake -P /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/cmake_uninstall.cmake
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1 && /usr/bin/cmake -P /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/cmake_uninstall.cmake
 
 uninstall: thirdparty/glfw-3.2.1/CMakeFiles/uninstall
 uninstall: thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/build.make
@@ -67,10 +67,10 @@ thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/build: uninstall
 .PHONY : thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/build
 
 thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/clean:
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1 && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1 && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
 .PHONY : thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/clean
 
 thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/depend:
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/emanuel/Documents/voxel_engine/v1 /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1 /home/emanuel/Documents/voxel_engine/v1/build/Release /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1 /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/emanuel/Documents/Voxel-Engine/v1 /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1 /home/emanuel/Documents/Voxel-Engine/v1/build/Release /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1 /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/depend
 

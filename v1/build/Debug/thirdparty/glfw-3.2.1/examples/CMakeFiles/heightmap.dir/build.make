@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/emanuel/Documents/voxel_engine/v1
+CMAKE_SOURCE_DIR = /home/emanuel/Documents/Voxel-Engine/v1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/emanuel/Documents/voxel_engine/v1/build/Debug
+CMAKE_BINARY_DIR = /home/emanuel/Documents/Voxel-Engine/v1/build/Debug
 
 # Include any dependencies generated for this target.
 include thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/depend.make
@@ -59,16 +59,16 @@ include thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/flags.make
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/heightmap.c.o: thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/flags.make
 thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/heightmap.c.o: ../../thirdparty/glfw-3.2.1/examples/heightmap.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/heightmap.c.o"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/heightmap.dir/heightmap.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/examples/heightmap.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/heightmap.c.o"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/heightmap.dir/heightmap.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/examples/heightmap.c
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/heightmap.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/heightmap.dir/heightmap.c.i"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/examples/heightmap.c > CMakeFiles/heightmap.dir/heightmap.c.i
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/examples/heightmap.c > CMakeFiles/heightmap.dir/heightmap.c.i
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/heightmap.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/heightmap.dir/heightmap.c.s"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/examples/heightmap.c -o CMakeFiles/heightmap.dir/heightmap.c.s
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/examples/heightmap.c -o CMakeFiles/heightmap.dir/heightmap.c.s
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/heightmap.c.o.requires:
 
@@ -83,16 +83,16 @@ thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/heightmap.c.o.provides.b
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/__/deps/glad.c.o: thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/flags.make
 thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/__/deps/glad.c.o: ../../thirdparty/glfw-3.2.1/deps/glad.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/__/deps/glad.c.o"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/heightmap.dir/__/deps/glad.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/glad.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/__/deps/glad.c.o"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/heightmap.dir/__/deps/glad.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/glad.c
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/__/deps/glad.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/heightmap.dir/__/deps/glad.c.i"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/glad.c > CMakeFiles/heightmap.dir/__/deps/glad.c.i
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/glad.c > CMakeFiles/heightmap.dir/__/deps/glad.c.i
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/__/deps/glad.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/heightmap.dir/__/deps/glad.c.s"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/glad.c -o CMakeFiles/heightmap.dir/__/deps/glad.c.s
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/glad.c -o CMakeFiles/heightmap.dir/__/deps/glad.c.s
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/__/deps/glad.c.o.requires:
 
@@ -125,8 +125,8 @@ thirdparty/glfw-3.2.1/examples/heightmap: /usr/lib/x86_64-linux-gnu/libXinerama.
 thirdparty/glfw-3.2.1/examples/heightmap: /usr/lib/x86_64-linux-gnu/libXxf86vm.so
 thirdparty/glfw-3.2.1/examples/heightmap: /usr/lib/x86_64-linux-gnu/libXcursor.so
 thirdparty/glfw-3.2.1/examples/heightmap: thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable heightmap"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/heightmap.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable heightmap"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/heightmap.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/build: thirdparty/glfw-3.2.1/examples/heightmap
@@ -139,10 +139,10 @@ thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/requires: thirdparty/glf
 .PHONY : thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/requires
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/clean:
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && $(CMAKE_COMMAND) -P CMakeFiles/heightmap.dir/cmake_clean.cmake
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && $(CMAKE_COMMAND) -P CMakeFiles/heightmap.dir/cmake_clean.cmake
 .PHONY : thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/clean
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/depend:
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/emanuel/Documents/voxel_engine/v1 /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/examples /home/emanuel/Documents/voxel_engine/v1/build/Debug /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/emanuel/Documents/Voxel-Engine/v1 /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/examples /home/emanuel/Documents/Voxel-Engine/v1/build/Debug /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/depend
 

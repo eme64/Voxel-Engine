@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/emanuel/Documents/voxel_engine/v1
+CMAKE_SOURCE_DIR = /home/emanuel/Documents/Voxel-Engine/v1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/emanuel/Documents/voxel_engine/v1/build/Release
+CMAKE_BINARY_DIR = /home/emanuel/Documents/Voxel-Engine/v1/build/Release
 
 # Include any dependencies generated for this target.
 include thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/depend.make
@@ -59,16 +59,16 @@ include thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/flags.make
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/context.c.o: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/flags.make
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/context.c.o: ../../thirdparty/glfw-3.2.1/src/context.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/context.c.o"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/context.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/context.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/context.c.o"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/context.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/context.c
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/context.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/context.c.i"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/context.c > CMakeFiles/glfw.dir/context.c.i
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/context.c > CMakeFiles/glfw.dir/context.c.i
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/context.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/context.c.s"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/context.c -o CMakeFiles/glfw.dir/context.c.s
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/context.c -o CMakeFiles/glfw.dir/context.c.s
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/context.c.o.requires:
 
@@ -83,16 +83,16 @@ thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/context.c.o.provides.build: thirdp
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/init.c.o: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/flags.make
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/init.c.o: ../../thirdparty/glfw-3.2.1/src/init.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/init.c.o"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/init.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/init.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/init.c.o"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/init.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/init.c
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/init.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/init.c.i"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/init.c > CMakeFiles/glfw.dir/init.c.i
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/init.c > CMakeFiles/glfw.dir/init.c.i
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/init.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/init.c.s"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/init.c -o CMakeFiles/glfw.dir/init.c.s
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/init.c -o CMakeFiles/glfw.dir/init.c.s
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/init.c.o.requires:
 
@@ -107,16 +107,16 @@ thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/init.c.o.provides.build: thirdpart
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/input.c.o: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/flags.make
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/input.c.o: ../../thirdparty/glfw-3.2.1/src/input.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/input.c.o"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/input.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/input.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/input.c.o"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/input.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/input.c
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/input.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/input.c.i"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/input.c > CMakeFiles/glfw.dir/input.c.i
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/input.c > CMakeFiles/glfw.dir/input.c.i
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/input.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/input.c.s"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/input.c -o CMakeFiles/glfw.dir/input.c.s
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/input.c -o CMakeFiles/glfw.dir/input.c.s
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/input.c.o.requires:
 
@@ -131,16 +131,16 @@ thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/input.c.o.provides.build: thirdpar
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/monitor.c.o: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/flags.make
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/monitor.c.o: ../../thirdparty/glfw-3.2.1/src/monitor.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/monitor.c.o"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/monitor.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/monitor.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/monitor.c.o"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/monitor.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/monitor.c
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/monitor.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/monitor.c.i"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/monitor.c > CMakeFiles/glfw.dir/monitor.c.i
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/monitor.c > CMakeFiles/glfw.dir/monitor.c.i
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/monitor.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/monitor.c.s"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/monitor.c -o CMakeFiles/glfw.dir/monitor.c.s
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/monitor.c -o CMakeFiles/glfw.dir/monitor.c.s
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/monitor.c.o.requires:
 
@@ -155,16 +155,16 @@ thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/monitor.c.o.provides.build: thirdp
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/vulkan.c.o: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/flags.make
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/vulkan.c.o: ../../thirdparty/glfw-3.2.1/src/vulkan.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/vulkan.c.o"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/vulkan.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/vulkan.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/vulkan.c.o"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/vulkan.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/vulkan.c
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/vulkan.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/vulkan.c.i"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/vulkan.c > CMakeFiles/glfw.dir/vulkan.c.i
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/vulkan.c > CMakeFiles/glfw.dir/vulkan.c.i
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/vulkan.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/vulkan.c.s"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/vulkan.c -o CMakeFiles/glfw.dir/vulkan.c.s
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/vulkan.c -o CMakeFiles/glfw.dir/vulkan.c.s
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/vulkan.c.o.requires:
 
@@ -179,16 +179,16 @@ thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/vulkan.c.o.provides.build: thirdpa
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/window.c.o: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/flags.make
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/window.c.o: ../../thirdparty/glfw-3.2.1/src/window.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/window.c.o"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/window.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/window.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/window.c.o"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/window.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/window.c
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/window.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/window.c.i"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/window.c > CMakeFiles/glfw.dir/window.c.i
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/window.c > CMakeFiles/glfw.dir/window.c.i
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/window.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/window.c.s"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/window.c -o CMakeFiles/glfw.dir/window.c.s
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/window.c -o CMakeFiles/glfw.dir/window.c.s
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/window.c.o.requires:
 
@@ -203,16 +203,16 @@ thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/window.c.o.provides.build: thirdpa
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/x11_init.c.o: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/flags.make
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/x11_init.c.o: ../../thirdparty/glfw-3.2.1/src/x11_init.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/x11_init.c.o"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/x11_init.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/x11_init.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/x11_init.c.o"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/x11_init.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/x11_init.c
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/x11_init.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/x11_init.c.i"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/x11_init.c > CMakeFiles/glfw.dir/x11_init.c.i
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/x11_init.c > CMakeFiles/glfw.dir/x11_init.c.i
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/x11_init.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/x11_init.c.s"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/x11_init.c -o CMakeFiles/glfw.dir/x11_init.c.s
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/x11_init.c -o CMakeFiles/glfw.dir/x11_init.c.s
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/x11_init.c.o.requires:
 
@@ -227,16 +227,16 @@ thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/x11_init.c.o.provides.build: third
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/x11_monitor.c.o: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/flags.make
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/x11_monitor.c.o: ../../thirdparty/glfw-3.2.1/src/x11_monitor.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/x11_monitor.c.o"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/x11_monitor.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/x11_monitor.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/x11_monitor.c.o"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/x11_monitor.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/x11_monitor.c
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/x11_monitor.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/x11_monitor.c.i"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/x11_monitor.c > CMakeFiles/glfw.dir/x11_monitor.c.i
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/x11_monitor.c > CMakeFiles/glfw.dir/x11_monitor.c.i
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/x11_monitor.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/x11_monitor.c.s"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/x11_monitor.c -o CMakeFiles/glfw.dir/x11_monitor.c.s
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/x11_monitor.c -o CMakeFiles/glfw.dir/x11_monitor.c.s
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/x11_monitor.c.o.requires:
 
@@ -251,16 +251,16 @@ thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/x11_monitor.c.o.provides.build: th
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/x11_window.c.o: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/flags.make
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/x11_window.c.o: ../../thirdparty/glfw-3.2.1/src/x11_window.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/x11_window.c.o"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/x11_window.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/x11_window.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/x11_window.c.o"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/x11_window.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/x11_window.c
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/x11_window.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/x11_window.c.i"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/x11_window.c > CMakeFiles/glfw.dir/x11_window.c.i
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/x11_window.c > CMakeFiles/glfw.dir/x11_window.c.i
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/x11_window.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/x11_window.c.s"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/x11_window.c -o CMakeFiles/glfw.dir/x11_window.c.s
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/x11_window.c -o CMakeFiles/glfw.dir/x11_window.c.s
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/x11_window.c.o.requires:
 
@@ -275,16 +275,16 @@ thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/x11_window.c.o.provides.build: thi
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/xkb_unicode.c.o: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/flags.make
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/xkb_unicode.c.o: ../../thirdparty/glfw-3.2.1/src/xkb_unicode.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/xkb_unicode.c.o"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/xkb_unicode.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/xkb_unicode.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/xkb_unicode.c.o"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/xkb_unicode.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/xkb_unicode.c
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/xkb_unicode.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/xkb_unicode.c.i"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/xkb_unicode.c > CMakeFiles/glfw.dir/xkb_unicode.c.i
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/xkb_unicode.c > CMakeFiles/glfw.dir/xkb_unicode.c.i
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/xkb_unicode.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/xkb_unicode.c.s"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/xkb_unicode.c -o CMakeFiles/glfw.dir/xkb_unicode.c.s
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/xkb_unicode.c -o CMakeFiles/glfw.dir/xkb_unicode.c.s
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/xkb_unicode.c.o.requires:
 
@@ -299,16 +299,16 @@ thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/xkb_unicode.c.o.provides.build: th
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/linux_joystick.c.o: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/flags.make
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/linux_joystick.c.o: ../../thirdparty/glfw-3.2.1/src/linux_joystick.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/linux_joystick.c.o"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/linux_joystick.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/linux_joystick.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/linux_joystick.c.o"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/linux_joystick.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/linux_joystick.c
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/linux_joystick.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/linux_joystick.c.i"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/linux_joystick.c > CMakeFiles/glfw.dir/linux_joystick.c.i
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/linux_joystick.c > CMakeFiles/glfw.dir/linux_joystick.c.i
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/linux_joystick.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/linux_joystick.c.s"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/linux_joystick.c -o CMakeFiles/glfw.dir/linux_joystick.c.s
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/linux_joystick.c -o CMakeFiles/glfw.dir/linux_joystick.c.s
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/linux_joystick.c.o.requires:
 
@@ -323,16 +323,16 @@ thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/linux_joystick.c.o.provides.build:
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/posix_time.c.o: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/flags.make
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/posix_time.c.o: ../../thirdparty/glfw-3.2.1/src/posix_time.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/posix_time.c.o"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/posix_time.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/posix_time.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/posix_time.c.o"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/posix_time.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/posix_time.c
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/posix_time.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/posix_time.c.i"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/posix_time.c > CMakeFiles/glfw.dir/posix_time.c.i
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/posix_time.c > CMakeFiles/glfw.dir/posix_time.c.i
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/posix_time.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/posix_time.c.s"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/posix_time.c -o CMakeFiles/glfw.dir/posix_time.c.s
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/posix_time.c -o CMakeFiles/glfw.dir/posix_time.c.s
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/posix_time.c.o.requires:
 
@@ -347,16 +347,16 @@ thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/posix_time.c.o.provides.build: thi
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/posix_tls.c.o: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/flags.make
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/posix_tls.c.o: ../../thirdparty/glfw-3.2.1/src/posix_tls.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/posix_tls.c.o"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/posix_tls.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/posix_tls.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/posix_tls.c.o"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/posix_tls.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/posix_tls.c
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/posix_tls.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/posix_tls.c.i"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/posix_tls.c > CMakeFiles/glfw.dir/posix_tls.c.i
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/posix_tls.c > CMakeFiles/glfw.dir/posix_tls.c.i
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/posix_tls.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/posix_tls.c.s"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/posix_tls.c -o CMakeFiles/glfw.dir/posix_tls.c.s
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/posix_tls.c -o CMakeFiles/glfw.dir/posix_tls.c.s
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/posix_tls.c.o.requires:
 
@@ -371,16 +371,16 @@ thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/posix_tls.c.o.provides.build: thir
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/glx_context.c.o: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/flags.make
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/glx_context.c.o: ../../thirdparty/glfw-3.2.1/src/glx_context.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/glx_context.c.o"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/glx_context.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/glx_context.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/glx_context.c.o"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/glx_context.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/glx_context.c
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/glx_context.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/glx_context.c.i"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/glx_context.c > CMakeFiles/glfw.dir/glx_context.c.i
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/glx_context.c > CMakeFiles/glfw.dir/glx_context.c.i
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/glx_context.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/glx_context.c.s"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/glx_context.c -o CMakeFiles/glfw.dir/glx_context.c.s
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/glx_context.c -o CMakeFiles/glfw.dir/glx_context.c.s
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/glx_context.c.o.requires:
 
@@ -395,16 +395,16 @@ thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/glx_context.c.o.provides.build: th
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/egl_context.c.o: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/flags.make
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/egl_context.c.o: ../../thirdparty/glfw-3.2.1/src/egl_context.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/egl_context.c.o"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/egl_context.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/egl_context.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/egl_context.c.o"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glfw.dir/egl_context.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/egl_context.c
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/egl_context.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glfw.dir/egl_context.c.i"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/egl_context.c > CMakeFiles/glfw.dir/egl_context.c.i
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/egl_context.c > CMakeFiles/glfw.dir/egl_context.c.i
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/egl_context.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glfw.dir/egl_context.c.s"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src/egl_context.c -o CMakeFiles/glfw.dir/egl_context.c.s
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src/egl_context.c -o CMakeFiles/glfw.dir/egl_context.c.s
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/egl_context.c.o.requires:
 
@@ -455,9 +455,9 @@ thirdparty/glfw-3.2.1/src/libglfw3.a: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.
 thirdparty/glfw-3.2.1/src/libglfw3.a: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/egl_context.c.o
 thirdparty/glfw-3.2.1/src/libglfw3.a: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/build.make
 thirdparty/glfw-3.2.1/src/libglfw3.a: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking C static library libglfw3.a"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && $(CMAKE_COMMAND) -P CMakeFiles/glfw.dir/cmake_clean_target.cmake
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/glfw.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking C static library libglfw3.a"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && $(CMAKE_COMMAND) -P CMakeFiles/glfw.dir/cmake_clean_target.cmake
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/glfw.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/build: thirdparty/glfw-3.2.1/src/libglfw3.a
@@ -483,10 +483,10 @@ thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/requires: thirdparty/glfw-3.2.1/sr
 .PHONY : thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/requires
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/clean:
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src && $(CMAKE_COMMAND) -P CMakeFiles/glfw.dir/cmake_clean.cmake
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src && $(CMAKE_COMMAND) -P CMakeFiles/glfw.dir/cmake_clean.cmake
 .PHONY : thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/clean
 
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/depend:
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/emanuel/Documents/voxel_engine/v1 /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/src /home/emanuel/Documents/voxel_engine/v1/build/Release /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src /home/emanuel/Documents/voxel_engine/v1/build/Release/thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/emanuel/Documents/Voxel-Engine/v1 /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/src /home/emanuel/Documents/Voxel-Engine/v1/build/Release /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src /home/emanuel/Documents/Voxel-Engine/v1/build/Release/thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/depend
 

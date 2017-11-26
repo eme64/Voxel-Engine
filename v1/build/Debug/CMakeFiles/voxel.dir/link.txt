@@ -1,1 +1,1 @@
-/usr/bin/c++   -g   CMakeFiles/voxel.dir/voxel.cpp.o CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.o  -o voxel -rdynamic thirdparty/glfw-3.2.1/src/libglfw3.a -lGLU -lGL -lrt -lm -ldl -lX11 -lpthread -lXrandr -lXinerama -lXxf86vm -lXcursor 
+/usr/bin/c++   -g   CMakeFiles/voxel.dir/voxel.cpp.o CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.o CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.o  -o voxel -rdynamic thirdparty/glfw-3.2.1/src/libglfw3.a -lGLU -lGL -lrt -lm -ldl -lX11 -lpthread -lXrandr -lXinerama -lXxf86vm -lXcursor 

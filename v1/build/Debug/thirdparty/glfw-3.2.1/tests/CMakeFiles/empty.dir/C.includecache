@@ -118,7 +118,7 @@ GL/glext.h
 GL/glu.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/glad.c
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/glad.c
 stdio.h
 -
 stdlib.h
@@ -128,9 +128,9 @@ string.h
 glad/glad.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/tinycthread.c
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/tinycthread.c
 tinycthread.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/tinycthread.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/tinycthread.h
 stdlib.h
 -
 signal.h
@@ -148,7 +148,7 @@ process.h
 sys/timeb.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/tinycthread.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/tinycthread.h
 time.h
 -
 sys/time.h
@@ -158,9 +158,9 @@ pthread.h
 windows.h
 -
 
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/tests/empty.c
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/tests/empty.c
 tinycthread.h
-/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/tests/tinycthread.h
+/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/tests/tinycthread.h
 glad/glad.h
 -
 GLFW/glfw3.h

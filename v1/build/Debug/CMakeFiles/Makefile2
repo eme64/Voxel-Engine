@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/emanuel/Documents/voxel_engine/v1
+CMAKE_SOURCE_DIR = /home/emanuel/Documents/Voxel-Engine/v1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/emanuel/Documents/voxel_engine/v1/build/Debug
+CMAKE_BINARY_DIR = /home/emanuel/Documents/Voxel-Engine/v1/build/Debug
 
 #=============================================================================
 # Target rules for target CMakeFiles/voxel.dir
@@ -66,7 +66,7 @@ CMAKE_BINARY_DIR = /home/emanuel/Documents/voxel_engine/v1/build/Debug
 CMakeFiles/voxel.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f CMakeFiles/voxel.dir/build.make CMakeFiles/voxel.dir/depend
 	$(MAKE) -f CMakeFiles/voxel.dir/build.make CMakeFiles/voxel.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=91,92,93 "Built target voxel"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=90,91,92,93 "Built target voxel"
 .PHONY : CMakeFiles/voxel.dir/all
 
 # Include target in all.
@@ -76,9 +76,9 @@ all: CMakeFiles/voxel.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/voxel.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 18
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 18
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/voxel.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : CMakeFiles/voxel.dir/rule
 
 # Convenience name for target.
@@ -128,14 +128,14 @@ thirdparty/glfw-3.2.1/preinstall: thirdparty/glfw-3.2.1/tests/preinstall
 thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/all:
 	$(MAKE) -f thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/build.make thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/build.make thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num= "Built target uninstall"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num= "Built target uninstall"
 .PHONY : thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/CMakeFiles/uninstall.dir/rule
 
 # Convenience name for target.
@@ -178,7 +178,7 @@ thirdparty/glfw-3.2.1/src/preinstall:
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all:
 	$(MAKE) -f thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/build.make thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/build.make thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=24,25,26,27,28,29,30,31,32,33,34,35,36,37,38 "Built target glfw"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=24,25,26,27,28,29,30,31,32,33,34,35,36,37 "Built target glfw"
 .PHONY : thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 
 # Include target in all.
@@ -188,9 +188,9 @@ all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/rule
 
 # Convenience name for target.
@@ -245,7 +245,7 @@ thirdparty/glfw-3.2.1/examples/preinstall:
 thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/build.make thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/build.make thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=43,44 "Built target heightmap"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=42,43,44 "Built target heightmap"
 .PHONY : thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/all
 
 # Include target in all.
@@ -255,9 +255,9 @@ all: thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 17
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/rule
 
 # Convenience name for target.
@@ -282,7 +282,7 @@ clean: thirdparty/glfw-3.2.1/examples/CMakeFiles/heightmap.dir/clean
 thirdparty/glfw-3.2.1/examples/CMakeFiles/gears.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/examples/CMakeFiles/gears.dir/build.make thirdparty/glfw-3.2.1/examples/CMakeFiles/gears.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/examples/CMakeFiles/gears.dir/build.make thirdparty/glfw-3.2.1/examples/CMakeFiles/gears.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=21,22,23 "Built target gears"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=21,22,23 "Built target gears"
 .PHONY : thirdparty/glfw-3.2.1/examples/CMakeFiles/gears.dir/all
 
 # Include target in all.
@@ -292,9 +292,9 @@ all: thirdparty/glfw-3.2.1/examples/CMakeFiles/gears.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/examples/CMakeFiles/gears.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 18
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 17
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/examples/CMakeFiles/gears.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/examples/CMakeFiles/gears.dir/rule
 
 # Convenience name for target.
@@ -319,7 +319,7 @@ clean: thirdparty/glfw-3.2.1/examples/CMakeFiles/gears.dir/clean
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/build.make thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/build.make thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=62,63,64,65,66 "Built target particles"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=62,63,64,65 "Built target particles"
 .PHONY : thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/all
 
 # Include target in all.
@@ -329,9 +329,9 @@ all: thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 20
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 18
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/rule
 
 # Convenience name for target.
@@ -356,7 +356,7 @@ clean: thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/clean
 thirdparty/glfw-3.2.1/examples/CMakeFiles/wave.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/examples/CMakeFiles/wave.dir/build.make thirdparty/glfw-3.2.1/examples/CMakeFiles/wave.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/examples/CMakeFiles/wave.dir/build.make thirdparty/glfw-3.2.1/examples/CMakeFiles/wave.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=94,95,96 "Built target wave"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=94,95,96 "Built target wave"
 .PHONY : thirdparty/glfw-3.2.1/examples/CMakeFiles/wave.dir/all
 
 # Include target in all.
@@ -366,9 +366,9 @@ all: thirdparty/glfw-3.2.1/examples/CMakeFiles/wave.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/examples/CMakeFiles/wave.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 18
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 17
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/examples/CMakeFiles/wave.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/examples/CMakeFiles/wave.dir/rule
 
 # Convenience name for target.
@@ -393,7 +393,7 @@ clean: thirdparty/glfw-3.2.1/examples/CMakeFiles/wave.dir/clean
 thirdparty/glfw-3.2.1/examples/CMakeFiles/boing.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/examples/CMakeFiles/boing.dir/build.make thirdparty/glfw-3.2.1/examples/CMakeFiles/boing.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/examples/CMakeFiles/boing.dir/build.make thirdparty/glfw-3.2.1/examples/CMakeFiles/boing.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=1,2 "Built target boing"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=1,2 "Built target boing"
 .PHONY : thirdparty/glfw-3.2.1/examples/CMakeFiles/boing.dir/all
 
 # Include target in all.
@@ -403,9 +403,9 @@ all: thirdparty/glfw-3.2.1/examples/CMakeFiles/boing.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/examples/CMakeFiles/boing.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 16
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/examples/CMakeFiles/boing.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/examples/CMakeFiles/boing.dir/rule
 
 # Convenience name for target.
@@ -430,7 +430,7 @@ clean: thirdparty/glfw-3.2.1/examples/CMakeFiles/boing.dir/clean
 thirdparty/glfw-3.2.1/examples/CMakeFiles/simple.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/examples/CMakeFiles/simple.dir/build.make thirdparty/glfw-3.2.1/examples/CMakeFiles/simple.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/examples/CMakeFiles/simple.dir/build.make thirdparty/glfw-3.2.1/examples/CMakeFiles/simple.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=72,73,74 "Built target simple"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=72,73,74 "Built target simple"
 .PHONY : thirdparty/glfw-3.2.1/examples/CMakeFiles/simple.dir/all
 
 # Include target in all.
@@ -440,9 +440,9 @@ all: thirdparty/glfw-3.2.1/examples/CMakeFiles/simple.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/examples/CMakeFiles/simple.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 18
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 17
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/examples/CMakeFiles/simple.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/examples/CMakeFiles/simple.dir/rule
 
 # Convenience name for target.
@@ -467,7 +467,7 @@ clean: thirdparty/glfw-3.2.1/examples/CMakeFiles/simple.dir/clean
 thirdparty/glfw-3.2.1/examples/CMakeFiles/splitview.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/examples/CMakeFiles/splitview.dir/build.make thirdparty/glfw-3.2.1/examples/CMakeFiles/splitview.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/examples/CMakeFiles/splitview.dir/build.make thirdparty/glfw-3.2.1/examples/CMakeFiles/splitview.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=75,76,77 "Built target splitview"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=75,76 "Built target splitview"
 .PHONY : thirdparty/glfw-3.2.1/examples/CMakeFiles/splitview.dir/all
 
 # Include target in all.
@@ -477,9 +477,9 @@ all: thirdparty/glfw-3.2.1/examples/CMakeFiles/splitview.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/examples/CMakeFiles/splitview.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 18
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 16
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/examples/CMakeFiles/splitview.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/examples/CMakeFiles/splitview.dir/rule
 
 # Convenience name for target.
@@ -556,7 +556,7 @@ thirdparty/glfw-3.2.1/tests/preinstall:
 thirdparty/glfw-3.2.1/tests/CMakeFiles/reopen.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/reopen.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/reopen.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/reopen.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/reopen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=67,68,69 "Built target reopen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=66,67,68 "Built target reopen"
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/reopen.dir/all
 
 # Include target in all.
@@ -566,9 +566,9 @@ all: thirdparty/glfw-3.2.1/tests/CMakeFiles/reopen.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/tests/CMakeFiles/reopen.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 18
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 17
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/tests/CMakeFiles/reopen.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/reopen.dir/rule
 
 # Convenience name for target.
@@ -593,7 +593,7 @@ clean: thirdparty/glfw-3.2.1/tests/CMakeFiles/reopen.dir/clean
 thirdparty/glfw-3.2.1/tests/CMakeFiles/joysticks.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/joysticks.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/joysticks.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/joysticks.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/joysticks.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=52,53,54 "Built target joysticks"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=51,52,53 "Built target joysticks"
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/joysticks.dir/all
 
 # Include target in all.
@@ -603,9 +603,9 @@ all: thirdparty/glfw-3.2.1/tests/CMakeFiles/joysticks.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/tests/CMakeFiles/joysticks.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 18
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 17
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/tests/CMakeFiles/joysticks.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/joysticks.dir/rule
 
 # Convenience name for target.
@@ -630,7 +630,7 @@ clean: thirdparty/glfw-3.2.1/tests/CMakeFiles/joysticks.dir/clean
 thirdparty/glfw-3.2.1/tests/CMakeFiles/monitors.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/monitors.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/monitors.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/monitors.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/monitors.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=55,56,57 "Built target monitors"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=54,55,56,57 "Built target monitors"
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/monitors.dir/all
 
 # Include target in all.
@@ -640,9 +640,9 @@ all: thirdparty/glfw-3.2.1/tests/CMakeFiles/monitors.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/tests/CMakeFiles/monitors.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 18
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 18
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/tests/CMakeFiles/monitors.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/monitors.dir/rule
 
 # Convenience name for target.
@@ -667,7 +667,7 @@ clean: thirdparty/glfw-3.2.1/tests/CMakeFiles/monitors.dir/clean
 thirdparty/glfw-3.2.1/tests/CMakeFiles/iconify.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/iconify.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/iconify.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/iconify.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/iconify.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=48,49,50,51 "Built target iconify"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=48,49,50 "Built target iconify"
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/iconify.dir/all
 
 # Include target in all.
@@ -677,9 +677,9 @@ all: thirdparty/glfw-3.2.1/tests/CMakeFiles/iconify.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/tests/CMakeFiles/iconify.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 17
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/tests/CMakeFiles/iconify.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/iconify.dir/rule
 
 # Convenience name for target.
@@ -704,7 +704,7 @@ clean: thirdparty/glfw-3.2.1/tests/CMakeFiles/iconify.dir/clean
 thirdparty/glfw-3.2.1/tests/CMakeFiles/glfwinfo.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/glfwinfo.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/glfwinfo.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/glfwinfo.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/glfwinfo.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=39,40,41,42 "Built target glfwinfo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=38,39,40,41 "Built target glfwinfo"
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/glfwinfo.dir/all
 
 # Include target in all.
@@ -714,9 +714,9 @@ all: thirdparty/glfw-3.2.1/tests/CMakeFiles/glfwinfo.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/tests/CMakeFiles/glfwinfo.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 18
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/tests/CMakeFiles/glfwinfo.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/glfwinfo.dir/rule
 
 # Convenience name for target.
@@ -741,7 +741,7 @@ clean: thirdparty/glfw-3.2.1/tests/CMakeFiles/glfwinfo.dir/clean
 thirdparty/glfw-3.2.1/tests/CMakeFiles/gamma.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/gamma.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/gamma.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/gamma.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/gamma.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=17,18,19,20 "Built target gamma"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=17,18,19,20 "Built target gamma"
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/gamma.dir/all
 
 # Include target in all.
@@ -751,9 +751,9 @@ all: thirdparty/glfw-3.2.1/tests/CMakeFiles/gamma.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/tests/CMakeFiles/gamma.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 18
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/tests/CMakeFiles/gamma.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/gamma.dir/rule
 
 # Convenience name for target.
@@ -778,7 +778,7 @@ clean: thirdparty/glfw-3.2.1/tests/CMakeFiles/gamma.dir/clean
 thirdparty/glfw-3.2.1/tests/CMakeFiles/icon.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/icon.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/icon.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/icon.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/icon.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=45,46,47 "Built target icon"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=45,46,47 "Built target icon"
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/icon.dir/all
 
 # Include target in all.
@@ -788,9 +788,9 @@ all: thirdparty/glfw-3.2.1/tests/CMakeFiles/icon.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/tests/CMakeFiles/icon.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 18
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 17
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/tests/CMakeFiles/icon.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/icon.dir/rule
 
 # Convenience name for target.
@@ -815,7 +815,7 @@ clean: thirdparty/glfw-3.2.1/tests/CMakeFiles/icon.dir/clean
 thirdparty/glfw-3.2.1/tests/CMakeFiles/tearing.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/tearing.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/tearing.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/tearing.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/tearing.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=78,79,80,81 "Built target tearing"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=77,78,79,80 "Built target tearing"
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/tearing.dir/all
 
 # Include target in all.
@@ -825,9 +825,9 @@ all: thirdparty/glfw-3.2.1/tests/CMakeFiles/tearing.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/tests/CMakeFiles/tearing.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 18
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/tests/CMakeFiles/tearing.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/tearing.dir/rule
 
 # Convenience name for target.
@@ -852,7 +852,7 @@ clean: thirdparty/glfw-3.2.1/tests/CMakeFiles/tearing.dir/clean
 thirdparty/glfw-3.2.1/tests/CMakeFiles/empty.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/empty.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/empty.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/empty.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/empty.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=10,11,12,13 "Built target empty"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=10,11,12 "Built target empty"
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/empty.dir/all
 
 # Include target in all.
@@ -862,9 +862,9 @@ all: thirdparty/glfw-3.2.1/tests/CMakeFiles/empty.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/tests/CMakeFiles/empty.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 17
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/tests/CMakeFiles/empty.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/empty.dir/rule
 
 # Convenience name for target.
@@ -889,7 +889,7 @@ clean: thirdparty/glfw-3.2.1/tests/CMakeFiles/empty.dir/clean
 thirdparty/glfw-3.2.1/tests/CMakeFiles/cursor.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/cursor.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/cursor.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/cursor.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/cursor.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=7,8,9 "Built target cursor"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=7,8,9 "Built target cursor"
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/cursor.dir/all
 
 # Include target in all.
@@ -899,9 +899,9 @@ all: thirdparty/glfw-3.2.1/tests/CMakeFiles/cursor.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/tests/CMakeFiles/cursor.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 18
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 17
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/tests/CMakeFiles/cursor.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/cursor.dir/rule
 
 # Convenience name for target.
@@ -926,7 +926,7 @@ clean: thirdparty/glfw-3.2.1/tests/CMakeFiles/cursor.dir/clean
 thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=82,83,84,85 "Built target threads"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=81,82,83,84 "Built target threads"
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/all
 
 # Include target in all.
@@ -936,9 +936,9 @@ all: thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 18
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/rule
 
 # Convenience name for target.
@@ -963,7 +963,7 @@ clean: thirdparty/glfw-3.2.1/tests/CMakeFiles/threads.dir/clean
 thirdparty/glfw-3.2.1/tests/CMakeFiles/clipboard.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/clipboard.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/clipboard.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/clipboard.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/clipboard.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=3,4,5,6 "Built target clipboard"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=3,4,5,6 "Built target clipboard"
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/clipboard.dir/all
 
 # Include target in all.
@@ -973,9 +973,9 @@ all: thirdparty/glfw-3.2.1/tests/CMakeFiles/clipboard.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/tests/CMakeFiles/clipboard.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 18
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/tests/CMakeFiles/clipboard.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/clipboard.dir/rule
 
 # Convenience name for target.
@@ -1000,7 +1000,7 @@ clean: thirdparty/glfw-3.2.1/tests/CMakeFiles/clipboard.dir/clean
 thirdparty/glfw-3.2.1/tests/CMakeFiles/title.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/title.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/title.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/title.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/title.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=88,89,90 "Built target title"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=88,89 "Built target title"
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/title.dir/all
 
 # Include target in all.
@@ -1010,9 +1010,9 @@ all: thirdparty/glfw-3.2.1/tests/CMakeFiles/title.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/tests/CMakeFiles/title.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 18
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 16
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/tests/CMakeFiles/title.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/title.dir/rule
 
 # Convenience name for target.
@@ -1037,7 +1037,7 @@ clean: thirdparty/glfw-3.2.1/tests/CMakeFiles/title.dir/clean
 thirdparty/glfw-3.2.1/tests/CMakeFiles/sharing.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/sharing.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/sharing.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/sharing.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/sharing.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=70,71 "Built target sharing"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=69,70,71 "Built target sharing"
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/sharing.dir/all
 
 # Include target in all.
@@ -1047,9 +1047,9 @@ all: thirdparty/glfw-3.2.1/tests/CMakeFiles/sharing.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/tests/CMakeFiles/sharing.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 17
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/tests/CMakeFiles/sharing.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/sharing.dir/rule
 
 # Convenience name for target.
@@ -1074,7 +1074,7 @@ clean: thirdparty/glfw-3.2.1/tests/CMakeFiles/sharing.dir/clean
 thirdparty/glfw-3.2.1/tests/CMakeFiles/windows.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/windows.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/windows.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/windows.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/windows.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=97,98,99,100 "Built target windows"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=97,98,99,100 "Built target windows"
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/windows.dir/all
 
 # Include target in all.
@@ -1084,9 +1084,9 @@ all: thirdparty/glfw-3.2.1/tests/CMakeFiles/windows.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/tests/CMakeFiles/windows.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 18
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/tests/CMakeFiles/windows.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/windows.dir/rule
 
 # Convenience name for target.
@@ -1111,7 +1111,7 @@ clean: thirdparty/glfw-3.2.1/tests/CMakeFiles/windows.dir/clean
 thirdparty/glfw-3.2.1/tests/CMakeFiles/events.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/events.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/events.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/events.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/events.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=14,15,16 "Built target events"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=13,14,15,16 "Built target events"
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/events.dir/all
 
 # Include target in all.
@@ -1121,9 +1121,9 @@ all: thirdparty/glfw-3.2.1/tests/CMakeFiles/events.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/tests/CMakeFiles/events.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 18
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 18
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/tests/CMakeFiles/events.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/events.dir/rule
 
 # Convenience name for target.
@@ -1148,7 +1148,7 @@ clean: thirdparty/glfw-3.2.1/tests/CMakeFiles/events.dir/clean
 thirdparty/glfw-3.2.1/tests/CMakeFiles/msaa.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/msaa.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/msaa.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/msaa.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/msaa.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=58,59,60,61 "Built target msaa"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=58,59,60,61 "Built target msaa"
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/msaa.dir/all
 
 # Include target in all.
@@ -1158,9 +1158,9 @@ all: thirdparty/glfw-3.2.1/tests/CMakeFiles/msaa.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/tests/CMakeFiles/msaa.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 18
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/tests/CMakeFiles/msaa.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/msaa.dir/rule
 
 # Convenience name for target.
@@ -1185,7 +1185,7 @@ clean: thirdparty/glfw-3.2.1/tests/CMakeFiles/msaa.dir/clean
 thirdparty/glfw-3.2.1/tests/CMakeFiles/timeout.dir/all: thirdparty/glfw-3.2.1/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/timeout.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/timeout.dir/depend
 	$(MAKE) -f thirdparty/glfw-3.2.1/tests/CMakeFiles/timeout.dir/build.make thirdparty/glfw-3.2.1/tests/CMakeFiles/timeout.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=86,87 "Built target timeout"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=85,86,87 "Built target timeout"
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/timeout.dir/all
 
 # Include target in all.
@@ -1195,9 +1195,9 @@ all: thirdparty/glfw-3.2.1/tests/CMakeFiles/timeout.dir/all
 
 # Build rule for subdir invocation for target.
 thirdparty/glfw-3.2.1/tests/CMakeFiles/timeout.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 17
 	$(MAKE) -f CMakeFiles/Makefile2 thirdparty/glfw-3.2.1/tests/CMakeFiles/timeout.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles 0
 .PHONY : thirdparty/glfw-3.2.1/tests/CMakeFiles/timeout.dir/rule
 
 # Convenience name for target.

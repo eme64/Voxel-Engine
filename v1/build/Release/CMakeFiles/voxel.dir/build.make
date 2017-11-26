@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/emanuel/Documents/voxel_engine/v1
+CMAKE_SOURCE_DIR = /home/emanuel/Documents/Voxel-Engine/v1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/emanuel/Documents/voxel_engine/v1/build/Release
+CMAKE_BINARY_DIR = /home/emanuel/Documents/Voxel-Engine/v1/build/Release
 
 # Include any dependencies generated for this target.
 include CMakeFiles/voxel.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/voxel.dir/flags.make
 
 CMakeFiles/voxel.dir/voxel.cpp.o: CMakeFiles/voxel.dir/flags.make
 CMakeFiles/voxel.dir/voxel.cpp.o: ../../voxel.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/voxel.dir/voxel.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/voxel.dir/voxel.cpp.o -c /home/emanuel/Documents/voxel_engine/v1/voxel.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/voxel.dir/voxel.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/voxel.dir/voxel.cpp.o -c /home/emanuel/Documents/Voxel-Engine/v1/voxel.cpp
 
 CMakeFiles/voxel.dir/voxel.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/voxel.dir/voxel.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/voxel.cpp > CMakeFiles/voxel.dir/voxel.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/voxel.cpp > CMakeFiles/voxel.dir/voxel.cpp.i
 
 CMakeFiles/voxel.dir/voxel.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/voxel.dir/voxel.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/voxel.cpp -o CMakeFiles/voxel.dir/voxel.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/voxel.cpp -o CMakeFiles/voxel.dir/voxel.cpp.s
 
 CMakeFiles/voxel.dir/voxel.cpp.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/voxel.dir/voxel.cpp.o.provides.build: CMakeFiles/voxel.dir/voxel.cpp.
 
 CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.o: CMakeFiles/voxel.dir/flags.make
 CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.o: ../../thirdparty/glew-2.1.0/src/glew.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glew-2.1.0/src/glew.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glew-2.1.0/src/glew.c
 
 CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glew-2.1.0/src/glew.c > CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glew-2.1.0/src/glew.c > CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.i
 
 CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glew-2.1.0/src/glew.c -o CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glew-2.1.0/src/glew.c -o CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.s
 
 CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.o.requires:
 
@@ -105,16 +105,42 @@ CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.o.provides: CMakeFiles/vox
 CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.o.provides.build: CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.o
 
 
+CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.o: CMakeFiles/voxel.dir/flags.make
+CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.o: ../../src/FastNoise/FastNoise.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.o -c /home/emanuel/Documents/Voxel-Engine/v1/src/FastNoise/FastNoise.cpp
+
+CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/src/FastNoise/FastNoise.cpp > CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.i
+
+CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/src/FastNoise/FastNoise.cpp -o CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.s
+
+CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.o.requires:
+
+.PHONY : CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.o.requires
+
+CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.o.provides: CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.o.requires
+	$(MAKE) -f CMakeFiles/voxel.dir/build.make CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.o.provides.build
+.PHONY : CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.o.provides
+
+CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.o.provides.build: CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.o
+
+
 # Object files for target voxel
 voxel_OBJECTS = \
 "CMakeFiles/voxel.dir/voxel.cpp.o" \
-"CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.o"
+"CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.o" \
+"CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.o"
 
 # External object files for target voxel
 voxel_EXTERNAL_OBJECTS =
 
 voxel: CMakeFiles/voxel.dir/voxel.cpp.o
 voxel: CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.o
+voxel: CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.o
 voxel: CMakeFiles/voxel.dir/build.make
 voxel: thirdparty/glfw-3.2.1/src/libglfw3.a
 voxel: /usr/lib/x86_64-linux-gnu/libGLU.so
@@ -127,7 +153,7 @@ voxel: /usr/lib/x86_64-linux-gnu/libXinerama.so
 voxel: /usr/lib/x86_64-linux-gnu/libXxf86vm.so
 voxel: /usr/lib/x86_64-linux-gnu/libXcursor.so
 voxel: CMakeFiles/voxel.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable voxel"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable voxel"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/voxel.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -137,6 +163,7 @@ CMakeFiles/voxel.dir/build: voxel
 
 CMakeFiles/voxel.dir/requires: CMakeFiles/voxel.dir/voxel.cpp.o.requires
 CMakeFiles/voxel.dir/requires: CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.o.requires
+CMakeFiles/voxel.dir/requires: CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.o.requires
 
 .PHONY : CMakeFiles/voxel.dir/requires
 
@@ -145,6 +172,6 @@ CMakeFiles/voxel.dir/clean:
 .PHONY : CMakeFiles/voxel.dir/clean
 
 CMakeFiles/voxel.dir/depend:
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Release && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/emanuel/Documents/voxel_engine/v1 /home/emanuel/Documents/voxel_engine/v1 /home/emanuel/Documents/voxel_engine/v1/build/Release /home/emanuel/Documents/voxel_engine/v1/build/Release /home/emanuel/Documents/voxel_engine/v1/build/Release/CMakeFiles/voxel.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Release && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/emanuel/Documents/Voxel-Engine/v1 /home/emanuel/Documents/Voxel-Engine/v1 /home/emanuel/Documents/Voxel-Engine/v1/build/Release /home/emanuel/Documents/Voxel-Engine/v1/build/Release /home/emanuel/Documents/Voxel-Engine/v1/build/Release/CMakeFiles/voxel.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/voxel.dir/depend
 

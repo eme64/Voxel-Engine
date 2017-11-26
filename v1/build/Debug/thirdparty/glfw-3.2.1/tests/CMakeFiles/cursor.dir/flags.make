@@ -6,5 +6,5 @@ C_FLAGS = -g
 
 C_DEFINES = 
 
-C_INCLUDES = -I/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps -I/home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/include 
+C_INCLUDES = -I/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps -I/home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/include 
 

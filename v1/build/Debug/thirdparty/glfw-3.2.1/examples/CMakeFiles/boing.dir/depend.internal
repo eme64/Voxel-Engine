@@ -4,7 +4,7 @@
 thirdparty/glfw-3.2.1/examples/CMakeFiles/boing.dir/__/deps/glad.c.o
  ../../thirdparty/glfw-3.2.1/deps/KHR/khrplatform.h
  ../../thirdparty/glfw-3.2.1/deps/glad/glad.h
- /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/glad.c
+ /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/glad.c
 thirdparty/glfw-3.2.1/examples/CMakeFiles/boing.dir/boing.c.o
  ../../thirdparty/glfw-3.2.1/deps/KHR/khrplatform.h
  ../../thirdparty/glfw-3.2.1/deps/glad/glad.h
@@ -12,4 +12,4 @@ thirdparty/glfw-3.2.1/examples/CMakeFiles/boing.dir/boing.c.o
  ../../thirdparty/glfw-3.2.1/deps/vulkan/vk_platform.h
  ../../thirdparty/glfw-3.2.1/deps/vulkan/vulkan.h
  ../../thirdparty/glfw-3.2.1/include/GLFW/glfw3.h
- /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/examples/boing.c
+ /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/examples/boing.c

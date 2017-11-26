@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/emanuel/Documents/voxel_engine/v1
+CMAKE_SOURCE_DIR = /home/emanuel/Documents/Voxel-Engine/v1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/emanuel/Documents/voxel_engine/v1/build/Debug
+CMAKE_BINARY_DIR = /home/emanuel/Documents/Voxel-Engine/v1/build/Debug
 
 # Include any dependencies generated for this target.
 include thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/depend.make
@@ -59,16 +59,16 @@ include thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/flags.make
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/particles.c.o: thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/flags.make
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/particles.c.o: ../../thirdparty/glfw-3.2.1/examples/particles.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/particles.c.o"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/particles.dir/particles.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/examples/particles.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/particles.c.o"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/particles.dir/particles.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/examples/particles.c
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/particles.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/particles.dir/particles.c.i"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/examples/particles.c > CMakeFiles/particles.dir/particles.c.i
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/examples/particles.c > CMakeFiles/particles.dir/particles.c.i
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/particles.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/particles.dir/particles.c.s"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/examples/particles.c -o CMakeFiles/particles.dir/particles.c.s
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/examples/particles.c -o CMakeFiles/particles.dir/particles.c.s
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/particles.c.o.requires:
 
@@ -83,16 +83,16 @@ thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/particles.c.o.provides.b
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/__/deps/tinycthread.c.o: thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/flags.make
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/__/deps/tinycthread.c.o: ../../thirdparty/glfw-3.2.1/deps/tinycthread.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/__/deps/tinycthread.c.o"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/particles.dir/__/deps/tinycthread.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/tinycthread.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/__/deps/tinycthread.c.o"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/particles.dir/__/deps/tinycthread.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/tinycthread.c
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/__/deps/tinycthread.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/particles.dir/__/deps/tinycthread.c.i"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/tinycthread.c > CMakeFiles/particles.dir/__/deps/tinycthread.c.i
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/tinycthread.c > CMakeFiles/particles.dir/__/deps/tinycthread.c.i
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/__/deps/tinycthread.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/particles.dir/__/deps/tinycthread.c.s"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/tinycthread.c -o CMakeFiles/particles.dir/__/deps/tinycthread.c.s
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/tinycthread.c -o CMakeFiles/particles.dir/__/deps/tinycthread.c.s
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/__/deps/tinycthread.c.o.requires:
 
@@ -107,16 +107,16 @@ thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/__/deps/tinycthread.c.o.
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/__/deps/getopt.c.o: thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/flags.make
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/__/deps/getopt.c.o: ../../thirdparty/glfw-3.2.1/deps/getopt.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/__/deps/getopt.c.o"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/particles.dir/__/deps/getopt.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/getopt.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/__/deps/getopt.c.o"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/particles.dir/__/deps/getopt.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/getopt.c
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/__/deps/getopt.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/particles.dir/__/deps/getopt.c.i"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/getopt.c > CMakeFiles/particles.dir/__/deps/getopt.c.i
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/getopt.c > CMakeFiles/particles.dir/__/deps/getopt.c.i
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/__/deps/getopt.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/particles.dir/__/deps/getopt.c.s"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/getopt.c -o CMakeFiles/particles.dir/__/deps/getopt.c.s
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/getopt.c -o CMakeFiles/particles.dir/__/deps/getopt.c.s
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/__/deps/getopt.c.o.requires:
 
@@ -131,16 +131,16 @@ thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/__/deps/getopt.c.o.provi
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/__/deps/glad.c.o: thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/flags.make
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/__/deps/glad.c.o: ../../thirdparty/glfw-3.2.1/deps/glad.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/__/deps/glad.c.o"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/particles.dir/__/deps/glad.c.o   -c /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/glad.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/__/deps/glad.c.o"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/particles.dir/__/deps/glad.c.o   -c /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/glad.c
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/__/deps/glad.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/particles.dir/__/deps/glad.c.i"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/glad.c > CMakeFiles/particles.dir/__/deps/glad.c.i
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/glad.c > CMakeFiles/particles.dir/__/deps/glad.c.i
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/__/deps/glad.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/particles.dir/__/deps/glad.c.s"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/deps/glad.c -o CMakeFiles/particles.dir/__/deps/glad.c.s
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && /usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/deps/glad.c -o CMakeFiles/particles.dir/__/deps/glad.c.s
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/__/deps/glad.c.o.requires:
 
@@ -177,8 +177,8 @@ thirdparty/glfw-3.2.1/examples/particles: /usr/lib/x86_64-linux-gnu/libXinerama.
 thirdparty/glfw-3.2.1/examples/particles: /usr/lib/x86_64-linux-gnu/libXxf86vm.so
 thirdparty/glfw-3.2.1/examples/particles: /usr/lib/x86_64-linux-gnu/libXcursor.so
 thirdparty/glfw-3.2.1/examples/particles: thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/emanuel/Documents/voxel_engine/v1/build/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable particles"
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/particles.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable particles"
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/particles.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/build: thirdparty/glfw-3.2.1/examples/particles
@@ -193,10 +193,10 @@ thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/requires: thirdparty/glf
 .PHONY : thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/requires
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/clean:
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && $(CMAKE_COMMAND) -P CMakeFiles/particles.dir/cmake_clean.cmake
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples && $(CMAKE_COMMAND) -P CMakeFiles/particles.dir/cmake_clean.cmake
 .PHONY : thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/clean
 
 thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/depend:
-	cd /home/emanuel/Documents/voxel_engine/v1/build/Debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/emanuel/Documents/voxel_engine/v1 /home/emanuel/Documents/voxel_engine/v1/thirdparty/glfw-3.2.1/examples /home/emanuel/Documents/voxel_engine/v1/build/Debug /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples /home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/emanuel/Documents/Voxel-Engine/v1/build/Debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/emanuel/Documents/Voxel-Engine/v1 /home/emanuel/Documents/Voxel-Engine/v1/thirdparty/glfw-3.2.1/examples /home/emanuel/Documents/Voxel-Engine/v1/build/Debug /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples /home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : thirdparty/glfw-3.2.1/examples/CMakeFiles/particles.dir/depend
 

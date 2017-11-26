@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/voxel.dir/voxel.cpp.o"
   "CMakeFiles/voxel.dir/thirdparty/glew-2.1.0/src/glew.c.o"
+  "CMakeFiles/voxel.dir/src/FastNoise/FastNoise.cpp.o"
   "voxel.pdb"
   "voxel"
 )

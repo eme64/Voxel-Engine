@@ -1,9 +1,9 @@
 
-if (NOT EXISTS "/home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/install_manifest.txt")
-  message(FATAL_ERROR "Cannot find install manifest: \"/home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/install_manifest.txt\"")
+if (NOT EXISTS "/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/install_manifest.txt")
+  message(FATAL_ERROR "Cannot find install manifest: \"/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/install_manifest.txt\"")
 endif()
 
-file(READ "/home/emanuel/Documents/voxel_engine/v1/build/Debug/thirdparty/glfw-3.2.1/install_manifest.txt" files)
+file(READ "/home/emanuel/Documents/Voxel-Engine/v1/build/Debug/thirdparty/glfw-3.2.1/install_manifest.txt" files)
 string(REGEX REPLACE "\n" ";" files "${files}")
 
 foreach (file ${files})

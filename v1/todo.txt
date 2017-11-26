@@ -1,0 +1,8 @@
+-------------- TODO -----------------
+
+fix inputs
+collision
+fix up chunk rendering
+lighting
+
+------------ COMPLETED --------------
