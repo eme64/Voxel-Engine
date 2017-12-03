@@ -91,6 +91,11 @@ CMakeFiles/voxel.dir/voxel.cpp.o: /home/emanuel/Documents/glm/glm/gtc/constants.
 CMakeFiles/voxel.dir/voxel.cpp.o: /home/emanuel/Documents/glm/glm/gtc/constants.inl
 CMakeFiles/voxel.dir/voxel.cpp.o: /home/emanuel/Documents/glm/glm/gtc/matrix_transform.hpp
 CMakeFiles/voxel.dir/voxel.cpp.o: /home/emanuel/Documents/glm/glm/gtc/matrix_transform.inl
+CMakeFiles/voxel.dir/voxel.cpp.o: /home/emanuel/Documents/glm/glm/gtc/quaternion.hpp
+CMakeFiles/voxel.dir/voxel.cpp.o: /home/emanuel/Documents/glm/glm/gtx/norm.hpp
+CMakeFiles/voxel.dir/voxel.cpp.o: /home/emanuel/Documents/glm/glm/gtx/norm.inl
+CMakeFiles/voxel.dir/voxel.cpp.o: /home/emanuel/Documents/glm/glm/gtx/quaternion.hpp
+CMakeFiles/voxel.dir/voxel.cpp.o: /home/emanuel/Documents/glm/glm/gtx/quaternion.inl
 CMakeFiles/voxel.dir/voxel.cpp.o: /home/emanuel/Documents/glm/glm/gtx/transform.hpp
 CMakeFiles/voxel.dir/voxel.cpp.o: /home/emanuel/Documents/glm/glm/gtx/transform.inl
 CMakeFiles/voxel.dir/voxel.cpp.o: /home/emanuel/Documents/glm/glm/integer.hpp
