@@ -46,6 +46,7 @@ struct VoxelMap
 		}
 
 		empty_chunk = new Chunk;
+		empty_chunk->SetEmpty();
 	}
 
 	void calculateCollision(glm::vec3 &pos, glm::vec3 &velocity, float &r){
@@ -96,7 +97,7 @@ struct VoxelMap
 									block_copy[xx+cx*Chunk::SIZE  - min_block[0]]
 										[yy+cy*Chunk::SIZE  - min_block[1]]
 										[zz+cz*Chunk::SIZE  - min_block[2]]
-									 = cc->block[xx][yy][zz];
+									 = cc->block[xx][yy][zz].t;
 								}
 							}
 						}
@@ -422,12 +423,31 @@ struct VoxelMap
 		}
 
 		std::cout << "del block "<< xx << ", " << yy << ", " << zz << std::endl;
-		cc->block[xx][yy][zz] = 0;
+		cc->block[xx][yy][zz].t = 0;
 
 		std::cout << "rem model" << std::endl;
-		cc->model->clear(); // reset -> will redo automatically!
-		delete cc->model;
-		cc->model = NULL;
+		cc->clearModel();
+
+		if(xx == 0)
+		{
+			getChunk(c_x-1, c_y, c_z)->clearModel();
+		}else if(xx == Chunk::SIZE-1){
+			getChunk(c_x+1, c_y, c_z)->clearModel();
+		}
+
+		if(yy == 0)
+		{
+			getChunk(c_x, c_y-1, c_z)->clearModel();
+		}else if(yy == Chunk::SIZE-1){
+			getChunk(c_x, c_y+1, c_z)->clearModel();
+		}
+
+		if(zz == 0)
+		{
+			getChunk(c_x, c_y, c_z-1)->clearModel();
+		}else if(zz == Chunk::SIZE-1){
+			getChunk(c_x, c_y, c_z+1)->clearModel();
+		}
 	}
 
 	void blockSet(int (&set_pos)[3], block_t id){
@@ -447,12 +467,31 @@ struct VoxelMap
 		}
 
 		std::cout << "set block "<< xx << ", " << yy << ", " << zz << std::endl;
-		cc->block[xx][yy][zz] = id;
+		cc->block[xx][yy][zz].t = id;
 
 		std::cout << "rem model" << std::endl;
-		cc->model->clear(); // reset -> will redo automatically!
-		delete cc->model;
-		cc->model = NULL;
+		cc->clearModel();
+
+		if(xx == 0)
+		{
+			getChunk(c_x-1, c_y, c_z)->clearModel();
+		}else if(xx == Chunk::SIZE-1){
+			getChunk(c_x+1, c_y, c_z)->clearModel();
+		}
+
+		if(yy == 0)
+		{
+			getChunk(c_x, c_y-1, c_z)->clearModel();
+		}else if(yy == Chunk::SIZE-1){
+			getChunk(c_x, c_y+1, c_z)->clearModel();
+		}
+
+		if(zz == 0)
+		{
+			getChunk(c_x, c_y, c_z-1)->clearModel();
+		}else if(zz == Chunk::SIZE-1){
+			getChunk(c_x, c_y, c_z+1)->clearModel();
+		}
 	}
 
 	void addChunk(Chunk* c){
@@ -482,14 +521,20 @@ struct VoxelMap
 			ChunkPosition pos = it->first;
 
 			if(c->model == NULL && count_model_generations < 2){
-				Chunk* c_zp = getChunk(pos.x, pos.y, pos.z+1);
-				Chunk* c_zm = getChunk(pos.x, pos.y, pos.z-1);
-				Chunk* c_xp = getChunk(pos.x+1, pos.y, pos.z);
-				Chunk* c_xm = getChunk(pos.x-1, pos.y, pos.z);
-				Chunk* c_yp = getChunk(pos.x, pos.y+1, pos.z);
-				Chunk* c_ym = getChunk(pos.x, pos.y-1, pos.z);
+				Chunk* cneighbors[3][3][3];
 
-				c->createModel(c_xp, c_xm, c_yp, c_ym, c_zp, c_zm);
+				for(int xx = -1; xx <2; xx++)
+				{
+					for(int yy = -1; yy <2; yy++)
+					{
+						for(int zz = -1; zz <2; zz++)
+						{
+							cneighbors[1+xx][1+yy][1+zz] = getChunk(pos.x+xx, pos.y+yy, pos.z+zz);
+						}
+					}
+				}
+
+				c->createModel(cneighbors);
 
 				/*
 				int distx = abs(pos.x - (view_pos[0] + 0.5*Chunk::SIZE)/Chunk::SIZE);
