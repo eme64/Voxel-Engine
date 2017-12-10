@@ -15,7 +15,9 @@ struct Camera
 	// position
 	glm::vec3 position = glm::vec3( -5, -5, 1 );
 	glm::vec3 velocity = glm::vec3( 0,0,0 );
-	float radius = 0.4;
+	float radiusx = 0.4;
+	float radiusy = 0.4;
+	float radiusz = 0.8;
 
 	// horizontal angle : toward -Z
 	float horizontalAngle = 2.0f;

@@ -1,7 +1,7 @@
 -------------- TODO -----------------
 
 fix inputs
-lighting
+lighting - fix gl errors, fix neighbourhood, add sunlight?
 
 ------------ COMPLETED --------------
 collision

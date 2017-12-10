@@ -49,19 +49,19 @@ struct VoxelMap
 		empty_chunk->SetEmpty();
 	}
 
-	void calculateCollision(glm::vec3 &pos, glm::vec3 &velocity, float &r){
+	void calculateCollision(glm::vec3 &pos, glm::vec3 &velocity, float &rx, float &ry, float &rz){
 		// v will be updated !
 
 		int min_block[3];
 		int max_block[3];
 
-		min_block[0] = std::min(pos[0], pos[0] + velocity[0])-3.0-r; // make sure to get one boundary each!
-		min_block[1] = std::min(pos[1], pos[1] + velocity[1])-3.0-r;
-		min_block[2] = std::min(pos[2], pos[2] + velocity[2])-3.0-r;
+		min_block[0] = std::min(pos[0], pos[0] + velocity[0])-3.0-rx; // make sure to get one boundary each!
+		min_block[1] = std::min(pos[1], pos[1] + velocity[1])-3.0-ry;
+		min_block[2] = std::min(pos[2], pos[2] + velocity[2])-3.0-rz;
 
-		max_block[0] = std::max(pos[0], pos[0] + velocity[0])+3.0+r;
-		max_block[1] = std::max(pos[1], pos[1] + velocity[1])+3.0+r;
-		max_block[2] = std::max(pos[2], pos[2] + velocity[2])+3.0+r;
+		max_block[0] = std::max(pos[0], pos[0] + velocity[0])+3.0+rx;
+		max_block[1] = std::max(pos[1], pos[1] + velocity[1])+3.0+ry;
+		max_block[2] = std::max(pos[2], pos[2] + velocity[2])+3.0+rz;
 
 		// iterate over corresponding chunks to copy block data:
 
@@ -114,7 +114,7 @@ struct VoxelMap
 		glm::mat4 to_zero = glm::translate(-pos);
 
 		// scale
-		glm::mat4 scale_it = glm::scale(glm::vec3(1.0/r,1.0/r,1.0/r));
+		glm::mat4 scale_it = glm::scale(glm::vec3(1.0/rx,1.0/ry,1.0/rz));
 
 		glm::mat4 do_transform = scale_it * to_zero;
 
@@ -125,9 +125,14 @@ struct VoxelMap
 
 		bool hasCollision = true; // first time must check
 		int interationCounter = 0;
-		while(hasCollision){
+		while(hasCollision && interationCounter < 1000){
 			interationCounter++;
-			if(interationCounter > 2){std::cout << interationCounter << std::endl;}
+			if(interationCounter > 2){
+				std::cout << interationCounter << std::endl;
+				if(interationCounter >= 1000){
+					std::cout << "Collision went on for 1000 Cycles -> Was stopped !" << std::endl;
+				}
+			}
 
 			hasCollision = false; // reset for this round
 			for(int lx = 1; lx < max_block[0]-min_block[0]; lx++){
@@ -533,6 +538,7 @@ struct VoxelMap
 						}
 					}
 				}
+				c->renderLights(cneighbors);
 
 				c->createModel(cneighbors);
 

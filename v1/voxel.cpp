@@ -70,10 +70,12 @@ bool initGraphics(){
 	location = glGetUniformLocation(g_shaderProgram, "lightPos");
 	glUniform4fv(location, 1, lightpos);
 
+/*
 	// Preset some Attributes in case no array is set
 	location = glGetAttribLocation(g_shaderProgram, "normal");
 	assert(location != -1);
 	glVertexAttrib4f(location, 0.0f, 1.0f, 0.0f, 1.0f);
+*/
 
 	location = glGetAttribLocation(g_shaderProgram, "color_in");
 	assert(location != -1);
@@ -111,13 +113,13 @@ bool initGraphics(){
 	init_block_types(6);
 
 	//set_block_type_harmonious(int id, bool solid, int tex_x, int tex_y, int tex_n, lrc[3]);
-	set_block_type_harmonious(0, false, 0, 0, 4, 1.0f,1.0f,1.0f);
+	set_block_type_harmonious(0, false, 0, 0, 4, 1.0f,1.0f,1.0f, glm::vec3(0,0,0));
 
-	set_block_type_harmonious(1, true, 1, 0, 4, 0.0f,1.0f,0.0f);
-	set_block_type_harmonious(2, true, 2, 0, 4, 0.7f,0.5f,0.2f);
-	set_block_type_harmonious(3, true, 3, 0, 4, 0.7f,0.2f,0.2f);
-	set_block_type_harmonious(4, true, 0, 1, 4, 1.0f,1.0f,1.0f);
-	set_block_type_harmonious(5, true, 1, 1, 4, 1.0f,1.0f,1.0f);
+	set_block_type_harmonious(1, true, 1, 0, 4, 0.0f,1.0f,0.0f, glm::vec3(0,0,0));
+	set_block_type_harmonious(2, true, 2, 0, 4, 0.7f,0.5f,0.2f, glm::vec3(0,0,0));
+	set_block_type_harmonious(3, true, 3, 0, 4, 0.7f,0.2f,0.2f, glm::vec3(0,0,0));
+	set_block_type_harmonious(4, true, 0, 1, 4, 1.0f,0.9f,0.2f, glm::vec3(1,1,1));
+	set_block_type_harmonious(5, true, 1, 1, 4, 1.0f,1.0f,1.0f, glm::vec3(0,0,0));
 
 	return true;
 }
@@ -178,7 +180,7 @@ int main() {
 		cam.update_inputs(looking_active, kill_pos, set_pos);
 
 		// call collision here !
-		vmap->calculateCollision(cam.position, cam.velocity, cam.radius);
+		vmap->calculateCollision(cam.position, cam.velocity, cam.radiusx, cam.radiusy, cam.radiusz);
 
 		cam.update_finalize();
 
@@ -187,7 +189,7 @@ int main() {
 		}
 
 		if(EInput::MouseHit(1) && looking_active){
-			vmap->blockSet(set_pos, 1);
+			vmap->blockSet(set_pos, 4);
 		}
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

@@ -10,10 +10,6 @@ struct Block
 	bool solid;
 
 	GLfloat uv[6][4][2]; // face, vertex, uv
-
-	GLfloat low_res_col[3];
-	// used if LOD coarser -> should match texture!
-
 	/*
 	----- face:
 
@@ -22,6 +18,12 @@ struct Block
 	5   bottom
 
 	*/
+
+	GLfloat low_res_col[3];
+	// used if LOD coarser -> should match texture!
+
+	// zero for non lights, some color for lights!
+	glm::vec3 light = glm::vec3(0,0,0);
 };
 
 Block* Block_type; // --------------------- global!
@@ -33,7 +35,8 @@ void init_block_types(int n){
 
 void set_block_type_harmonious(int id, bool solid,
 				int tex_x, int tex_y, int tex_n,
-				GLfloat lrc_r, GLfloat lrc_g, GLfloat lrc_b){
+				GLfloat lrc_r, GLfloat lrc_g, GLfloat lrc_b,
+				glm::vec3 light_emission){
 	// all blockfaces have same texture
 
 	Block_type[id].id = id;
@@ -60,5 +63,7 @@ void set_block_type_harmonious(int id, bool solid,
 		Block_type[id].uv[i][3][0] = x0 + dx;
 		Block_type[id].uv[i][3][1] = y0;
 	}
+	
+	Block_type[id].light = light_emission;
 }
 #endif

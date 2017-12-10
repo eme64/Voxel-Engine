@@ -40,6 +40,10 @@ void displayFunc(const Model& model);
 struct block_data_t
 {
 	block_t t; // type -> see Block id's
+
+	// illumination level of block
+	glm::vec3 col = glm::vec3(0,0,0);
+
 	// space for more attributes
 };
 
@@ -84,6 +88,9 @@ struct Chunk
 	void render();
 
 	void clearModel();
+
+	bool renderLights(Chunk* cneighbors[3][3][3]); // returns true if changes happened -> should repeat and rerender!
+	uint8_t light_direction = 0; // 8 directions
 };
 //block_t Chunk::SIZE;
 
@@ -155,29 +162,23 @@ void Chunk::clearModel()
 	}
 }
 
-//bool Chunk::createModel(Chunk* c_xp, Chunk* c_xm, Chunk* c_yp, Chunk* c_ym, Chunk* c_zp, Chunk* c_zm)
-bool Chunk::createModel(Chunk* cneighbors[3][3][3])
+void copy_chunk_to_data(block_data_t (&data)[Chunk::SIZE+2][Chunk::SIZE+2][Chunk::SIZE+2],
+													Chunk* cneighbors[3][3][3],
+												block_data_t (&block)[Chunk::SIZE][Chunk::SIZE][Chunk::SIZE])
 {
-	if(model != NULL){
-		clearModel();
-	}
-
-	model = new Model; // only allocate if needed
-	model_LOD = 1;
-
-
-	// create data block:
-	block_data_t data[Chunk::SIZE+2][Chunk::SIZE+2][Chunk::SIZE+2];
 	// copy block into it:
 	for(int x=0;x<Chunk::SIZE;x++)
 	{
 		for(int y=0;y<Chunk::SIZE;y++)
 		{
+			/*
 			for(int z=0;z<Chunk::SIZE;z++)
 			{
+
 				data[1+x][1+y][1+z] = cneighbors[1][1][1]->block[x][y][z];
 			}
-			//std::memcpy(&(block[x][y][0]), &(data[x+1][y+1][1]), Chunk::SIZE*sizeof(block_data_t));
+			*/
+			std::memcpy(&(data[x+1][y+1][1]), &(block[x][y][0]), Chunk::SIZE*sizeof(block_data_t));
 		}
 	}
 
@@ -225,6 +226,77 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 			data[Chunk::SIZE+1][    1 + i    ][    1 + h    ] = cneighbors[2][1][1]->block[0            ][        i    ][        h    ];
 		}
 	}
+}
+
+
+bool Chunk::renderLights(Chunk* cneighbors[3][3][3])
+{
+	block_data_t data[Chunk::SIZE+2][Chunk::SIZE+2][Chunk::SIZE+2];
+	copy_chunk_to_data(data, cneighbors, block);
+
+	bool change = false;
+
+	light_direction++;
+	light_direction%=8;
+
+	int xstart;
+	int ystart;
+	int zstart;
+
+	int xstep;
+	int ystep;
+	int zstep;
+
+	if(light_direction%2 == 0){xstart = 0; xstep = 1;}else{xstart = Chunk::SIZE-1; xstep = -1;}
+	if((light_direction/2)%2 == 0){ystart = 0; ystep = 1;}else{ystart = Chunk::SIZE-1; ystep = -1;}
+	if((light_direction/4)%2 == 0){zstart = 0; zstep = 1;}else{zstart = Chunk::SIZE-1; zstep = -1;}
+
+	for(int x=xstart; x>=0 && x<Chunk::SIZE;x+= xstep)
+		for(int y=ystart;y>=0 && y<Chunk::SIZE;y+= ystep)
+			for(int z=zstart;z>=0 && z<Chunk::SIZE;z+= zstep)
+			{
+				int xx = x+1; // used for accessing the data[][][] block.
+				int yy = y+1;
+				int zz = z+1;
+
+				if(Block_type[data[xx][yy][zz].t].solid)
+				{
+					// nothing much, copy block light_emission
+					block[x][y][z].col = Block_type[block[x][y][z].t].light;
+				}else{
+					glm::vec3 old = data[xx][yy][zz].col;
+					glm::vec3 res = glm::max( glm::vec3(0.1,0.1,0.1) ,
+																0.9f * glm::max( glm::max(
+																					glm::max(data[xx-1][yy][zz].col ,  data[xx+1][yy][zz].col),
+																				  glm::max(data[xx][yy-1][zz].col ,  data[xx][yy+1][zz].col)),
+																					glm::max(data[xx][yy][zz-1].col ,  data[xx][yy][zz+1].col)));
+
+					if(change == false || res[0] != old[0] || res[1] != old[1] || res[2] != old[2])
+					{
+						change = true;
+					}
+
+					data[xx][yy][zz].col = res; // for faster propagation
+					block[x][y][z].col = res;
+				}
+			}
+	return change;
+}
+
+//bool Chunk::createModel(Chunk* c_xp, Chunk* c_xm, Chunk* c_yp, Chunk* c_ym, Chunk* c_zp, Chunk* c_zm)
+bool Chunk::createModel(Chunk* cneighbors[3][3][3])
+{
+	if(model != NULL){
+		clearModel();
+	}
+
+	model = new Model; // only allocate if needed
+	model_LOD = 1;
+
+
+	// create data block:
+	block_data_t data[Chunk::SIZE+2][Chunk::SIZE+2][Chunk::SIZE+2];
+	copy_chunk_to_data(data, cneighbors, block);
 
 	//std::cout << "create new model for (" << pos.x << ", "<< pos.y <<", "<< pos.z << ")"<< std::endl;
 
@@ -250,12 +322,16 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 					GLfloat offy = y + 	Chunk::SIZE*pos.y;
 					GLfloat offz = z + 	Chunk::SIZE*pos.z;
 
+
+
 					if(!Block_type[data[xx][yy+1][zz].t].solid){
 						// x1z
-						Vertex x0 = {{offx+0,offy+1,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
-						Vertex x1 = {{offx+1,offy+1,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
-						Vertex x2 = {{offx+0,offy+1,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
-						Vertex x3 = {{offx+1,offy+1,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
+						glm::vec3 baseCol = data[xx][yy+1][zz].col;
+
+						Vertex x0 = {{offx+0,offy+1,offz+0,1}, {baseCol[0], baseCol[1], baseCol[2], 1}, {0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
+						Vertex x1 = {{offx+1,offy+1,offz+1,1}, {baseCol[0], baseCol[1], baseCol[2], 1}, {0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
+						Vertex x2 = {{offx+0,offy+1,offz+1,1}, {baseCol[0], baseCol[1], baseCol[2], 1}, {0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
+						Vertex x3 = {{offx+1,offy+1,offz+0,1}, {baseCol[0], baseCol[1], baseCol[2], 1}, {0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
 
 						int index = vert.size();
 						vert.push_back(x0);
@@ -271,10 +347,12 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 					}
 					if(!Block_type[data[xx][yy-1][zz].t].solid){
 						// x0z
-						Vertex x0 = {{offx+0,offy+0,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
-						Vertex x1 = {{offx+1,offy+0,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
-						Vertex x2 = {{offx+0,offy+0,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
-						Vertex x3 = {{offx+1,offy+0,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
+						glm::vec3 baseCol = data[xx][yy-1][zz].col;
+
+						Vertex x0 = {{offx+0,offy+0,offz+0,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
+						Vertex x1 = {{offx+1,offy+0,offz+1,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
+						Vertex x2 = {{offx+0,offy+0,offz+1,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
+						Vertex x3 = {{offx+1,offy+0,offz+0,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
 
 						int index = vert.size();
 						vert.push_back(x0);
@@ -291,10 +369,12 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 
 					if(!Block_type[data[xx-1][yy][zz].t].solid){
 						// 0yz
-						Vertex x0 = {{offx+0,offy+0,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
-						Vertex x1 = {{offx+0,offy+1,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
-						Vertex x2 = {{offx+0,offy+0,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
-						Vertex x3 = {{offx+0,offy+1,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
+						glm::vec3 baseCol = data[xx-1][yy][zz].col;
+
+						Vertex x0 = {{offx+0,offy+0,offz+0,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
+						Vertex x1 = {{offx+0,offy+1,offz+1,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
+						Vertex x2 = {{offx+0,offy+0,offz+1,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
+						Vertex x3 = {{offx+0,offy+1,offz+0,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
 
 						int index = vert.size();
 						vert.push_back(x0);
@@ -311,10 +391,12 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 
 					if(!Block_type[data[xx+1][yy][zz].t].solid){
 						// 0yz
-						Vertex x0 = {{offx+1,offy+0,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
-						Vertex x1 = {{offx+1,offy+1,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
-						Vertex x2 = {{offx+1,offy+0,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
-						Vertex x3 = {{offx+1,offy+1,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
+						glm::vec3 baseCol = data[xx+1][yy][zz].col;
+
+						Vertex x0 = {{offx+1,offy+0,offz+0,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
+						Vertex x1 = {{offx+1,offy+1,offz+1,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
+						Vertex x2 = {{offx+1,offy+0,offz+1,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
+						Vertex x3 = {{offx+1,offy+1,offz+0,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
 
 						int index = vert.size();
 						vert.push_back(x0);
@@ -331,10 +413,12 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 
 					if(!Block_type[data[xx][yy][zz-1].t].solid){
 						// xy0
-						Vertex x0 = {{offx+0,offy+0,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
-						Vertex x1 = {{offx+1,offy+1,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
-						Vertex x2 = {{offx+0,offy+1,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
-						Vertex x3 = {{offx+1,offy+0,offz+0,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
+						glm::vec3 baseCol = data[xx][yy][zz-1].col;
+
+						Vertex x0 = {{offx+0,offy+0,offz+0,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
+						Vertex x1 = {{offx+1,offy+1,offz+0,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
+						Vertex x2 = {{offx+0,offy+1,offz+0,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
+						Vertex x3 = {{offx+1,offy+0,offz+0,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
 
 						int index = vert.size();
 						vert.push_back(x0);
@@ -351,10 +435,12 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 
 					if(!Block_type[data[xx][yy][zz+1].t].solid){
 						// xy1
-						Vertex x0 = {{offx+0,offy+0,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
-						Vertex x1 = {{offx+1,offy+1,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
-						Vertex x2 = {{offx+0,offy+1,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
-						Vertex x3 = {{offx+1,offy+0,offz+1,1},{1,1,1,1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
+						glm::vec3 baseCol = data[xx][yy][zz+1].col;
+
+						Vertex x0 = {{offx+0,offy+0,offz+1,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
+						Vertex x1 = {{offx+1,offy+1,offz+1,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
+						Vertex x2 = {{offx+0,offy+1,offz+1,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
+						Vertex x3 = {{offx+1,offy+0,offz+1,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
 
 						int index = vert.size();
 						vert.push_back(x0);
