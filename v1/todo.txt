@@ -3,6 +3,12 @@
 fix inputs
 lighting - fix gl errors, fix neighbourhood, add sunlight?
 
+
+------------- IDEAS -----------------
+
+queue chunks to be light-rendered VS set flags, redo all with flag
+if at border update (light, block, ...) -> also signal neighbouring chunk
+
 ------------ COMPLETED --------------
 collision
 fix up chunk rendering
