@@ -155,12 +155,12 @@ struct Camera
 
 				glm::vec3 rel_look_vec = look - position;
 
-				double dist = glm::length(rel_look_vec);
+				float dist = glm::length(rel_look_vec);
 
 				if(dist < 20){
 					looking_active = true;
 
-					glm::vec3 kill_pos_loc = look + 0.01f* glm::normalize(rel_look_vec);
+					glm::vec3 kill_pos_loc = look + (0.01f/dist)* rel_look_vec;
 
 					kill_pos[0] = floor(kill_pos_loc[0]);
 					kill_pos[1] = floor(kill_pos_loc[1]);
@@ -168,7 +168,7 @@ struct Camera
 
 					//std::cout << "[kill] dist: " << dist << ": " << kill_pos[0] << ", " << kill_pos[1] << ", " << kill_pos[2] << std::endl;
 
-					glm::vec3 set_pos_loc = look - 0.01f* glm::normalize(rel_look_vec);
+					glm::vec3 set_pos_loc = look - (0.01f/dist)* rel_look_vec;
 
 					set_pos[0] = floor(set_pos_loc[0]);
 					set_pos[1] = floor(set_pos_loc[1]);

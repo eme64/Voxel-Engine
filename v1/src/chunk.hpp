@@ -89,8 +89,12 @@ struct Chunk
 
 	void clearModel();
 
-	bool renderLights(Chunk* cneighbors[3][3][3]); // returns true if changes happened -> should repeat and rerender!
+	bool new_model_requested = true;
+
+	bool renderLights(Chunk* cneighbors[3][3][3]); // returns true if stable
 	uint8_t light_direction = 0; // 8 directions
+	bool light_is_stable = false;
+	void light_set_zero();
 };
 //block_t Chunk::SIZE;
 
@@ -119,8 +123,12 @@ bool Chunk::SetData(ChunkPosition newpos, FastNoise &noiseObj1, FastNoise &noise
 
 				float locval2 = (noiseObj2.GetNoise(x + pos.x*Chunk::SIZE,y + pos.y*Chunk::SIZE,z + pos.z*Chunk::SIZE)+0.5)*3;
 
-				if(locval1 > 1){
-					block[x][y][z].t = locval2;
+				if(locval1 > 1.2){
+					if(locval2 > 1){
+						block[x][y][z].t = locval2;
+					}else{
+						block[x][y][z].t = 9;
+					}
 				}else{
 					block[x][y][z].t = 0;
 				}
@@ -148,7 +156,10 @@ void Chunk::SetEmpty()
 	for(int x=0;x<Chunk::SIZE;x++)
 		for(int y=0;y<Chunk::SIZE;y++)
 			for(int z=0;z<Chunk::SIZE;z++)
-				block[x][y][z].t = 0;
+				{
+					block[x][y][z].t = 0;
+					block[x][y][z].col = {1,1,1};
+				}
 }
 
 void Chunk::clearModel()
@@ -157,8 +168,6 @@ void Chunk::clearModel()
 		model->clear();
 		delete model;
 		model = NULL;
-
-		std::cout << "kill old mesh" << std::endl;
 	}
 }
 
@@ -228,64 +237,86 @@ void copy_chunk_to_data(block_data_t (&data)[Chunk::SIZE+2][Chunk::SIZE+2][Chunk
 	}
 }
 
+void Chunk::light_set_zero(){
+	light_is_stable = false;
+
+	for(int x=0;x<Chunk::SIZE;x++)
+		for(int y=0;y<Chunk::SIZE;y++)
+			for(int z=0;z<Chunk::SIZE;z++)
+				{
+					block[x][y][z].col = {0,0,0};
+				}
+}
 
 bool Chunk::renderLights(Chunk* cneighbors[3][3][3])
 {
 	block_data_t data[Chunk::SIZE+2][Chunk::SIZE+2][Chunk::SIZE+2];
 	copy_chunk_to_data(data, cneighbors, block);
 
-	bool change = false;
+	bool stable = true;
+	light_is_stable = false;
 
-	light_direction++;
-	light_direction%=8;
+	bool always_was_stable = true;
 
-	int xstart;
-	int ystart;
-	int zstart;
+	for(int cycles = 0; cycles < 8 && light_is_stable==false; cycles++){
+		stable = true;
 
-	int xstep;
-	int ystep;
-	int zstep;
+		light_direction++;
+		light_direction%=8;
 
-	if(light_direction%2 == 0){xstart = 0; xstep = 1;}else{xstart = Chunk::SIZE-1; xstep = -1;}
-	if((light_direction/2)%2 == 0){ystart = 0; ystep = 1;}else{ystart = Chunk::SIZE-1; ystep = -1;}
-	if((light_direction/4)%2 == 0){zstart = 0; zstep = 1;}else{zstart = Chunk::SIZE-1; zstep = -1;}
+		int xstart;
+		int ystart;
+		int zstart;
 
-	for(int x=xstart; x>=0 && x<Chunk::SIZE;x+= xstep)
-		for(int y=ystart;y>=0 && y<Chunk::SIZE;y+= ystep)
-			for(int z=zstart;z>=0 && z<Chunk::SIZE;z+= zstep)
-			{
-				int xx = x+1; // used for accessing the data[][][] block.
-				int yy = y+1;
-				int zz = z+1;
+		int xstep;
+		int ystep;
+		int zstep;
 
-				if(Block_type[data[xx][yy][zz].t].solid)
+		if(light_direction%2 == 0){xstart = 0; xstep = 1;}else{xstart = Chunk::SIZE-1; xstep = -1;}
+		if((light_direction/2)%2 == 0){ystart = 0; ystep = 1;}else{ystart = Chunk::SIZE-1; ystep = -1;}
+		if((light_direction/4)%2 == 0){zstart = 0; zstep = 1;}else{zstart = Chunk::SIZE-1; zstep = -1;}
+
+		for(int x=xstart; x>=0 && x<Chunk::SIZE;x+= xstep)
+			for(int y=ystart;y>=0 && y<Chunk::SIZE;y+= ystep)
+				for(int z=zstart;z>=0 && z<Chunk::SIZE;z+= zstep)
 				{
-					// nothing much, copy block light_emission
-					block[x][y][z].col = Block_type[block[x][y][z].t].light;
-				}else{
-					glm::vec3 old = data[xx][yy][zz].col;
-					glm::vec3 res = glm::max( glm::vec3(0.1,0.1,0.1) ,
-																0.9f * glm::max( glm::max(
-																					glm::max(data[xx-1][yy][zz].col ,  data[xx+1][yy][zz].col),
-																				  glm::max(data[xx][yy-1][zz].col ,  data[xx][yy+1][zz].col)),
-																					glm::max(data[xx][yy][zz-1].col ,  data[xx][yy][zz+1].col)));
+					int xx = x+1; // used for accessing the data[][][] block.
+					int yy = y+1;
+					int zz = z+1;
 
-					if(change == false || res[0] != old[0] || res[1] != old[1] || res[2] != old[2])
+					if(Block_type[data[xx][yy][zz].t].solid)
 					{
-						change = true;
-					}
+						// nothing much, copy block light_emission
+						block[x][y][z].col = Block_type[block[x][y][z].t].light;
+					}else{
+						glm::vec3 old = data[xx][yy][zz].col;
+						glm::vec3 res = glm::max( glm::vec3(0.1,0.1,0.1) ,
+																	0.9f * glm::max( glm::max(
+																						glm::max(data[xx-1][yy][zz].col ,  data[xx+1][yy][zz].col),
+																					  glm::max(data[xx][yy-1][zz].col ,  data[xx][yy+1][zz].col)),
+																						glm::max(data[xx][yy][zz-1].col ,  data[xx][yy][zz+1].col)));
 
-					data[xx][yy][zz].col = res; // for faster propagation
-					block[x][y][z].col = res;
+						if(stable == true && ( res[0] != old[0] || res[1] != old[1] || res[2] != old[2]))
+						{
+							stable = false;
+						}
+
+						data[xx][yy][zz].col = res; // for faster propagation
+						block[x][y][z].col = res;
+					}
 				}
-			}
-	return change;
+
+		light_is_stable = stable;
+
+		always_was_stable = always_was_stable && stable;
+	}
+	return always_was_stable;
 }
 
 //bool Chunk::createModel(Chunk* c_xp, Chunk* c_xm, Chunk* c_yp, Chunk* c_ym, Chunk* c_zp, Chunk* c_zm)
 bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 {
+	new_model_requested = false;
 	if(model != NULL){
 		clearModel();
 	}
@@ -323,15 +354,39 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 					GLfloat offz = z + 	Chunk::SIZE*pos.z;
 
 
+					const float contour_factor = 0.3f;
 
 					if(!Block_type[data[xx][yy+1][zz].t].solid){
 						// x1z
-						glm::vec3 baseCol = data[xx][yy+1][zz].col;
 
-						Vertex x0 = {{offx+0,offy+1,offz+0,1}, {baseCol[0], baseCol[1], baseCol[2], 1}, {0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
-						Vertex x1 = {{offx+1,offy+1,offz+1,1}, {baseCol[0], baseCol[1], baseCol[2], 1}, {0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
-						Vertex x2 = {{offx+0,offy+1,offz+1,1}, {baseCol[0], baseCol[1], baseCol[2], 1}, {0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
-						Vertex x3 = {{offx+1,offy+1,offz+0,1}, {baseCol[0], baseCol[1], baseCol[2], 1}, {0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
+						bool cont_0 =
+										Block_type[data[xx-1][yy+1][zz-1].t].solid
+									||Block_type[data[xx][yy+1][zz-1].t].solid
+									||Block_type[data[xx-1][yy+1][zz].t].solid;
+						glm::vec3 baseCol0 = data[xx][yy+1][zz].col * (1 - contour_factor*cont_0);
+
+						bool cont_1 =
+										Block_type[data[xx+1][yy+1][zz+1].t].solid
+									||Block_type[data[xx][yy+1][zz+1].t].solid
+									||Block_type[data[xx+1][yy+1][zz].t].solid;
+						glm::vec3 baseCol1 = data[xx][yy+1][zz].col * (1 - contour_factor*cont_1);
+
+						bool cont_2 =
+										Block_type[data[xx-1][yy+1][zz+1].t].solid
+									||Block_type[data[xx][yy+1][zz+1].t].solid
+									||Block_type[data[xx-1][yy+1][zz].t].solid;
+						glm::vec3 baseCol2 = data[xx][yy+1][zz].col * (1 - contour_factor*cont_2);
+
+						bool cont_3 =
+										Block_type[data[xx+1][yy+1][zz-1].t].solid
+									||Block_type[data[xx][yy+1][zz-1].t].solid
+									||Block_type[data[xx+1][yy+1][zz].t].solid;
+						glm::vec3 baseCol3 = data[xx][yy+1][zz].col * (1 - contour_factor*cont_3);
+
+						Vertex x0 = {{offx+0,offy+1,offz+0,1}, {baseCol0[0], baseCol0[1], baseCol0[2], 1}, {0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
+						Vertex x1 = {{offx+1,offy+1,offz+1,1}, {baseCol1[0], baseCol1[1], baseCol1[2], 1}, {0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
+						Vertex x2 = {{offx+0,offy+1,offz+1,1}, {baseCol2[0], baseCol2[1], baseCol2[2], 1}, {0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
+						Vertex x3 = {{offx+1,offy+1,offz+0,1}, {baseCol3[0], baseCol3[1], baseCol3[2], 1}, {0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
 
 						int index = vert.size();
 						vert.push_back(x0);
@@ -339,20 +394,51 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 						vert.push_back(x2);
 						vert.push_back(x3);
 
-						Triangle t1 = {index+0, index+2, index+1, {0,0,0}};
-						Triangle t2 = {index+0, index+1, index+3, {0,0,0}};
+						Triangle t1;
+						Triangle t2;
+
+						if((cont_0 || cont_1) && !(cont_2 && cont_3)){
+							Triangle t1 = {index+2, index+1, index+3, {0,0,0}};
+							Triangle t2 = {index+2, index+3, index+0, {0,0,0}};
+						}else{
+							Triangle t1 = {index+0, index+2, index+1, {0,0,0}};
+							Triangle t2 = {index+0, index+1, index+3, {0,0,0}};
+						}
 
 						tria.push_back(t1);
 						tria.push_back(t2);
 					}
 					if(!Block_type[data[xx][yy-1][zz].t].solid){
 						// x0z
-						glm::vec3 baseCol = data[xx][yy-1][zz].col;
 
-						Vertex x0 = {{offx+0,offy+0,offz+0,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
-						Vertex x1 = {{offx+1,offy+0,offz+1,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
-						Vertex x2 = {{offx+0,offy+0,offz+1,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
-						Vertex x3 = {{offx+1,offy+0,offz+0,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
+						bool cont_0 =
+										Block_type[data[xx-1][yy-1][zz-1].t].solid
+									||Block_type[data[xx][yy-1][zz-1].t].solid
+									||Block_type[data[xx-1][yy-1][zz].t].solid;
+						glm::vec3 baseCol0 = data[xx][yy-1][zz].col * (1 - contour_factor*cont_0);
+
+						bool cont_1 =
+										Block_type[data[xx+1][yy-1][zz+1].t].solid
+									||Block_type[data[xx][yy-1][zz+1].t].solid
+									||Block_type[data[xx+1][yy-1][zz].t].solid;
+						glm::vec3 baseCol1 = data[xx][yy-1][zz].col * (1 - contour_factor*cont_1);
+
+						bool cont_2 =
+										Block_type[data[xx-1][yy-1][zz+1].t].solid
+									||Block_type[data[xx][yy-1][zz+1].t].solid
+									||Block_type[data[xx-1][yy-1][zz].t].solid;
+						glm::vec3 baseCol2 = data[xx][yy-1][zz].col * (1 - contour_factor*cont_2);
+
+						bool cont_3 =
+										Block_type[data[xx+1][yy-1][zz-1].t].solid
+									||Block_type[data[xx][yy-1][zz-1].t].solid
+									||Block_type[data[xx+1][yy-1][zz].t].solid;
+						glm::vec3 baseCol3 = data[xx][yy-1][zz].col * (1 - contour_factor*cont_3);
+
+						Vertex x0 = {{offx+0,offy+0,offz+0,1}, {baseCol0[0], baseCol0[1], baseCol0[2], 1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
+						Vertex x1 = {{offx+1,offy+0,offz+1,1}, {baseCol1[0], baseCol1[1], baseCol1[2], 1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
+						Vertex x2 = {{offx+0,offy+0,offz+1,1}, {baseCol2[0], baseCol2[1], baseCol2[2], 1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
+						Vertex x3 = {{offx+1,offy+0,offz+0,1}, {baseCol3[0], baseCol3[1], baseCol3[2], 1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
 
 						int index = vert.size();
 						vert.push_back(x0);
@@ -360,8 +446,16 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 						vert.push_back(x2);
 						vert.push_back(x3);
 
-						Triangle t1 = {index+0, index+1, index+2, {0,0,0}};
-						Triangle t2 = {index+0, index+3, index+1, {0,0,0}};
+						Triangle t1;
+						Triangle t2;
+
+						if((cont_0 || cont_1) && !(cont_2 && cont_3)){
+							Triangle t1 = {index+1, index+2, index+3, {0,0,0}};
+							Triangle t2 = {index+0, index+3, index+2, {0,0,0}};
+						}else{
+							Triangle t1 = {index+0, index+1, index+2, {0,0,0}};
+							Triangle t2 = {index+0, index+3, index+1, {0,0,0}};
+						}
 
 						tria.push_back(t1);
 						tria.push_back(t2);
@@ -369,12 +463,34 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 
 					if(!Block_type[data[xx-1][yy][zz].t].solid){
 						// 0yz
-						glm::vec3 baseCol = data[xx-1][yy][zz].col;
+						bool cont_0 =
+										Block_type[data[xx-1][yy-1][zz-1].t].solid
+									||Block_type[data[xx-1][yy][zz-1].t].solid
+									||Block_type[data[xx-1][yy-1][zz].t].solid;
+						glm::vec3 baseCol0 = data[xx-1][yy][zz].col * (1 - contour_factor*cont_0);
 
-						Vertex x0 = {{offx+0,offy+0,offz+0,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
-						Vertex x1 = {{offx+0,offy+1,offz+1,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
-						Vertex x2 = {{offx+0,offy+0,offz+1,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
-						Vertex x3 = {{offx+0,offy+1,offz+0,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
+						bool cont_1 =
+										Block_type[data[xx-1][yy+1][zz+1].t].solid
+									||Block_type[data[xx-1][yy][zz+1].t].solid
+									||Block_type[data[xx-1][yy+1][zz].t].solid;
+						glm::vec3 baseCol1 = data[xx-1][yy][zz].col * (1 - contour_factor*cont_1);
+
+						bool cont_2 =
+										Block_type[data[xx-1][yy-1][zz+1].t].solid
+									||Block_type[data[xx-1][yy][zz+1].t].solid
+									||Block_type[data[xx-1][yy-1][zz].t].solid;
+						glm::vec3 baseCol2 = data[xx-1][yy][zz].col * (1 - contour_factor*cont_2);
+
+						bool cont_3 =
+										Block_type[data[xx-1][yy+1][zz-1].t].solid
+									||Block_type[data[xx-1][yy][zz-1].t].solid
+									||Block_type[data[xx-1][yy+1][zz].t].solid;
+						glm::vec3 baseCol3 = data[xx-1][yy][zz].col * (1 - contour_factor*cont_3);
+
+						Vertex x0 = {{offx+0,offy+0,offz+0,1}, {baseCol0[0], baseCol0[1], baseCol0[2], 1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
+						Vertex x1 = {{offx+0,offy+1,offz+1,1}, {baseCol1[0], baseCol1[1], baseCol1[2], 1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
+						Vertex x2 = {{offx+0,offy+0,offz+1,1}, {baseCol2[0], baseCol2[1], baseCol2[2], 1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
+						Vertex x3 = {{offx+0,offy+1,offz+0,1}, {baseCol3[0], baseCol3[1], baseCol3[2], 1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
 
 						int index = vert.size();
 						vert.push_back(x0);
@@ -382,21 +498,52 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 						vert.push_back(x2);
 						vert.push_back(x3);
 
-						Triangle t1 = {index+0, index+2, index+1, {0,0,0}};
-						Triangle t2 = {index+0, index+1, index+3, {0,0,0}};
+						Triangle t1;
+						Triangle t2;
+
+						if((cont_0 || cont_1) && !(cont_2 && cont_3)){
+							Triangle t1 = {index+0, index+2, index+3, {0,0,0}};
+							Triangle t2 = {index+2, index+1, index+3, {0,0,0}};
+						}else{
+							Triangle t1 = {index+0, index+2, index+1, {0,0,0}};
+							Triangle t2 = {index+0, index+1, index+3, {0,0,0}};
+						}
+
 
 						tria.push_back(t1);
 						tria.push_back(t2);
 					}
 
 					if(!Block_type[data[xx+1][yy][zz].t].solid){
-						// 0yz
-						glm::vec3 baseCol = data[xx+1][yy][zz].col;
+						// 1yz
+						bool cont_0 =
+										Block_type[data[xx+1][yy-1][zz-1].t].solid
+									||Block_type[data[xx+1][yy][zz-1].t].solid
+									||Block_type[data[xx+1][yy-1][zz].t].solid;
+						glm::vec3 baseCol0 = data[xx+1][yy][zz].col * (1 - contour_factor*cont_0);
 
-						Vertex x0 = {{offx+1,offy+0,offz+0,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
-						Vertex x1 = {{offx+1,offy+1,offz+1,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
-						Vertex x2 = {{offx+1,offy+0,offz+1,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
-						Vertex x3 = {{offx+1,offy+1,offz+0,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
+						bool cont_1 =
+										Block_type[data[xx+1][yy+1][zz+1].t].solid
+									||Block_type[data[xx+1][yy][zz+1].t].solid
+									||Block_type[data[xx+1][yy+1][zz].t].solid;
+						glm::vec3 baseCol1 = data[xx+1][yy][zz].col * (1 - contour_factor*cont_1);
+
+						bool cont_2 =
+										Block_type[data[xx+1][yy-1][zz+1].t].solid
+									||Block_type[data[xx+1][yy][zz+1].t].solid
+									||Block_type[data[xx+1][yy-1][zz].t].solid;
+						glm::vec3 baseCol2 = data[xx+1][yy][zz].col * (1 - contour_factor*cont_2);
+
+						bool cont_3 =
+										Block_type[data[xx+1][yy+1][zz-1].t].solid
+									||Block_type[data[xx+1][yy][zz-1].t].solid
+									||Block_type[data[xx+1][yy+1][zz].t].solid;
+						glm::vec3 baseCol3 = data[xx+1][yy][zz].col * (1 - contour_factor*cont_3);
+
+						Vertex x0 = {{offx+1,offy+0,offz+0,1}, {baseCol0[0], baseCol0[1], baseCol0[2], 1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
+						Vertex x1 = {{offx+1,offy+1,offz+1,1}, {baseCol1[0], baseCol1[1], baseCol1[2], 1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
+						Vertex x2 = {{offx+1,offy+0,offz+1,1}, {baseCol2[0], baseCol2[1], baseCol2[2], 1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
+						Vertex x3 = {{offx+1,offy+1,offz+0,1}, {baseCol3[0], baseCol3[1], baseCol3[2], 1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
 
 						int index = vert.size();
 						vert.push_back(x0);
@@ -404,8 +551,17 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 						vert.push_back(x2);
 						vert.push_back(x3);
 
-						Triangle t1 = {index+0, index+1, index+2, {0,0,0}};
-						Triangle t2 = {index+0, index+3, index+1, {0,0,0}};
+
+						Triangle t1;
+						Triangle t2;
+
+						if((cont_0 || cont_1) && !(cont_2 && cont_3)){
+							Triangle t1 = {index+0, index+3, index+2, {0,0,0}};
+							Triangle t2 = {index+2, index+3, index+1, {0,0,0}};
+						}else{
+							Triangle t1 = {index+0, index+1, index+2, {0,0,0}};
+							Triangle t2 = {index+0, index+3, index+1, {0,0,0}};
+						}
 
 						tria.push_back(t1);
 						tria.push_back(t2);
@@ -413,12 +569,34 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 
 					if(!Block_type[data[xx][yy][zz-1].t].solid){
 						// xy0
-						glm::vec3 baseCol = data[xx][yy][zz-1].col;
+						bool cont_0 =
+										Block_type[data[xx-1][yy-1][zz-1].t].solid
+									||Block_type[data[xx-1][yy][zz-1].t].solid
+									||Block_type[data[xx][yy-1][zz-1].t].solid;
+						glm::vec3 baseCol0 = data[xx][yy][zz-1].col * (1 - contour_factor*cont_0);
 
-						Vertex x0 = {{offx+0,offy+0,offz+0,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
-						Vertex x1 = {{offx+1,offy+1,offz+0,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
-						Vertex x2 = {{offx+0,offy+1,offz+0,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
-						Vertex x3 = {{offx+1,offy+0,offz+0,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
+						bool cont_1 =
+										Block_type[data[xx+1][yy+1][zz-1].t].solid
+									||Block_type[data[xx+1][yy][zz-1].t].solid
+									||Block_type[data[xx][yy+1][zz-1].t].solid;
+						glm::vec3 baseCol1 = data[xx][yy][zz-1].col * (1 - contour_factor*cont_1);
+
+						bool cont_2 =
+										Block_type[data[xx-1][yy+1][zz-1].t].solid
+									||Block_type[data[xx-1][yy][zz-1].t].solid
+									||Block_type[data[xx][yy+1][zz-1].t].solid;
+						glm::vec3 baseCol2 = data[xx][yy][zz-1].col * (1 - contour_factor*cont_2);
+
+						bool cont_3 =
+										Block_type[data[xx+1][yy-1][zz-1].t].solid
+									||Block_type[data[xx+1][yy][zz-1].t].solid
+									||Block_type[data[xx][yy-1][zz-1].t].solid;
+						glm::vec3 baseCol3 = data[xx][yy][zz-1].col * (1 - contour_factor*cont_3);
+
+						Vertex x0 = {{offx+0,offy+0,offz+0,1}, {baseCol0[0], baseCol0[1], baseCol0[2], 1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
+						Vertex x1 = {{offx+1,offy+1,offz+0,1}, {baseCol1[0], baseCol1[1], baseCol1[2], 1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
+						Vertex x2 = {{offx+0,offy+1,offz+0,1}, {baseCol2[0], baseCol2[1], baseCol2[2], 1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
+						Vertex x3 = {{offx+1,offy+0,offz+0,1}, {baseCol3[0], baseCol3[1], baseCol3[2], 1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
 
 						int index = vert.size();
 						vert.push_back(x0);
@@ -426,8 +604,17 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 						vert.push_back(x2);
 						vert.push_back(x3);
 
-						Triangle t1 = {index+0, index+2, index+1, {0,0,0}};
-						Triangle t2 = {index+0, index+1, index+3, {0,0,0}};
+
+						Triangle t1;
+						Triangle t2;
+
+						if((cont_0 || cont_1) && !(cont_2 && cont_3)){
+							Triangle t1 = {index+0, index+2, index+3, {0,0,0}};
+							Triangle t2 = {index+2, index+1, index+3, {0,0,0}};
+						}else{
+							Triangle t1 = {index+0, index+2, index+1, {0,0,0}};
+							Triangle t2 = {index+0, index+1, index+3, {0,0,0}};
+						}
 
 						tria.push_back(t1);
 						tria.push_back(t2);
@@ -435,12 +622,34 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 
 					if(!Block_type[data[xx][yy][zz+1].t].solid){
 						// xy1
-						glm::vec3 baseCol = data[xx][yy][zz+1].col;
+						bool cont_0 =
+										Block_type[data[xx-1][yy-1][zz+1].t].solid
+									||Block_type[data[xx-1][yy][zz+1].t].solid
+									||Block_type[data[xx][yy-1][zz+1].t].solid;
+						glm::vec3 baseCol0 = data[xx][yy][zz+1].col * (1 - contour_factor*cont_0);
 
-						Vertex x0 = {{offx+0,offy+0,offz+1,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
-						Vertex x1 = {{offx+1,offy+1,offz+1,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
-						Vertex x2 = {{offx+0,offy+1,offz+1,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
-						Vertex x3 = {{offx+1,offy+0,offz+1,1}, {baseCol[0], baseCol[1], baseCol[2], 1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
+						bool cont_1 =
+										Block_type[data[xx+1][yy+1][zz+1].t].solid
+									||Block_type[data[xx+1][yy][zz+1].t].solid
+									||Block_type[data[xx][yy+1][zz+1].t].solid;
+						glm::vec3 baseCol1 = data[xx][yy][zz+1].col * (1 - contour_factor*cont_1);
+
+						bool cont_2 =
+										Block_type[data[xx-1][yy+1][zz+1].t].solid
+									||Block_type[data[xx-1][yy][zz+1].t].solid
+									||Block_type[data[xx][yy+1][zz+1].t].solid;
+						glm::vec3 baseCol2 = data[xx][yy][zz+1].col * (1 - contour_factor*cont_2);
+
+						bool cont_3 =
+										Block_type[data[xx+1][yy-1][zz+1].t].solid
+									||Block_type[data[xx+1][yy][zz+1].t].solid
+									||Block_type[data[xx][yy-1][zz+1].t].solid;
+						glm::vec3 baseCol3 = data[xx][yy][zz+1].col * (1 - contour_factor*cont_3);
+
+						Vertex x0 = {{offx+0,offy+0,offz+1,1}, {baseCol0[0], baseCol0[1], baseCol0[2], 1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
+						Vertex x1 = {{offx+1,offy+1,offz+1,1}, {baseCol1[0], baseCol1[1], baseCol1[2], 1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
+						Vertex x2 = {{offx+0,offy+1,offz+1,1}, {baseCol2[0], baseCol2[1], baseCol2[2], 1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
+						Vertex x3 = {{offx+1,offy+0,offz+1,1}, {baseCol3[0], baseCol3[1], baseCol3[2], 1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
 
 						int index = vert.size();
 						vert.push_back(x0);
@@ -448,8 +657,16 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 						vert.push_back(x2);
 						vert.push_back(x3);
 
-						Triangle t1 = {index+0, index+1, index+2, {0,0,0}};
-						Triangle t2 = {index+0, index+3, index+1, {0,0,0}};
+						Triangle t1;
+						Triangle t2;
+
+						if((cont_0 || cont_1) && !(cont_2 && cont_3)){
+							Triangle t1 = {index+0, index+3, index+2, {0,0,0}};
+							Triangle t2 = {index+2, index+3, index+1, {0,0,0}};
+						}else{
+							Triangle t1 = {index+0, index+1, index+2, {0,0,0}};
+							Triangle t2 = {index+0, index+3, index+1, {0,0,0}};
+						}
 
 						tria.push_back(t1);
 						tria.push_back(t2);
@@ -557,11 +774,12 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 	glVertexAttribPointer(location, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, color));
 	glEnableVertexAttribArray(location);
 
+/*
 	// load normal
 	location = glGetAttribLocation(g_shaderProgram, "normal");
 	glVertexAttribPointer(location, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, normal));
 	glEnableVertexAttribArray(location);
-
+*/
 	// load uv
 	location = glGetAttribLocation(g_shaderProgram, "vertexUV");
 	glVertexAttribPointer(location, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, uv));

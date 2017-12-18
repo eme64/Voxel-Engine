@@ -1,8 +1,8 @@
 -------------- TODO -----------------
 
 fix inputs
-lighting - fix gl errors, fix neighbourhood, add sunlight?
-
+lighting - render with a queue? remember who already in?
+smooth lighting
 
 ------------- IDEAS -----------------
 

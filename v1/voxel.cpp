@@ -110,7 +110,7 @@ bool initGraphics(){
 	stbi_image_free(data);
 
 	// init block types -> texture mappings
-	init_block_types(6);
+	init_block_types(16);
 
 	//set_block_type_harmonious(int id, bool solid, int tex_x, int tex_y, int tex_n, lrc[3]);
 	set_block_type_harmonious(0, false, 0, 0, 4, 1.0f,1.0f,1.0f, glm::vec3(0,0,0));
@@ -118,15 +118,20 @@ bool initGraphics(){
 	set_block_type_harmonious(1, true, 1, 0, 4, 0.0f,1.0f,0.0f, glm::vec3(0,0,0));
 	set_block_type_harmonious(2, true, 2, 0, 4, 0.7f,0.5f,0.2f, glm::vec3(0,0,0));
 	set_block_type_harmonious(3, true, 3, 0, 4, 0.7f,0.2f,0.2f, glm::vec3(0,0,0));
-	set_block_type_harmonious(4, true, 0, 1, 4, 1.0f,0.9f,0.2f, glm::vec3(1,1,1));
-	set_block_type_harmonious(5, true, 1, 1, 4, 1.0f,1.0f,1.0f, glm::vec3(0,0,0));
+
+	set_block_type_harmonious(4, true, 0, 1, 4, 1.0f,0.8f,0.3f, glm::vec3(1.0f,0.8f,0.3f));
+	set_block_type_harmonious(5, true, 1, 1, 4, 1.0f,0.3f,0.3f, glm::vec3(1.0f,0.3f,0.3f));
+	set_block_type_harmonious(6, true, 2, 1, 4, 0.4f,0.5f,1.0f, glm::vec3(0.4f,0.5f,1.0f));
+	set_block_type_harmonious(7, true, 3, 1, 4, 1.0f,1.0f,1.0f, glm::vec3(1.0f,1.0f,1.0f));
+	set_block_type_harmonious(8, true, 0, 2, 4, 1.0f,0.3f,1.0f, glm::vec3(1.0f,0.1f,1.0f));
+
+	set_block_type_harmonious(9, true, 1, 2, 4, 1.0f,1.0f,1.0f, glm::vec3(0,0,0));
 
 	return true;
 }
 
 
 int main() {
-
 	glfwInit();
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -155,7 +160,7 @@ int main() {
 	cam.init(window); // after window opened!
 
 	// genererate map
-	VoxelMap *vmap = new VoxelMap(10,10,5);
+	VoxelMap *vmap = new VoxelMap(10,10,5); // 10,10,5
 
 
 	// ------ background-buffer -> triangles rightly ordered/drawn.
@@ -169,6 +174,10 @@ int main() {
 
 	// ------ background color
 	glClearColor(0.2f, 0.1f, 0.1f, 1.0f);
+
+	block_t blockSetId = 4;
+
+	std::cout << "start game..." << std::endl;
 
 	while(!glfwWindowShouldClose(window))
 	{
@@ -188,8 +197,24 @@ int main() {
 			vmap->blockKill(kill_pos);
 		}
 
+
+		if (glfwGetKey(window, GLFW_KEY_1 ) == GLFW_PRESS){blockSetId = 1;}
+		if (glfwGetKey(window, GLFW_KEY_2 ) == GLFW_PRESS){blockSetId = 2;}
+		if (glfwGetKey(window, GLFW_KEY_3 ) == GLFW_PRESS){blockSetId = 3;}
+
+		if (glfwGetKey(window, GLFW_KEY_4 ) == GLFW_PRESS){blockSetId = 4;}
+		if (glfwGetKey(window, GLFW_KEY_5 ) == GLFW_PRESS){blockSetId = 5;}
+		if (glfwGetKey(window, GLFW_KEY_6 ) == GLFW_PRESS){blockSetId = 6;}
+		if (glfwGetKey(window, GLFW_KEY_7 ) == GLFW_PRESS){blockSetId = 7;}
+		if (glfwGetKey(window, GLFW_KEY_8 ) == GLFW_PRESS){blockSetId = 8;}
+
+		if (glfwGetKey(window, GLFW_KEY_9 ) == GLFW_PRESS){blockSetId = 9;}
+
+		if (glfwGetKey(window, GLFW_KEY_F1 ) == GLFW_PRESS){glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );}
+		if (glfwGetKey(window, GLFW_KEY_F2 ) == GLFW_PRESS){glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );}
+
 		if(EInput::MouseHit(1) && looking_active){
-			vmap->blockSet(set_pos, 4);
+			vmap->blockSet(set_pos, blockSetId);
 		}
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

@@ -428,30 +428,111 @@ struct VoxelMap
 		}
 
 		std::cout << "del block "<< xx << ", " << yy << ", " << zz << std::endl;
+
+		block_t old_id = cc->block[xx][yy][zz].t;
 		cc->block[xx][yy][zz].t = 0;
 
-		std::cout << "rem model" << std::endl;
-		cc->clearModel();
+		cc->new_model_requested = true;
+
+		glm::vec3 emit_light_old = Block_type[old_id].light;
+		if(emit_light_old[0] > 0 && emit_light_old[1] > 0 && emit_light_old[2] > 0){
+			// kill a light -> reset light levels in perimiter
+			kill_lights_perimiter(kill_pos);
+		}else{
+			// kill a normal block -> do nothing
+		}
 
 		if(xx == 0)
 		{
-			getChunk(c_x-1, c_y, c_z)->clearModel();
+			getChunk(c_x-1, c_y, c_z)->new_model_requested = true;
 		}else if(xx == Chunk::SIZE-1){
-			getChunk(c_x+1, c_y, c_z)->clearModel();
+			getChunk(c_x+1, c_y, c_z)->new_model_requested = true;
 		}
 
 		if(yy == 0)
 		{
-			getChunk(c_x, c_y-1, c_z)->clearModel();
+			getChunk(c_x, c_y-1, c_z)->new_model_requested = true;
 		}else if(yy == Chunk::SIZE-1){
-			getChunk(c_x, c_y+1, c_z)->clearModel();
+			getChunk(c_x, c_y+1, c_z)->new_model_requested = true;
 		}
 
 		if(zz == 0)
 		{
-			getChunk(c_x, c_y, c_z-1)->clearModel();
+			getChunk(c_x, c_y, c_z-1)->new_model_requested = true;
 		}else if(zz == Chunk::SIZE-1){
-			getChunk(c_x, c_y, c_z+1)->clearModel();
+			getChunk(c_x, c_y, c_z+1)->new_model_requested = true;
+		}
+	}
+
+	void kill_lights_perimiter(int (&kill_pos)[3]){
+		//std::cout << "kill lights" << std::endl;
+
+		const int radius = 20;
+
+		int c_x0 = floor(((float)kill_pos[0]-radius) / (float)Chunk::SIZE);
+		int c_y0 = floor(((float)kill_pos[1]-radius) / (float)Chunk::SIZE);
+		int c_z0 = floor(((float)kill_pos[2]-radius) / (float)Chunk::SIZE);
+
+		int c_xc = floor(((float)kill_pos[0]) / (float)Chunk::SIZE);
+		int c_yc = floor(((float)kill_pos[1]) / (float)Chunk::SIZE);
+		int c_zc = floor(((float)kill_pos[2]) / (float)Chunk::SIZE);
+
+		int c_x1 = floor(((float)kill_pos[0]+radius) / (float)Chunk::SIZE);
+		int c_y1 = floor(((float)kill_pos[1]+radius) / (float)Chunk::SIZE);
+		int c_z1 = floor(((float)kill_pos[2]+radius) / (float)Chunk::SIZE);
+
+		int maxdist = std::max((c_xc-c_x0), (c_x1-c_xc)) + std::max((c_yc-c_y0), (c_y1-c_yc)) + std::max((c_zc-c_z0), (c_z1-c_zc));
+		//std::cout << "## maxdist: " << maxdist << std::endl;
+
+		// create lists for each distance
+		Chunk* dist_lists[maxdist+1][16*maxdist*maxdist];
+		int dist_list_counter[maxdist+1];
+		for(int i=0; i<= maxdist; i++){dist_list_counter[i] = 0;}
+
+		// set all to zero and add them to right dist_list
+		for(int xx=c_x0; xx <= c_x1; xx++){
+			for(int yy=c_y0; yy <= c_y1; yy++){
+				for(int zz=c_z0; zz <= c_z1; zz++){
+					Chunk* cc = getChunk(xx, yy, zz);
+
+					if(cc != empty_chunk){
+						cc->light_set_zero();
+
+						int locdist = std::abs(c_xc - xx) + std::abs(c_yc - yy) + std::abs(c_zc - zz);
+
+						//std::cout << "d: " << locdist << " c: " << dist_list_counter[locdist] << std::endl;
+						assert(dist_list_counter[locdist]+1 < 16*maxdist*maxdist);
+
+						dist_lists[locdist][dist_list_counter[locdist]] = cc;
+						dist_list_counter[locdist]++;
+
+
+
+
+					}
+				}
+			}
+		}
+
+		// run light update quietly on all
+		for(int i=0; i<= maxdist; i++){
+			//std::cout << "layer " << i << " counting " << dist_list_counter[i] << std::endl;
+
+			for(int j=0; j<dist_list_counter[i]; j++){
+
+				Chunk* cneighbors[3][3][3];
+				int pos_x = dist_lists[i][j]->pos.x;
+				int pos_y = dist_lists[i][j]->pos.y;
+				int pos_z = dist_lists[i][j]->pos.z;
+
+
+				for(int xx = -1; xx <2; xx++)
+					for(int yy = -1; yy <2; yy++)
+						for(int zz = -1; zz <2; zz++)
+							cneighbors[1+xx][1+yy][1+zz] = getChunk(pos_x+xx, pos_y+yy, pos_z+zz);
+
+				dist_lists[i][j]->renderLights(cneighbors);
+			}
 		}
 	}
 
@@ -474,28 +555,35 @@ struct VoxelMap
 		std::cout << "set block "<< xx << ", " << yy << ", " << zz << std::endl;
 		cc->block[xx][yy][zz].t = id;
 
-		std::cout << "rem model" << std::endl;
-		cc->clearModel();
+		cc->new_model_requested = true;
+
+		glm::vec3 emit_light = Block_type[id].light;
+		if(emit_light[0] > 0 && emit_light[1] > 0 && emit_light[2] > 0){
+			// set a light -> do nothing
+		}else{
+			// set a non-light -> reset light levels in perimiter
+			kill_lights_perimiter(set_pos);
+		}
 
 		if(xx == 0)
 		{
-			getChunk(c_x-1, c_y, c_z)->clearModel();
+			getChunk(c_x-1, c_y, c_z)->new_model_requested = true;
 		}else if(xx == Chunk::SIZE-1){
-			getChunk(c_x+1, c_y, c_z)->clearModel();
+			getChunk(c_x+1, c_y, c_z)->new_model_requested = true;
 		}
 
 		if(yy == 0)
 		{
-			getChunk(c_x, c_y-1, c_z)->clearModel();
+			getChunk(c_x, c_y-1, c_z)->new_model_requested = true;
 		}else if(yy == Chunk::SIZE-1){
-			getChunk(c_x, c_y+1, c_z)->clearModel();
+			getChunk(c_x, c_y+1, c_z)->new_model_requested = true;
 		}
 
 		if(zz == 0)
 		{
-			getChunk(c_x, c_y, c_z-1)->clearModel();
+			getChunk(c_x, c_y, c_z-1)->new_model_requested = true;
 		}else if(zz == Chunk::SIZE-1){
-			getChunk(c_x, c_y, c_z+1)->clearModel();
+			getChunk(c_x, c_y, c_z+1)->new_model_requested = true;
 		}
 	}
 
@@ -525,46 +613,43 @@ struct VoxelMap
 			Chunk* c = it->second;
 			ChunkPosition pos = it->first;
 
-			if(c->model == NULL && count_model_generations < 2){
+			if((c->model == NULL || !c->light_is_stable || c->new_model_requested) && count_model_generations < 20){
 				Chunk* cneighbors[3][3][3];
 
+
+
 				for(int xx = -1; xx <2; xx++)
-				{
 					for(int yy = -1; yy <2; yy++)
-					{
 						for(int zz = -1; zz <2; zz++)
-						{
 							cneighbors[1+xx][1+yy][1+zz] = getChunk(pos.x+xx, pos.y+yy, pos.z+zz);
-						}
-					}
-				}
-				c->renderLights(cneighbors);
 
-				c->createModel(cneighbors);
+				if(c->renderLights(cneighbors)){
+					// stable
+					//std::cout << "## light now stable" << std::endl;
 
-				/*
-				int distx = abs(pos.x - (view_pos[0] + 0.5*Chunk::SIZE)/Chunk::SIZE);
-				int disty = abs(pos.y - (view_pos[1] + 0.5*Chunk::SIZE)/Chunk::SIZE);
-				int distz = abs(pos.z - (view_pos[2] + 0.5*Chunk::SIZE)/Chunk::SIZE);
-
-				int dist = std::max(distx, std::max(disty, distz));
-
-				if(dist < 2){
-					c->createModel(c_xp, c_xm, c_yp, c_ym, c_zp, c_zm);
-				}else if(dist < 4){
-					c->createModel_LOD(c_xp, c_xm, c_yp, c_ym, c_zp, c_zm,2);
+					c->new_model_requested = true;
 				}else{
-					c->createModel_LOD(c_xp, c_xm, c_yp, c_ym, c_zp, c_zm,4);
+					// unstable
+					//std::cout << "# light unstable" << std::endl;
+
+					//c->new_model_requested = false; // because need redo lights anyway !
+
+					for(int xx = -1; xx <2; xx++)
+						for(int yy = -1; yy <2; yy++)
+							for(int zz = -1; zz <2; zz++)
+								if(cneighbors[1+xx][1+yy][1+zz]!=NULL){cneighbors[1+xx][1+yy][1+zz]->light_is_stable = false;}
 				}
-				*/
+
+				if(c->new_model_requested && c->light_is_stable){c->createModel(cneighbors);}
+
 				count_model_generations++;
 
-				c->render();
-			}else if(c->model != NULL){
-				c->render();
+				//c->render();
 			}
 
-
+			if(c->model != NULL){
+				c->render();
+			}
 		}
 	}
 };
