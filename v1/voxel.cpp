@@ -36,8 +36,8 @@
 #include "src/stb_image.c"
 
 // ------------------------------ GLOBAL VARIABLES
-int g_Screen_x = 1024;
-int g_Screen_y = 800;
+int g_Screen_x = 1920;//1024;
+int g_Screen_y = 1024; //800;
 
 // Handle of shader program which defines the material of our object
 GLuint g_shaderProgram = 0;

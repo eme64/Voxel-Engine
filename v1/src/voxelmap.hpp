@@ -2,6 +2,8 @@
 #define __VOXELMAP_H_DEFINED__
 // dependencies:
 #include <map>
+#include <deque>
+#include <time.h>
 
 #include "FastNoise/FastNoise.h"
 //https://github.com/Auburns/FastNoise/wiki
@@ -15,10 +17,15 @@ struct VoxelMap;
 
 // definitions below:
 typedef std::map<ChunkPosition, Chunk*, cmpByChunkPosition> chunkMap_t;
+typedef std::deque<Chunk*> chunkDeque_t;
+
 struct VoxelMap
 {
 	// keeps pointers to chunks:
 	chunkMap_t map;
+
+	// keeps chunks to be rendered:
+	chunkDeque_t deque;
 
 	FastNoise myNoise1;
 	FastNoise myNoise2;
@@ -467,16 +474,37 @@ struct VoxelMap
 	void kill_lights_perimiter(int (&kill_pos)[3]){
 		//std::cout << "kill lights" << std::endl;
 
-		const int radius = 30;
-
-		int c_x0 = floor(((float)kill_pos[0]-radius) / (float)Chunk::SIZE);
-		int c_y0 = floor(((float)kill_pos[1]-radius) / (float)Chunk::SIZE);
-		int c_z0 = floor(((float)kill_pos[2]-radius) / (float)Chunk::SIZE);
+		clock_t startTime = clock();
 
 		int c_xc = floor(((float)kill_pos[0]) / (float)Chunk::SIZE);
 		int c_yc = floor(((float)kill_pos[1]) / (float)Chunk::SIZE);
 		int c_zc = floor(((float)kill_pos[2]) / (float)Chunk::SIZE);
 
+		Chunk* cc = getChunk(c_xc, c_yc, c_zc);
+
+		cc->light_set_zero();
+
+		Chunk* cneighbors[3][3][3];
+
+		for(int xx = -1; xx <2; xx++)
+			for(int yy = -1; yy <2; yy++)
+				for(int zz = -1; zz <2; zz++)
+					cneighbors[1+xx][1+yy][1+zz] = getChunk(c_xc+xx, c_yc+yy, c_zc+zz);
+
+		cc->renderLights(cneighbors);
+
+		const int radius = 20;
+
+
+		int c_x0 = floor(((float)kill_pos[0]-radius) / (float)Chunk::SIZE);
+		int c_y0 = floor(((float)kill_pos[1]-radius) / (float)Chunk::SIZE);
+		int c_z0 = floor(((float)kill_pos[2]-radius) / (float)Chunk::SIZE);
+
+		/*
+		int c_xc = floor(((float)kill_pos[0]) / (float)Chunk::SIZE);
+		int c_yc = floor(((float)kill_pos[1]) / (float)Chunk::SIZE);
+		int c_zc = floor(((float)kill_pos[2]) / (float)Chunk::SIZE);
+		*/
 		int c_x1 = floor(((float)kill_pos[0]+radius) / (float)Chunk::SIZE);
 		int c_y1 = floor(((float)kill_pos[1]+radius) / (float)Chunk::SIZE);
 		int c_z1 = floor(((float)kill_pos[2]+radius) / (float)Chunk::SIZE);
@@ -496,7 +524,7 @@ struct VoxelMap
 					Chunk* cc = getChunk(xx, yy, zz);
 
 					if(cc != empty_chunk){
-						cc->light_set_zero();
+						//cc->light_set_zero();
 
 						int locdist = std::abs(c_xc - xx) + std::abs(c_yc - yy) + std::abs(c_zc - zz);
 
@@ -505,10 +533,6 @@ struct VoxelMap
 
 						dist_lists[locdist][dist_list_counter[locdist]] = cc;
 						dist_list_counter[locdist]++;
-
-
-
-
 					}
 				}
 			}
@@ -526,14 +550,21 @@ struct VoxelMap
 				int pos_z = dist_lists[i][j]->pos.z;
 
 
-				for(int xx = -1; xx <2; xx++)
-					for(int yy = -1; yy <2; yy++)
-						for(int zz = -1; zz <2; zz++)
-							cneighbors[1+xx][1+yy][1+zz] = getChunk(pos_x+xx, pos_y+yy, pos_z+zz);
+				// for(int xx = -1; xx <2; xx++)
+				// 	for(int yy = -1; yy <2; yy++)
+				// 		for(int zz = -1; zz <2; zz++)
+				// 			cneighbors[1+xx][1+yy][1+zz] = getChunk(pos_x+xx, pos_y+yy, pos_z+zz);
+        //
+				// dist_lists[i][j]->renderLights(cneighbors);
 
-				dist_lists[i][j]->renderLights(cneighbors);
+				if(!dist_lists[i][j]->is_in_queue){
+					deque.push_back(dist_lists[i][j]);
+					dist_lists[i][j]->is_in_queue = true;
+				}
 			}
 		}
+
+		std::cout << "Lighting Time: " << (double)(clock() - startTime)/(double)CLOCKS_PER_SEC << " vs " << 1.0/60.0<< std::endl;
 	}
 
 	void blockSet(int (&set_pos)[3], block_t id){
@@ -560,6 +591,7 @@ struct VoxelMap
 		glm::vec3 emit_light = Block_type[id].light;
 		if(emit_light[0] > 0 && emit_light[1] > 0 && emit_light[2] > 0){
 			// set a light -> do nothing
+			cc->light_is_stable = false;
 		}else{
 			// set a non-light -> reset light levels in perimiter
 			kill_lights_perimiter(set_pos);
@@ -604,47 +636,58 @@ struct VoxelMap
 	}
 
 	void render(glm::vec3 &view_pos){
-		std::map<ChunkPosition, Chunk*>::iterator it;
+		// ------------------------------------ go through render queue:
 
-		int count_model_generations = 0;
+		clock_t startTime = clock();
+
+		int count = 0;
+
+
+		while((clock() - startTime)/(double)CLOCKS_PER_SEC < 0.03 && !deque.empty()){
+			Chunk* c = deque.front();
+			deque.pop_front();
+			c->is_in_queue = false;
+
+			Chunk* cneighbors[3][3][3];
+
+			for(int xx = -1; xx <2; xx++)
+				for(int yy = -1; yy <2; yy++)
+					for(int zz = -1; zz <2; zz++)
+						cneighbors[1+xx][1+yy][1+zz] = getChunk(c->pos.x+xx, c->pos.y+yy, c->pos.z+zz);
+
+			if(c->renderLights(cneighbors)){
+				// stable
+				c->new_model_requested = true;
+			}else{
+				deque.push_back(c);
+				c->is_in_queue = true;
+			}
+
+			if(c->new_model_requested && c->light_is_stable){c->createModel(cneighbors);}
+
+			count++;
+		}
+
+		if(count > 0){
+			std::cout << "rendered: " << count << std::endl;
+		}
+
+
+		// ------------------------------------ render all the chunks in perimiter:
+		std::map<ChunkPosition, Chunk*>::iterator it;
 
 		for (it=map.begin(); it!=map.end(); ++it)
 		{
 			Chunk* c = it->second;
 			ChunkPosition pos = it->first;
 
-			if((c->model == NULL || !c->light_is_stable || c->new_model_requested) && count_model_generations < 20){
-				Chunk* cneighbors[3][3][3];
+			if((c->model == NULL || !c->light_is_stable || c->new_model_requested)){
+				// add to deque:
 
-
-
-				for(int xx = -1; xx <2; xx++)
-					for(int yy = -1; yy <2; yy++)
-						for(int zz = -1; zz <2; zz++)
-							cneighbors[1+xx][1+yy][1+zz] = getChunk(pos.x+xx, pos.y+yy, pos.z+zz);
-
-				if(c->renderLights(cneighbors)){
-					// stable
-					//std::cout << "## light now stable" << std::endl;
-
-					c->new_model_requested = true;
-				}else{
-					// unstable
-					//std::cout << "# light unstable" << std::endl;
-
-					//c->new_model_requested = false; // because need redo lights anyway !
-
-					for(int xx = -1; xx <2; xx++)
-						for(int yy = -1; yy <2; yy++)
-							for(int zz = -1; zz <2; zz++)
-								if(cneighbors[1+xx][1+yy][1+zz]!=NULL){cneighbors[1+xx][1+yy][1+zz]->light_is_stable = false;}
+				if(!c->is_in_queue){
+					deque.push_back(c);
+					c->is_in_queue = true;
 				}
-
-				if(c->new_model_requested && c->light_is_stable){c->createModel(cneighbors);}
-
-				count_model_generations++;
-
-				//c->render();
 			}
 
 			if(c->model != NULL){

@@ -1,6 +1,7 @@
 -------------- TODO -----------------
 
-lighting - render with a queue? remember who already in?
+navigation modes, shift head in body
+some render bugs need to be fixed...
 
 ------------- IDEAS -----------------
 

@@ -24,7 +24,7 @@ struct Camera
 	// vertical angle : 0, look at the horizon
 	float verticalAngle = 0.0f;
 	// Initial Field of View
-	float FoV = 90.0f;
+	float FoV = 50.0f;
 
 	float speed = 20.0f; // 3 units / second
 	float mouseSpeed = 0.1f;

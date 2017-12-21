@@ -90,6 +90,7 @@ struct Chunk
 	void clearModel();
 
 	bool new_model_requested = true;
+	bool is_in_queue = false;
 
 	bool renderLights(Chunk* cneighbors[3][3][3]); // returns true if stable
 	uint8_t light_direction = 0; // 8 directions
@@ -258,6 +259,13 @@ bool Chunk::renderLights(Chunk* cneighbors[3][3][3])
 
 	bool always_was_stable = true;
 
+	bool xp_unstable = false;
+	bool xm_unstable = false;
+	bool yp_unstable = false;
+	bool ym_unstable = false;
+	bool zp_unstable = false;
+	bool zm_unstable = false;
+
 	for(int cycles = 0; cycles < 8 && light_is_stable==false; cycles++){
 		stable = true;
 
@@ -291,7 +299,7 @@ bool Chunk::renderLights(Chunk* cneighbors[3][3][3])
 					}else{
 						glm::vec3 old = data[xx][yy][zz].col;
 						glm::vec3 res = glm::max( glm::vec3(0.1,0.1,0.1) ,
-																	0.9f * glm::max( glm::max(
+																	0.85f * glm::max( glm::max(
 																						glm::max(data[xx-1][yy][zz].col ,  data[xx+1][yy][zz].col),
 																					  glm::max(data[xx][yy-1][zz].col ,  data[xx][yy+1][zz].col)),
 																						glm::max(data[xx][yy][zz-1].col ,  data[xx][yy][zz+1].col)));
@@ -299,6 +307,13 @@ bool Chunk::renderLights(Chunk* cneighbors[3][3][3])
 						if(stable == true && ( res[0] != old[0] || res[1] != old[1] || res[2] != old[2]))
 						{
 							stable = false;
+
+							xp_unstable |= (x == Chunk::SIZE-1);
+							yp_unstable |= (y == Chunk::SIZE-1);
+							zp_unstable |= (z == Chunk::SIZE-1);
+							xm_unstable |= (x == 0);
+							ym_unstable |= (y == 0);
+							zm_unstable |= (z == 0);
 						}
 
 						data[xx][yy][zz].col = res; // for faster propagation
@@ -310,6 +325,32 @@ bool Chunk::renderLights(Chunk* cneighbors[3][3][3])
 
 		always_was_stable = always_was_stable && stable;
 	}
+
+	if(xp_unstable && cneighbors[2][1][1] != NULL){
+		cneighbors[2][1][1]->light_is_stable = false;
+	}
+
+	if(yp_unstable && cneighbors[1][2][1] != NULL){
+		cneighbors[1][2][1]->light_is_stable = false;
+	}
+
+	if(zp_unstable && cneighbors[1][1][2] != NULL){
+		cneighbors[1][1][2]->light_is_stable = false;
+	}
+
+	if(xm_unstable && cneighbors[0][1][1] != NULL){
+		cneighbors[0][1][1]->light_is_stable = false;
+	}
+
+	if(ym_unstable && cneighbors[1][0][1] != NULL){
+		cneighbors[1][0][1]->light_is_stable = false;
+	}
+
+	if(zm_unstable && cneighbors[1][1][0] != NULL){
+		cneighbors[1][1][0]->light_is_stable = false;
+	}
+
+	light_is_stable = always_was_stable;
 	return always_was_stable;
 }
 
@@ -703,7 +744,7 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 																										data[xx+1][yy-1][zz+1],
 																										data[xx+1][yy][zz+1],
 																										data[xx][yy-1][zz+1]);
-																										
+
 
 						Vertex x0 = {{offx+0,offy+0,offz+1,1}, {baseCol0[0], baseCol0[1], baseCol0[2], 1},(float)cont_0, {0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
 						Vertex x1 = {{offx+1,offy+1,offz+1,1}, {baseCol1[0], baseCol1[1], baseCol1[2], 1},(float)cont_1, {0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
