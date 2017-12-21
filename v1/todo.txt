@@ -1,8 +1,6 @@
 -------------- TODO -----------------
 
-fix inputs
 lighting - render with a queue? remember who already in?
-smooth lighting
 
 ------------- IDEAS -----------------
 
@@ -12,3 +10,4 @@ if at border update (light, block, ...) -> also signal neighbouring chunk
 ------------ COMPLETED --------------
 collision
 fix up chunk rendering
+smooth lighting

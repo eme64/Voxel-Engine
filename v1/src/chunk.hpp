@@ -313,6 +313,35 @@ bool Chunk::renderLights(Chunk* cneighbors[3][3][3])
 	return always_was_stable;
 }
 
+void get_contour_and_color(bool &cont, glm::vec3 &baseCol,
+														const block_data_t &data0, // center
+														const block_data_t &data1, // diag
+														const block_data_t &data2,
+														const block_data_t &data3
+													){
+	cont =
+					Block_type[data1.t].solid
+				||Block_type[data2.t].solid
+				||Block_type[data3.t].solid;
+
+	baseCol = data0.col;
+	float c = 1.0;
+
+	if(!Block_type[data1.t].solid && (!Block_type[data2.t].solid || !Block_type[data3.t].solid)){
+		baseCol+=data1.col;
+		c+=1.0;
+	}
+	if(!Block_type[data2.t].solid){
+		baseCol+=data2.col;
+		c+=1.0;
+	}
+	if(!Block_type[data3.t].solid){
+		baseCol+=data3.col;
+		c+=1.0;
+	}
+	baseCol/=c;
+}
+
 //bool Chunk::createModel(Chunk* c_xp, Chunk* c_xm, Chunk* c_yp, Chunk* c_ym, Chunk* c_zp, Chunk* c_zm)
 bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 {
@@ -353,40 +382,42 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 					GLfloat offy = y + 	Chunk::SIZE*pos.y;
 					GLfloat offz = z + 	Chunk::SIZE*pos.z;
 
-
-					const float contour_factor = 0.3f;
-
 					if(!Block_type[data[xx][yy+1][zz].t].solid){
 						// x1z
 
-						bool cont_0 =
-										Block_type[data[xx-1][yy+1][zz-1].t].solid
-									||Block_type[data[xx][yy+1][zz-1].t].solid
-									||Block_type[data[xx-1][yy+1][zz].t].solid;
-						glm::vec3 baseCol0 = data[xx][yy+1][zz].col * (1 - contour_factor*cont_0);
+						bool cont_0;
+						glm::vec3 baseCol0;
+						get_contour_and_color(cont_0, baseCol0, data[xx][yy+1][zz],
+																										data[xx-1][yy+1][zz-1],
+																										data[xx][yy+1][zz-1],
+																										data[xx-1][yy+1][zz]);
 
-						bool cont_1 =
-										Block_type[data[xx+1][yy+1][zz+1].t].solid
-									||Block_type[data[xx][yy+1][zz+1].t].solid
-									||Block_type[data[xx+1][yy+1][zz].t].solid;
-						glm::vec3 baseCol1 = data[xx][yy+1][zz].col * (1 - contour_factor*cont_1);
 
-						bool cont_2 =
-										Block_type[data[xx-1][yy+1][zz+1].t].solid
-									||Block_type[data[xx][yy+1][zz+1].t].solid
-									||Block_type[data[xx-1][yy+1][zz].t].solid;
-						glm::vec3 baseCol2 = data[xx][yy+1][zz].col * (1 - contour_factor*cont_2);
+						bool cont_1;
+						glm::vec3 baseCol1;
+						get_contour_and_color(cont_1, baseCol1, data[xx][yy+1][zz],
+																										data[xx+1][yy+1][zz+1],
+																										data[xx][yy+1][zz+1],
+																										data[xx+1][yy+1][zz]);
 
-						bool cont_3 =
-										Block_type[data[xx+1][yy+1][zz-1].t].solid
-									||Block_type[data[xx][yy+1][zz-1].t].solid
-									||Block_type[data[xx+1][yy+1][zz].t].solid;
-						glm::vec3 baseCol3 = data[xx][yy+1][zz].col * (1 - contour_factor*cont_3);
+						bool cont_2;
+						glm::vec3 baseCol2;
+						get_contour_and_color(cont_2, baseCol2, data[xx][yy+1][zz],
+																										data[xx-1][yy+1][zz+1],
+																										data[xx][yy+1][zz+1],
+																										data[xx-1][yy+1][zz]);
 
-						Vertex x0 = {{offx+0,offy+1,offz+0,1}, {baseCol0[0], baseCol0[1], baseCol0[2], 1}, {0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
-						Vertex x1 = {{offx+1,offy+1,offz+1,1}, {baseCol1[0], baseCol1[1], baseCol1[2], 1}, {0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
-						Vertex x2 = {{offx+0,offy+1,offz+1,1}, {baseCol2[0], baseCol2[1], baseCol2[2], 1}, {0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
-						Vertex x3 = {{offx+1,offy+1,offz+0,1}, {baseCol3[0], baseCol3[1], baseCol3[2], 1}, {0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
+						bool cont_3;
+						glm::vec3 baseCol3;
+						get_contour_and_color(cont_3, baseCol3, data[xx][yy+1][zz],
+																										data[xx+1][yy+1][zz-1],
+																										data[xx][yy+1][zz-1],
+																										data[xx+1][yy+1][zz]);
+
+						Vertex x0 = {{offx+0,offy+1,offz+0,1}, {baseCol0[0], baseCol0[1], baseCol0[2], 1},(float)cont_0, {0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
+						Vertex x1 = {{offx+1,offy+1,offz+1,1}, {baseCol1[0], baseCol1[1], baseCol1[2], 1},(float)cont_1, {0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
+						Vertex x2 = {{offx+0,offy+1,offz+1,1}, {baseCol2[0], baseCol2[1], baseCol2[2], 1},(float)cont_2, {0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
+						Vertex x3 = {{offx+1,offy+1,offz+0,1}, {baseCol3[0], baseCol3[1], baseCol3[2], 1},(float)cont_3, {0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
 
 						int index = vert.size();
 						vert.push_back(x0);
@@ -411,34 +442,39 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 					if(!Block_type[data[xx][yy-1][zz].t].solid){
 						// x0z
 
-						bool cont_0 =
-										Block_type[data[xx-1][yy-1][zz-1].t].solid
-									||Block_type[data[xx][yy-1][zz-1].t].solid
-									||Block_type[data[xx-1][yy-1][zz].t].solid;
-						glm::vec3 baseCol0 = data[xx][yy-1][zz].col * (1 - contour_factor*cont_0);
+						bool cont_0;
+						glm::vec3 baseCol0;
+						get_contour_and_color(cont_0, baseCol0, data[xx][yy-1][zz],
+																										data[xx-1][yy-1][zz-1],
+																										data[xx][yy-1][zz-1],
+																										data[xx-1][yy-1][zz]);
 
-						bool cont_1 =
-										Block_type[data[xx+1][yy-1][zz+1].t].solid
-									||Block_type[data[xx][yy-1][zz+1].t].solid
-									||Block_type[data[xx+1][yy-1][zz].t].solid;
-						glm::vec3 baseCol1 = data[xx][yy-1][zz].col * (1 - contour_factor*cont_1);
 
-						bool cont_2 =
-										Block_type[data[xx-1][yy-1][zz+1].t].solid
-									||Block_type[data[xx][yy-1][zz+1].t].solid
-									||Block_type[data[xx-1][yy-1][zz].t].solid;
-						glm::vec3 baseCol2 = data[xx][yy-1][zz].col * (1 - contour_factor*cont_2);
+						bool cont_1;
+						glm::vec3 baseCol1;
+						get_contour_and_color(cont_1, baseCol1, data[xx][yy-1][zz],
+																										data[xx+1][yy-1][zz+1],
+																										data[xx][yy-1][zz+1],
+																										data[xx+1][yy-1][zz]);
 
-						bool cont_3 =
-										Block_type[data[xx+1][yy-1][zz-1].t].solid
-									||Block_type[data[xx][yy-1][zz-1].t].solid
-									||Block_type[data[xx+1][yy-1][zz].t].solid;
-						glm::vec3 baseCol3 = data[xx][yy-1][zz].col * (1 - contour_factor*cont_3);
+						bool cont_2;
+						glm::vec3 baseCol2;
+						get_contour_and_color(cont_2, baseCol2, data[xx][yy-1][zz],
+																										data[xx-1][yy-1][zz+1],
+																										data[xx][yy-1][zz+1],
+																										data[xx-1][yy-1][zz]);
 
-						Vertex x0 = {{offx+0,offy+0,offz+0,1}, {baseCol0[0], baseCol0[1], baseCol0[2], 1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
-						Vertex x1 = {{offx+1,offy+0,offz+1,1}, {baseCol1[0], baseCol1[1], baseCol1[2], 1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
-						Vertex x2 = {{offx+0,offy+0,offz+1,1}, {baseCol2[0], baseCol2[1], baseCol2[2], 1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
-						Vertex x3 = {{offx+1,offy+0,offz+0,1}, {baseCol3[0], baseCol3[1], baseCol3[2], 1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
+						bool cont_3;
+						glm::vec3 baseCol3;
+						get_contour_and_color(cont_3, baseCol3, data[xx][yy-1][zz],
+																										data[xx+1][yy-1][zz-1],
+																										data[xx][yy-1][zz-1],
+																										data[xx+1][yy-1][zz]);
+
+						Vertex x0 = {{offx+0,offy+0,offz+0,1}, {baseCol0[0], baseCol0[1], baseCol0[2], 1},(float)cont_0, {0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
+						Vertex x1 = {{offx+1,offy+0,offz+1,1}, {baseCol1[0], baseCol1[1], baseCol1[2], 1},(float)cont_1, {0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
+						Vertex x2 = {{offx+0,offy+0,offz+1,1}, {baseCol2[0], baseCol2[1], baseCol2[2], 1},(float)cont_2, {0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
+						Vertex x3 = {{offx+1,offy+0,offz+0,1}, {baseCol3[0], baseCol3[1], baseCol3[2], 1},(float)cont_3, {0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
 
 						int index = vert.size();
 						vert.push_back(x0);
@@ -463,34 +499,40 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 
 					if(!Block_type[data[xx-1][yy][zz].t].solid){
 						// 0yz
-						bool cont_0 =
-										Block_type[data[xx-1][yy-1][zz-1].t].solid
-									||Block_type[data[xx-1][yy][zz-1].t].solid
-									||Block_type[data[xx-1][yy-1][zz].t].solid;
-						glm::vec3 baseCol0 = data[xx-1][yy][zz].col * (1 - contour_factor*cont_0);
+						bool cont_0;
+						glm::vec3 baseCol0;
+						get_contour_and_color(cont_0, baseCol0, data[xx-1][yy][zz],
+																										data[xx-1][yy-1][zz-1],
+																										data[xx-1][yy][zz-1],
+																										data[xx-1][yy-1][zz]);
 
-						bool cont_1 =
-										Block_type[data[xx-1][yy+1][zz+1].t].solid
-									||Block_type[data[xx-1][yy][zz+1].t].solid
-									||Block_type[data[xx-1][yy+1][zz].t].solid;
-						glm::vec3 baseCol1 = data[xx-1][yy][zz].col * (1 - contour_factor*cont_1);
 
-						bool cont_2 =
-										Block_type[data[xx-1][yy-1][zz+1].t].solid
-									||Block_type[data[xx-1][yy][zz+1].t].solid
-									||Block_type[data[xx-1][yy-1][zz].t].solid;
-						glm::vec3 baseCol2 = data[xx-1][yy][zz].col * (1 - contour_factor*cont_2);
+						bool cont_1;
+						glm::vec3 baseCol1;
+						get_contour_and_color(cont_1, baseCol1, data[xx-1][yy][zz],
+																										data[xx-1][yy+1][zz+1],
+																										data[xx-1][yy][zz+1],
+																										data[xx-1][yy+1][zz]);
 
-						bool cont_3 =
-										Block_type[data[xx-1][yy+1][zz-1].t].solid
-									||Block_type[data[xx-1][yy][zz-1].t].solid
-									||Block_type[data[xx-1][yy+1][zz].t].solid;
-						glm::vec3 baseCol3 = data[xx-1][yy][zz].col * (1 - contour_factor*cont_3);
+						bool cont_2;
+						glm::vec3 baseCol2;
+						get_contour_and_color(cont_2, baseCol2, data[xx-1][yy][zz],
+																										data[xx-1][yy-1][zz+1],
+																										data[xx-1][yy][zz+1],
+																										data[xx-1][yy-1][zz]);
 
-						Vertex x0 = {{offx+0,offy+0,offz+0,1}, {baseCol0[0], baseCol0[1], baseCol0[2], 1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
-						Vertex x1 = {{offx+0,offy+1,offz+1,1}, {baseCol1[0], baseCol1[1], baseCol1[2], 1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
-						Vertex x2 = {{offx+0,offy+0,offz+1,1}, {baseCol2[0], baseCol2[1], baseCol2[2], 1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
-						Vertex x3 = {{offx+0,offy+1,offz+0,1}, {baseCol3[0], baseCol3[1], baseCol3[2], 1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
+						bool cont_3;
+						glm::vec3 baseCol3;
+						get_contour_and_color(cont_3, baseCol3, data[xx-1][yy][zz],
+																										data[xx-1][yy+1][zz-1],
+																										data[xx-1][yy][zz-1],
+																										data[xx-1][yy+1][zz]);
+
+
+						Vertex x0 = {{offx+0,offy+0,offz+0,1}, {baseCol0[0], baseCol0[1], baseCol0[2], 1},(float)cont_0, {0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
+						Vertex x1 = {{offx+0,offy+1,offz+1,1}, {baseCol1[0], baseCol1[1], baseCol1[2], 1},(float)cont_1, {0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
+						Vertex x2 = {{offx+0,offy+0,offz+1,1}, {baseCol2[0], baseCol2[1], baseCol2[2], 1},(float)cont_2, {0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
+						Vertex x3 = {{offx+0,offy+1,offz+0,1}, {baseCol3[0], baseCol3[1], baseCol3[2], 1},(float)cont_3, {0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
 
 						int index = vert.size();
 						vert.push_back(x0);
@@ -516,34 +558,39 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 
 					if(!Block_type[data[xx+1][yy][zz].t].solid){
 						// 1yz
-						bool cont_0 =
-										Block_type[data[xx+1][yy-1][zz-1].t].solid
-									||Block_type[data[xx+1][yy][zz-1].t].solid
-									||Block_type[data[xx+1][yy-1][zz].t].solid;
-						glm::vec3 baseCol0 = data[xx+1][yy][zz].col * (1 - contour_factor*cont_0);
+						bool cont_0;
+						glm::vec3 baseCol0;
+						get_contour_and_color(cont_0, baseCol0, data[xx+1][yy][zz],
+																										data[xx+1][yy-1][zz-1],
+																										data[xx+1][yy][zz-1],
+																										data[xx+1][yy-1][zz]);
 
-						bool cont_1 =
-										Block_type[data[xx+1][yy+1][zz+1].t].solid
-									||Block_type[data[xx+1][yy][zz+1].t].solid
-									||Block_type[data[xx+1][yy+1][zz].t].solid;
-						glm::vec3 baseCol1 = data[xx+1][yy][zz].col * (1 - contour_factor*cont_1);
 
-						bool cont_2 =
-										Block_type[data[xx+1][yy-1][zz+1].t].solid
-									||Block_type[data[xx+1][yy][zz+1].t].solid
-									||Block_type[data[xx+1][yy-1][zz].t].solid;
-						glm::vec3 baseCol2 = data[xx+1][yy][zz].col * (1 - contour_factor*cont_2);
+						bool cont_1;
+						glm::vec3 baseCol1;
+						get_contour_and_color(cont_1, baseCol1, data[xx+1][yy][zz],
+																										data[xx+1][yy+1][zz+1],
+																										data[xx+1][yy][zz+1],
+																										data[xx+1][yy+1][zz]);
 
-						bool cont_3 =
-										Block_type[data[xx+1][yy+1][zz-1].t].solid
-									||Block_type[data[xx+1][yy][zz-1].t].solid
-									||Block_type[data[xx+1][yy+1][zz].t].solid;
-						glm::vec3 baseCol3 = data[xx+1][yy][zz].col * (1 - contour_factor*cont_3);
+						bool cont_2;
+						glm::vec3 baseCol2;
+						get_contour_and_color(cont_2, baseCol2, data[xx+1][yy][zz],
+																										data[xx+1][yy-1][zz+1],
+																										data[xx+1][yy][zz+1],
+																										data[xx+1][yy-1][zz]);
 
-						Vertex x0 = {{offx+1,offy+0,offz+0,1}, {baseCol0[0], baseCol0[1], baseCol0[2], 1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
-						Vertex x1 = {{offx+1,offy+1,offz+1,1}, {baseCol1[0], baseCol1[1], baseCol1[2], 1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
-						Vertex x2 = {{offx+1,offy+0,offz+1,1}, {baseCol2[0], baseCol2[1], baseCol2[2], 1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
-						Vertex x3 = {{offx+1,offy+1,offz+0,1}, {baseCol3[0], baseCol3[1], baseCol3[2], 1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
+						bool cont_3;
+						glm::vec3 baseCol3;
+						get_contour_and_color(cont_3, baseCol3, data[xx+1][yy][zz],
+																										data[xx+1][yy+1][zz-1],
+																										data[xx+1][yy][zz-1],
+																										data[xx+1][yy+1][zz]);
+
+						Vertex x0 = {{offx+1,offy+0,offz+0,1}, {baseCol0[0], baseCol0[1], baseCol0[2], 1},(float)cont_0, {0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
+						Vertex x1 = {{offx+1,offy+1,offz+1,1}, {baseCol1[0], baseCol1[1], baseCol1[2], 1},(float)cont_1, {0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
+						Vertex x2 = {{offx+1,offy+0,offz+1,1}, {baseCol2[0], baseCol2[1], baseCol2[2], 1},(float)cont_2, {0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
+						Vertex x3 = {{offx+1,offy+1,offz+0,1}, {baseCol3[0], baseCol3[1], baseCol3[2], 1},(float)cont_3, {0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
 
 						int index = vert.size();
 						vert.push_back(x0);
@@ -569,34 +616,40 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 
 					if(!Block_type[data[xx][yy][zz-1].t].solid){
 						// xy0
-						bool cont_0 =
-										Block_type[data[xx-1][yy-1][zz-1].t].solid
-									||Block_type[data[xx-1][yy][zz-1].t].solid
-									||Block_type[data[xx][yy-1][zz-1].t].solid;
-						glm::vec3 baseCol0 = data[xx][yy][zz-1].col * (1 - contour_factor*cont_0);
+						bool cont_0;
+						glm::vec3 baseCol0;
+						get_contour_and_color(cont_0, baseCol0, data[xx][yy][zz-1],
+																										data[xx-1][yy-1][zz-1],
+																										data[xx-1][yy][zz-1],
+																										data[xx][yy-1][zz-1]);
 
-						bool cont_1 =
-										Block_type[data[xx+1][yy+1][zz-1].t].solid
-									||Block_type[data[xx+1][yy][zz-1].t].solid
-									||Block_type[data[xx][yy+1][zz-1].t].solid;
-						glm::vec3 baseCol1 = data[xx][yy][zz-1].col * (1 - contour_factor*cont_1);
 
-						bool cont_2 =
-										Block_type[data[xx-1][yy+1][zz-1].t].solid
-									||Block_type[data[xx-1][yy][zz-1].t].solid
-									||Block_type[data[xx][yy+1][zz-1].t].solid;
-						glm::vec3 baseCol2 = data[xx][yy][zz-1].col * (1 - contour_factor*cont_2);
+						bool cont_1;
+						glm::vec3 baseCol1;
+						get_contour_and_color(cont_1, baseCol1, data[xx][yy][zz-1],
+																										data[xx+1][yy+1][zz-1],
+																										data[xx+1][yy][zz-1],
+																										data[xx][yy+1][zz-1]);
 
-						bool cont_3 =
-										Block_type[data[xx+1][yy-1][zz-1].t].solid
-									||Block_type[data[xx+1][yy][zz-1].t].solid
-									||Block_type[data[xx][yy-1][zz-1].t].solid;
-						glm::vec3 baseCol3 = data[xx][yy][zz-1].col * (1 - contour_factor*cont_3);
+						bool cont_2;
+						glm::vec3 baseCol2;
+						get_contour_and_color(cont_2, baseCol2, data[xx][yy][zz-1],
+																										data[xx-1][yy+1][zz-1],
+																										data[xx-1][yy][zz-1],
+																										data[xx][yy+1][zz-1]);
 
-						Vertex x0 = {{offx+0,offy+0,offz+0,1}, {baseCol0[0], baseCol0[1], baseCol0[2], 1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
-						Vertex x1 = {{offx+1,offy+1,offz+0,1}, {baseCol1[0], baseCol1[1], baseCol1[2], 1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
-						Vertex x2 = {{offx+0,offy+1,offz+0,1}, {baseCol2[0], baseCol2[1], baseCol2[2], 1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
-						Vertex x3 = {{offx+1,offy+0,offz+0,1}, {baseCol3[0], baseCol3[1], baseCol3[2], 1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
+						bool cont_3;
+						glm::vec3 baseCol3;
+						get_contour_and_color(cont_3, baseCol3, data[xx][yy][zz-1],
+																										data[xx+1][yy-1][zz-1],
+																										data[xx+1][yy][zz-1],
+																										data[xx][yy-1][zz-1]);
+
+
+						Vertex x0 = {{offx+0,offy+0,offz+0,1}, {baseCol0[0], baseCol0[1], baseCol0[2], 1},(float)cont_0, {0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
+						Vertex x1 = {{offx+1,offy+1,offz+0,1}, {baseCol1[0], baseCol1[1], baseCol1[2], 1},(float)cont_1, {0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
+						Vertex x2 = {{offx+0,offy+1,offz+0,1}, {baseCol2[0], baseCol2[1], baseCol2[2], 1},(float)cont_2, {0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
+						Vertex x3 = {{offx+1,offy+0,offz+0,1}, {baseCol3[0], baseCol3[1], baseCol3[2], 1},(float)cont_3, {0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
 
 						int index = vert.size();
 						vert.push_back(x0);
@@ -622,34 +675,40 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 
 					if(!Block_type[data[xx][yy][zz+1].t].solid){
 						// xy1
-						bool cont_0 =
-										Block_type[data[xx-1][yy-1][zz+1].t].solid
-									||Block_type[data[xx-1][yy][zz+1].t].solid
-									||Block_type[data[xx][yy-1][zz+1].t].solid;
-						glm::vec3 baseCol0 = data[xx][yy][zz+1].col * (1 - contour_factor*cont_0);
+						bool cont_0;
+						glm::vec3 baseCol0;
+						get_contour_and_color(cont_0, baseCol0, data[xx][yy][zz+1],
+																										data[xx-1][yy-1][zz+1],
+																										data[xx-1][yy][zz+1],
+																										data[xx][yy-1][zz+1]);
 
-						bool cont_1 =
-										Block_type[data[xx+1][yy+1][zz+1].t].solid
-									||Block_type[data[xx+1][yy][zz+1].t].solid
-									||Block_type[data[xx][yy+1][zz+1].t].solid;
-						glm::vec3 baseCol1 = data[xx][yy][zz+1].col * (1 - contour_factor*cont_1);
 
-						bool cont_2 =
-										Block_type[data[xx-1][yy+1][zz+1].t].solid
-									||Block_type[data[xx-1][yy][zz+1].t].solid
-									||Block_type[data[xx][yy+1][zz+1].t].solid;
-						glm::vec3 baseCol2 = data[xx][yy][zz+1].col * (1 - contour_factor*cont_2);
+						bool cont_1;
+						glm::vec3 baseCol1;
+						get_contour_and_color(cont_1, baseCol1, data[xx][yy][zz+1],
+																										data[xx+1][yy+1][zz+1],
+																										data[xx+1][yy][zz+1],
+																										data[xx][yy+1][zz+1]);
 
-						bool cont_3 =
-										Block_type[data[xx+1][yy-1][zz+1].t].solid
-									||Block_type[data[xx+1][yy][zz+1].t].solid
-									||Block_type[data[xx][yy-1][zz+1].t].solid;
-						glm::vec3 baseCol3 = data[xx][yy][zz+1].col * (1 - contour_factor*cont_3);
+						bool cont_2;
+						glm::vec3 baseCol2;
+						get_contour_and_color(cont_2, baseCol2, data[xx][yy][zz+1],
+																										data[xx-1][yy+1][zz+1],
+																										data[xx-1][yy][zz+1],
+																										data[xx][yy+1][zz+1]);
 
-						Vertex x0 = {{offx+0,offy+0,offz+1,1}, {baseCol0[0], baseCol0[1], baseCol0[2], 1},{0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
-						Vertex x1 = {{offx+1,offy+1,offz+1,1}, {baseCol1[0], baseCol1[1], baseCol1[2], 1},{0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
-						Vertex x2 = {{offx+0,offy+1,offz+1,1}, {baseCol2[0], baseCol2[1], baseCol2[2], 1},{0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
-						Vertex x3 = {{offx+1,offy+0,offz+1,1}, {baseCol3[0], baseCol3[1], baseCol3[2], 1},{0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
+						bool cont_3;
+						glm::vec3 baseCol3;
+						get_contour_and_color(cont_3, baseCol3, data[xx][yy][zz+1],
+																										data[xx+1][yy-1][zz+1],
+																										data[xx+1][yy][zz+1],
+																										data[xx][yy-1][zz+1]);
+																										
+
+						Vertex x0 = {{offx+0,offy+0,offz+1,1}, {baseCol0[0], baseCol0[1], baseCol0[2], 1},(float)cont_0, {0,0,0},  {blk_type.uv[0][0][0],blk_type.uv[0][0][1]}};
+						Vertex x1 = {{offx+1,offy+1,offz+1,1}, {baseCol1[0], baseCol1[1], baseCol1[2], 1},(float)cont_1, {0,0,0},  {blk_type.uv[0][1][0],blk_type.uv[0][1][1]}};
+						Vertex x2 = {{offx+0,offy+1,offz+1,1}, {baseCol2[0], baseCol2[1], baseCol2[2], 1},(float)cont_2, {0,0,0},  {blk_type.uv[0][2][0],blk_type.uv[0][2][1]}};
+						Vertex x3 = {{offx+1,offy+0,offz+1,1}, {baseCol3[0], baseCol3[1], baseCol3[2], 1},(float)cont_3, {0,0,0},  {blk_type.uv[0][3][0],blk_type.uv[0][3][1]}};
 
 						int index = vert.size();
 						vert.push_back(x0);
@@ -772,6 +831,11 @@ bool Chunk::createModel(Chunk* cneighbors[3][3][3])
 	// load color
 	location = glGetAttribLocation(g_shaderProgram, "color_in");
 	glVertexAttribPointer(location, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, color));
+	glEnableVertexAttribArray(location);
+
+	// load cornerness
+	location = glGetAttribLocation(g_shaderProgram, "cornerness");
+	glVertexAttribPointer(location, 1, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, cornerness));
 	glEnableVertexAttribArray(location);
 
 /*

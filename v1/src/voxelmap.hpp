@@ -467,7 +467,7 @@ struct VoxelMap
 	void kill_lights_perimiter(int (&kill_pos)[3]){
 		//std::cout << "kill lights" << std::endl;
 
-		const int radius = 20;
+		const int radius = 30;
 
 		int c_x0 = floor(((float)kill_pos[0]-radius) / (float)Chunk::SIZE);
 		int c_y0 = floor(((float)kill_pos[1]-radius) / (float)Chunk::SIZE);
